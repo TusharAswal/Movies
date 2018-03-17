@@ -14,7 +14,7 @@ export default class SideBarMenu extends Component {
     render() {
         return (
             <View style={{flex:1}}>
-                <View style={{flex:0.25,borderWidth:1, backgroundColor:'#778899',flexDirection:'row'}}>
+                <View style={{flex:0.25, backgroundColor:'#778899',flexDirection:'row'}}>
                 <View>
                     <Icon name="imdb" size={75} style={{marginLeft:width(5), marginTop:width(15)}} />
                 </View>
@@ -23,106 +23,106 @@ export default class SideBarMenu extends Component {
                     </View>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}} >
-                        <View style={{flex:0.5,borderWidth:1}}>
-                            <Icon name='film' size={15} />
+                        <View style={{flex:0.2}}>
+                            <Icon name='film' size={15} style={{alignSelf:'center'}} />
                         </View>
-                        <View style={{flex:0.5,borderWidth:1}}>
+                        <View style={{flex:0.8}}>
                             <Text style={{fontSize:15,fontWeight:'bold'}}>Movies</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                        <View>
-                            <Icon name='live-tv' />
+                        <View style={{flex:0.2}}>
+                            <Icon name='live-tv'  size={15} style={{alignSelf:'center'}} />
                         </View>
-                        <View>
+                        <View style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>TV Shows</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1,flexDirection:'row'}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                        <View>
-                            <Icon name='search' />
+                        <View style={{flex:0.2}}>
+                            <Icon name='search' style={{alignSelf:'center'}} />
                         </View>
-                        <View>
+                        <View style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>Discover</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1,flexDirection:'row',flexDirection:'row'}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                         <View>
-                            <Icon name='user' />
+                         <View style={{flex:0.2}}>
+                            <Icon name='user' style={{alignSelf:'center'}}/>
                         </View>
-                        <View>
+                        <View  style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>Popular People</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.12,borderWidth:1,flexDirection:'row',flexDirection:'row'}}>
+                <View style={{flex:0.12,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                         <View>
-                            <Icon name='alarm' />
+                         <View style={{flex:0.2}}>
+                            <Icon name='alarm' style={{alignSelf:'center'}}/>
                         </View>
-                        <View>
+                        <View  style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>Reminders</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1,flexDirection:'row',flexDirection:'row'}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                         <View>
-                            <Icon name='question' />
+                         <View style={{flex:0.2}}>
+                            <Icon name='question' style={{alignSelf:'center'}}/>
                         </View>
-                        <View>
+                        <View  style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>Contact Developer</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1,flexDirection:'row',flexDirection:'row'}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                        <View>
-                            <Icon name='movie-roll' />
+                        <View style={{flex:0.2}}>
+                            <Icon name='movie-roll' style={{alignSelf:'center'}} />
                         </View>
-                        <View>
+                        <View style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>Google+Community</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1,flexDirection:'row',flexDirection:'row'}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                        <View>
-                            <Icon name='lock-open' />
+                        <View  style={{flex:0.2}}>
+                            <Icon name='lock-open' style={{alignSelf:'center'}} />
                         </View>
-                        <View>
+                        <View  style={{flex:0.8}}>
                             <Text  style={{fontSize:15,fontWeight:'bold'}}>Unlock Pro</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1,flexDirection:'row',flexDirection:'row'}}>
+                <View style={{flex:0.07,justifyContent:'center'}}>
                     <TouchableOpacity style={{flexDirection:'row'}}>
-                        <View>
-                            <Icon name='settings'/>
+                        <View style={{flex:0.2}}>
+                            <Icon name='settings' style={{alignSelf:'center'}}/>
                         </View>
-                        <View>
+                        <View  style={{flex:0.8}}>
                             <Text style={{fontSize:15,fontWeight:'bold',flexDirection:'row'}}>Settings</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.07,borderWidth:1}}>
+                <View style={{flex:0.07}}>
                 </View>
 
             </View>

@@ -28,25 +28,25 @@ export default class LoginPage extends Component {
               renderNavigationView={() => <SideBarMenu />}>               
               <View style={{flex: 1}}>     
                 <View style={{flex:0.1,flexDirection:'row' ,backgroundColor:'#778899'}}>
-                <View style={{flex:0.2,backgroundColor:'#778899',margin:10}}>
+                <View style={{flex:0.2,backgroundColor:'#778899',margin:10,justifyContent:'center'}}>
                     <TouchableOpacity onPress={()=>this.openDrawer()}>
-                     <Icon name='bars' size={35} color='white' style={{alignSelf:'center'}}/> 
+                     <Icon name='bars' size={35} color='white'/> 
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.5,backgroundColor:'#778899',margin:10}}>
-                <Text style={{fontWeight:'bold',fontSize:20,color:'white' ,textAlign:'center'}}>Cinematics</Text>
+                <View style={{flex:0.5,backgroundColor:'#778899',margin:10,justifyContent:'center'}}>
+                <Text style={{fontWeight:'bold',fontSize:20,color:'white'}}>Cinematics</Text>
                 </View>
 
                 <View style={{flex:0.3,flexDirection:'row',backgroundColor:'#778899',margin:10}}>
-                    <View style={{flex:0.5,backgroundColor:'#778899'}}>
+                    <View style={{flex:0.5,backgroundColor:'#778899' ,justifyContent:'center'}}>
                         <TouchableOpacity>
-                             <Icon name='list' size={30} color='white' style={{alignSelf:'flex-end'}}/>
+                             <Icon name='list' size={30} color='white'/>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{flex:0.5,backgroundColor:'#778899',margin:10}}>
-                        <TouchableOpacity>
+                    <View style={{flex:0.5,backgroundColor:'#778899',margin:10,justifyContent:'center'}}>
+                        <TouchableOpacity >
                             <Icon name='search' size={17} style={{alignSelf:'flex-end'}} color='white'/>
                         </TouchableOpacity>
                     </View>
