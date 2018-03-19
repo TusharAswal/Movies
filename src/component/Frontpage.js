@@ -36,29 +36,29 @@ export default class LoginPage extends Component {
             <DrawerLayoutAndroid
               drawerWidth={width(60)}           
               ref={(_drawer) => this.drawer = _drawer}
-              drawerBackgroundColor="#fff"
+              drawerBackgroundColor= "#323232"
               drawerPosition={DrawerLayoutAndroid.positions.Left}
               renderNavigationView={() => <SideBarMenu />}>               
-              <View style={{flex: 1,backgroundColor:'#778899'}}>     
-                <View style={{flex:0.1,flexDirection:'row' ,backgroundColor:'#778899'}}>
-                <View style={{flex:0.2,backgroundColor:'#778899',margin:10,justifyContent:'center'}}>
+              <View style={{flex: 1,backgroundColor:'#323232'}}>     
+                <View style={{flex:0.1,flexDirection:'row' ,backgroundColor:'#323232'}}>
+                <View style={{flex:0.2,backgroundColor:'#323232',margin:10,justifyContent:'center'}}>
                     <TouchableOpacity onPress={()=>this.openDrawer()}>
                      <Icon name='bars' size={35} color='white'/> 
                     </TouchableOpacity>
                 </View>
 
-                <View style={{flex:0.5,backgroundColor:'#778899',margin:10,justifyContent:'center'}}>
+                <View style={{flex:0.5,backgroundColor:'#323232',margin:10,justifyContent:'center'}}>
                 <Text style={{fontWeight:'bold',fontSize:20,color:'white'}}>Cinematics</Text>
                 </View>
 
-                <View style={{flex:0.3,flexDirection:'row',backgroundColor:'#778899',margin:10}}>
-                    <View style={{flex:0.5,backgroundColor:'#778899' ,justifyContent:'center'}}>
+                <View style={{flex:0.3,flexDirection:'row',backgroundColor:'#323232',margin:10}}>
+                    <View style={{flex:0.5,backgroundColor:'#323232' ,justifyContent:'center'}}>
                         <TouchableOpacity>
                              <Icon name='list' size={30} color='white'/>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{flex:0.5,backgroundColor:'#778899',margin:10,justifyContent:'center'}}>
+                    <View style={{flex:0.5,backgroundColor:'#323232',margin:10,justifyContent:'center'}}>
                         <TouchableOpacity >
                             <Icon name='search' size={17} style={{alignSelf:'flex-end'}} color='white'/>
                         </TouchableOpacity>
@@ -68,9 +68,9 @@ export default class LoginPage extends Component {
                 <ScrollableTabView
                 tabBarActiveTextColor="white"
                 renderTabBar={() => <TabBar underlineColor="green"  
-                tabBarStyle={{ backgroundColor: "#778899"}}
+                tabBarStyle={{ backgroundColor: "#323232"}}
                 tabBarTextStyle={{fontSize:15}}
-                />} style={{flex:0.9}}>
+                />} style={{flex:0.9,backgroundColor: "#323232"}}>
                 <NOWPLAYING tabLabel={{label: "NOW PLAYING"}} label="Page #1"/>
                 <TOPBOXOFFICE tabLabel={{label: "TOP BOX OFFICE"}} label="Page #2"/>
                 <ANTICIPATED tabLabel={{label: "ANTICIPATED"}} label="Page #3"/>

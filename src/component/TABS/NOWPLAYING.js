@@ -1,8 +1,15 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image  } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, Image, TouchableOpacity  } from 'react-native';
 import {height,width,totalSize } from 'react-native-dimension';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
+
+import * as myActions from '../../actions/actions';
+import { bindActionCreators } from 'redux';
+
 const imgPath = "https://image.tmdb.org/t/p/w500/";
-export default class FetchExample extends React.Component {
+
+class NOWPLAYING extends React.Component {
 
   constructor(props){
     super(props);
@@ -27,7 +34,9 @@ export default class FetchExample extends React.Component {
       });
   }
 
+moviedetail(id) {
 
+}
 
   render(){
 
@@ -46,14 +55,16 @@ export default class FetchExample extends React.Component {
           data={this.state.dataSource}
           renderItem={({item}) => 
         <View style={{margin:10 ,flex:1,height:height(30),width:width(30)}}>
-                <View style={{flex:0.9}}>
+            <TouchableOpacity onPress={this.moviedetail(item.id)} style={{flex:1,height:height(30),width:width(30)}}>
+                <View style={{flex:0.8}}>
                     <Image source={{ uri: imgPath + item.poster_path }} style={{ width:width(30), height:null,flex:1 }} />
                 </View>
 
-              <View style={{flex:0.1}}>
-              <Text style={{flex:1}}>{item.title}</Text>
+              <View style={{flex:0.2,backgroundColor:'#999999',flexDirection:'row'}}>
+              <Text style={{flex:1,textAlign:'center'}}>{item.title}</Text>
+              <Icon name='ellipsis-v' style={{marginRight:3,marginTop:4}} />
               </View>
-
+          </TouchableOpacity>
         </View>}
           keyExtractor={(item, index) => index}
         />
@@ -61,3 +72,18 @@ export default class FetchExample extends React.Component {
     );
   }
 }
+
+
+mapStateToProps = (state, props) => {
+  console.log("state : ", state);
+  return {
+        movies: state.movieReducer.data,
+        loading: state.movieReducer.loading
+  }
+}
+
+mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(myActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NOWPLAYING);
