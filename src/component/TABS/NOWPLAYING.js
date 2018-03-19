@@ -47,24 +47,27 @@ moviedetail(id) {
         </View>
       )
     }
-
+console.log("props: ",this.props);
     return(
       <View style={{flex: 1, paddingTop:20}}>
         <FlatList
-          numColumns={3}
+          keyExtractor={item => item.id}
+          key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
+
+          numColumns={this.props.singleRow ? 3 : 1}
           data={this.state.dataSource}
           renderItem={({item}) => 
-        <View style={{margin:10 ,flex:1,height:height(30),width:width(30)}}>
-            <TouchableOpacity onPress={this.moviedetail(item.id)} style={{flex:1,height:height(30),width:width(30)}}>
-                <View style={{flex:0.8}}>
+          <View style={{ flex:1,flexDirection:this.props.singleRow ? 'row':'column', margin:6,justifyContent:'center'}}>
+             <TouchableOpacity onPress={this.moviedetail(item.id)} style={{flex:1,height:height(30),width:width(30)}}> 
+                <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
                     <Image source={{ uri: imgPath + item.poster_path }} style={{ width:width(30), height:null,flex:1 }} />
                 </View>
 
               <View style={{flex:0.2,backgroundColor:'#999999',flexDirection:'row'}}>
-              <Text style={{flex:1,textAlign:'center'}}>{item.title}</Text>
-              <Icon name='ellipsis-v' style={{marginRight:3,marginTop:4}} />
+                <Text numberOfLines={2} style={{textAlign:'center',borderWidth:1,flex:0.9}}>{item.title}</Text>
+              <Icon name='ellipsis-v' style={{marginRight:3,marginTop:4,flex:0.1}} />
               </View>
-          </TouchableOpacity>
+           </TouchableOpacity> 
         </View>}
           keyExtractor={(item, index) => index}
         />
@@ -77,8 +80,7 @@ moviedetail(id) {
 mapStateToProps = (state, props) => {
   console.log("state : ", state);
   return {
-        movies: state.movieReducer.data,
-        loading: state.movieReducer.loading
+        //movies: state.movieReducer.data
   }
 }
 

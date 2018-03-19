@@ -8,6 +8,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
 import TabBar from "react-native-underline-tabbar";
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import * as myActions from '../actions/actions/';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import SideBarMenu from './SideBarMenu';
 import NOWPLAYING from './TABS/NOWPLAYING';
@@ -21,9 +24,12 @@ import UPCOMING from './TABS/UPCOMING';
 import UPCOMINGDVDS from './TABS/UPCOMINGDVDS';
 import ONNETFLIX from './TABS/ONNETFLIX';
 
-export default class LoginPage extends Component {
-    constructor() {
-        super();
+class Frontpage extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            singleRow:true
+        }
         this.openDrawer = this.openDrawer.bind(this);
     }
 
@@ -53,8 +59,8 @@ export default class LoginPage extends Component {
 
                 <View style={{flex:0.3,flexDirection:'row',backgroundColor:'#323232',margin:10}}>
                     <View style={{flex:0.5,backgroundColor:'#323232' ,justifyContent:'center'}}>
-                        <TouchableOpacity>
-                             <Icon name='list' size={30} color='white'/>
+                    <TouchableOpacity onPress={() => { this.setState({ singleRow: !this.state.singleRow }) }}>
+                             <Icon name={this.state.singleRow ? 'list-ul' : 'table'} size={30} color='white'/>
                         </TouchableOpacity>
                     </View>
 
@@ -71,7 +77,7 @@ export default class LoginPage extends Component {
                 tabBarStyle={{ backgroundColor: "#323232"}}
                 tabBarTextStyle={{fontSize:15}}
                 />} style={{flex:0.9,backgroundColor: "#323232"}}>
-                <NOWPLAYING tabLabel={{label: "NOW PLAYING"}} label="Page #1"/>
+                <NOWPLAYING tabLabel={{label: "NOW PLAYING"}} label="Page #1" singleRow={this.state.singleRow}/>
                 <TOPBOXOFFICE tabLabel={{label: "TOP BOX OFFICE"}} label="Page #2"/>
                 <ANTICIPATED tabLabel={{label: "ANTICIPATED"}} label="Page #3"/>
                 <IMDBTOP250 tabLabel={{label: "IMDB TOP 250"}} label="Page #4"/>
@@ -87,3 +93,14 @@ export default class LoginPage extends Component {
         );
     }
 }
+mapStateToProps = (state, props) => {
+    return {
+
+    }
+}
+
+mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(myActions, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Frontpage);
