@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import * as myActions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
@@ -24,7 +25,8 @@ class TOPBOXOFFICE extends React.Component {
     this.props.topBoxoffice();
   }
 
-  componentWillRecieveProps=(nextProps)=> {
+  componentWillReceiveProps=(nextProps)=> {
+    console.log("TOP:",nextProps.topmovies)
     if(this.props.topmovies!=nextProps.topmovies) {
       this.setState({movie:nextProps.topmovies,
       isLoading:nextProps.isLoading
@@ -49,11 +51,11 @@ class TOPBOXOFFICE extends React.Component {
           key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
 
           numColumns={this.props.singleRow ? 3 : 1}
-          data={this.state.dataSource}
+          data={this.props.topmovies}
           renderItem={({ item }) =>
             <View style={{ flex: 1, flexDirection: this.props.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
 
-              <TouchableOpacity onPress={this.moviedetail(item.id)} style={{ flex: 1,flexDirection: this.props.singleRow ? 'column' : 'row' , width:this.props.singleRow ? width(30):width(70),height:height(30),}}>
+              <TouchableOpacity onPress={()=> Actions.MOVIE_DETAILS({"movie":item})} style={{ flex: 1,flexDirection: this.props.singleRow ? 'column' : 'row' , width:this.props.singleRow ? width(30):width(70),height:height(30),}}>
                 <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
                   <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1,width:this.props.singleRow ? width(30):width(30) }} />
                 </View>

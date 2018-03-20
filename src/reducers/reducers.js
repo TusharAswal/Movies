@@ -1,6 +1,5 @@
-import { NOWPLAYING, ERROR } from '../actions/actions';
+import { NOWPLAYING, ERROR, TOPBOXOFFICE } from '../actions/actions';
 import { combineReducers } from 'redux';
-import TOPBOXOFFICE from '../component/TABS/TOPBOXOFFICE';
 
 let defaultState = { loading: true, data: [] };
 const movieReducer = (state = defaultState, action) => {
@@ -17,13 +16,13 @@ const movieReducer = (state = defaultState, action) => {
       }
 }
 
-const topmovieReducer= (state = defaultState, actions) => {
+const topmovieReducer= (state = defaultState, action) => {
       switch (action.type){
             case TOPBOXOFFICE:
                   return {
                         ...state,
                         loading:false,
-                        data:action.payload
+                        data: action.payload
                    }
             default:
             return{ ...state}
