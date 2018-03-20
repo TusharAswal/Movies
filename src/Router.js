@@ -13,6 +13,7 @@ import {
   
 } from 'react-native-router-flux';
 import Frontpage from './component/Frontpage';
+import MOVIE_DETAILS from './'
 
 const App = () => {
   return(
@@ -24,6 +25,11 @@ const App = () => {
               component={Frontpage}
               hideNavBar={true}
                />
+
+            <Scene 
+              key='MOVIE_DETAILS'
+              component='MOVIE_DETAILS'
+            />
         </Scene>
     </Router>
   )

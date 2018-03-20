@@ -2,7 +2,7 @@
 import { Actions, Router} from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React ,{Component} from 'react'
-import { View,Text,Button, TouchableOpacity} from 'react-native';
+import { View,Text,Button, TouchableOpacity,Image} from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -15,11 +15,11 @@ export default class SideBarMenu extends Component {
         return (
             <View style={{flex:1,backgroundColor:'white'}}>
                 <View style={{flex:0.25, backgroundColor:'#323232',flexDirection:'row'}}>
-                <View>
-                    <Icon name="imdb" size={75} style={{marginLeft:width(5), marginTop:width(15)}} />
+                <View style={{ flex:0.45}}>
+                <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent:'flex-end' ,height: height(15), width:width(20),marginTop:height(8), marginLeft:height(3) }} />
                 </View>
-                    <View>
-                         <Text style={{alignSelf:'flex-end',color:'white',fontWeight:'bold', marginLeft:width(4), marginTop:width(29)}}>Connect to IMDB </Text>
+                    <View style={{justifyContent:'flex-start',flex:0.55}}>
+                         <Text style={{alignSelf:'flex-end',color:'white',fontWeight:'bold', marginTop:width(29), marginRight:width(2)}}>Connect to MDB </Text>
                     </View>
                 </View>
 
