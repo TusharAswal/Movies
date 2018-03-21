@@ -78,7 +78,14 @@ const imgPath = "https://image.tmdb.org/t/p/w500/";
                                 </Swiper>
                         </View>
                     
-                    <View style={{flex:0.3,backgroundColor:'#696969'}}><Text>SAMPLE</Text></View>
+                    <View style={{flex:0.3,backgroundColor:'#696969',alignItems:'flex-end'}}>
+                        <View>
+                         <Text>{this.props.movie.title}</Text>
+                        </View>
+                        <View>
+                            <Text>{new Date(this.props.movie.release_date).getFullYear()}</Text>
+                        </View>
+                    </View>
                     <View style={{borderWidth:1,height:height(18),width:width(18),position:'absolute',marginTop:width(45),marginLeft:width(6)}}><Image style={{height:height(18),width:width(18)}} source={{uri: imgPath + this.props.movie.poster_path}}/></View>
                         <View style={{flex:0.25,position:'absolute',alignSelf:'flex-start'}}>
                             <Icon name='arrow-left' size={height(3)} color='white' style={{marginLeft:width(2),marginTop:width(2)}} />

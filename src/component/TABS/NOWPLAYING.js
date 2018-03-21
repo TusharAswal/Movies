@@ -16,17 +16,19 @@ class NOWPLAYING extends React.Component {
     super(props);
     this.state = {
       isLoading: true,
-      movies: []
+      movies: [],
+      otherdetails: []
     }
   }
 
   componentDidMount() {
     this.props.nowPlaying();
+    this.props.runtime(item.id);
   }
 
  componentWillReceiveProps=(nextProps)=>{
-   if(this.props.movies!=nextProps.movies){
-     this.setState({movie:nextProps.movies, isLoading:nextProps.isLoading})
+   if(this.props.movies!=nextProps.movies || this.props.otherdetails!= nextProps.otherdetails){
+     this.setState({movie:nextProps.movies,otherdetails:nextProps.otherdetails, isLoading:nextProps.isLoading})
    }
  }
 
@@ -104,6 +106,7 @@ mapStateToProps = (state, props) => {
   console.log("state : ", state);
   return {
     movies: state.movieReducer.data,
+    otherdetails: state.otherdetailReducer.info,
     isLoading:state.movieReducer.loading  
   }
 }
