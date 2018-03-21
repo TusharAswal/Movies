@@ -8,6 +8,7 @@ export const TOPBOXOFFICE = 'TOPBOXOFFICE';
 export const AIRING_TODAY = 'AIRING_TODAY';
 export const UPCOMING = 'UPCOMING';
 export const POPULAR = 'POPULAR';
+export const MOVIE_DETAILS = 'MOVIE_DETAILS';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -74,6 +75,20 @@ export function popular() {
             dispatch({type: POPULAR , payload:responseJson.results})
         })
 
+        .catch((error)=>{
+            console.error(error);
+        })
+    }
+}
+
+export function moviedetails(id) {
+    return(dispatch) => {
+        fetch('https://api.themoviedb.org/3/movie/'+ id +'/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+            console.log("MDETAIILS",responseJson.posters)
+            dispatch({type:MOVIE_DETAILS, payload:responseJson.posters})
+        })
         .catch((error)=>{
             console.error(error);
         })

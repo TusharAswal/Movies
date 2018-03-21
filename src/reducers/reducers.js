@@ -4,7 +4,7 @@ import {
       TOPBOXOFFICE,
       AIRING_TODAY,
       UPCOMING,
-      POPULAR
+      POPULAR,MOVIE_DETAILS
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -78,9 +78,30 @@ const popularMovieReducer=( state = defaultState, action)=>{
             }
       }
 }
+
+const mdetailReducer=( state= defaultState, action)=> {
+      switch(action.type){
+            case MOVIE_DETAILS:
+            
+            return{
+                  
+                  ...state,
+                  isLoadng:false,
+                  data:action.payload
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
-            movieReducer,topmovieReducer,airingTodayReducer,upcomingMovieReducer,popularMovieReducer
+            movieReducer,
+            topmovieReducer,
+            airingTodayReducer,
+            upcomingMovieReducer,
+            popularMovieReducer,
+            mdetailReducer
 
       })
 export default rootReducer;
