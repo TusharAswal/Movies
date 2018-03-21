@@ -24,7 +24,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{flex:0.07,justifyContent:'center'}}>
-                    <TouchableOpacity style={{flexDirection:'row'}} >
+                    <TouchableOpacity onPress={()=>Actions.popTo('Frontpage')} style={{flexDirection:'row'}} >
                         <View style={{flex:0.2}}>
                             <Icon name='film' size={15} style={{alignSelf:'center'}} />
                         </View>
@@ -35,7 +35,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{flex:0.07,justifyContent:'center'}}>
-                    <TouchableOpacity style={{flexDirection:'row'}}>
+                    <TouchableOpacity onPress={() => Actions.Frontpage_Tv()} style={{flexDirection:'row'}}>
                         <View style={{flex:0.2}}>
                             <Icon name='tv'  size={15} style={{alignSelf:'center'}} />
                         </View>

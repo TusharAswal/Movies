@@ -13,18 +13,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import SideBarMenu from './SideBarMenu';
-import NOWPLAYING from './TABS/NOWPLAYING';
-import TOPBOXOFFICE from './TABS/TOPBOXOFFICE';
-import ANTICIPATED from './TABS/ANTICIPATED';
-import IMDBTOP250 from './TABS/IMDBTOP250';
-import NEWDVDS from './TABS/NEWDVDS';
-import TOPRATED from './TABS/TOPRATED';
-import TRENDING from './TABS/TRENDING';
-import UPCOMING from './TABS/UPCOMING';
-import UPCOMINGDVDS from './TABS/UPCOMINGDVDS';
-import ONNETFLIX from './TABS/ONNETFLIX';
+import AIRING_TODAY from './TABS_TV/AIRING_TODAY';
+import POPULAR from './TABS_TV/POPULAR';
+import TOP_RATED from './TABS_TV/TOP_RATED';
 
-class Frontpage extends Component {
+ class Frontpage_Tv extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -64,9 +57,9 @@ class Frontpage extends Component {
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={{ flex: 0.5, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity  style={{ }}>
-                                    <Icon name='search' size={15} style={{ alignSelf:'center' }} color='white' />
+                            <View style={{ flex: 0.5, backgroundColor: '#323232', margin: 10, justifyContent: 'center' }}>
+                                <TouchableOpacity >
+                                    <Icon name='search' size={17} style={{ alignSelf: 'flex-end' }} color='white' />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -76,19 +69,13 @@ class Frontpage extends Component {
                         tabBarBackgroundColor="#333435"
                         tabBarActiveTextColor="#fff"
                         tabBarInactiveTextColor="#BDC3C7"
-                        tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
+                        tabBarTextStyle={{ fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <NOWPLAYING tabLabel= "NOW PLAYING" label="Page #1" singleRow={this.state.singleRow} />
-                        <TOPBOXOFFICE tabLabel= "TOP BOX OFFICE" label="Page #2" singleRow={this.state.singleRow} />
-                        <ANTICIPATED tabLabel="ANTICIPATED" label="Page #3" singleRow={this.state.singleRow} />
-                        <IMDBTOP250 tabLabel= "IMDB TOP 250" label="Page #4" singleRow={this.state.singleRow} />
-                        <NEWDVDS tabLabel="NEW DVDS"  label="Page #5" singleRow={this.state.singleRow} />
-                        <ONNETFLIX tabLabel= "ON NET FLIX" label="Page #6" singleRow={this.state.singleRow} />
-                        <TRENDING tabLabel="TRENDING" label="Page #7" singleRow={this.state.singleRow} />
-                        <UPCOMING tabLabel= "UPCOMING"  label="Page #8"singleRow={this.state.singleRow}  />
-                        <UPCOMINGDVDS tabLabel= "UPCOMING DVDS"  label="Page #9" singleRow={this.state.singleRow} />
-                    </ScrollableTabView>
+                        <AIRING_TODAY tabLabel='AIRING TODAY' singleRow={this.state.singleRow} />
+                        <POPULAR tabLabel='POPULAR' singleRow={this.state.singleRow} />
+                        <TOP_RATED tabLabel='TOP RATED' singleRow={this.state.singleRow} />
+                    </ScrollableTabView> 
 
                 </View>
             </DrawerLayoutAndroid>
@@ -105,4 +92,4 @@ mapDispatchToProps = (dispatch) => {
     return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Frontpage);
+export default connect(mapStateToProps, mapDispatchToProps)( Frontpage_Tv );

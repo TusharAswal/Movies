@@ -45,7 +45,7 @@ class TOPBOXOFFICE extends React.Component {
     }
     console.log("props: ", this.props);
     return (
-      <View style={{ flex: 1, paddingTop: 20 }}>
+      <View style={{ flex: 1 }}>
         <FlatList
           keyExtractor={item => item.id}
           key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
@@ -61,7 +61,7 @@ class TOPBOXOFFICE extends React.Component {
                 </View>
 
                 {this.props.singleRow ?
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center' ,backgroundColor:'#C0C0C0'}}>
                   <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
                         <Text style={{  fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
                   </View>

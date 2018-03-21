@@ -10,23 +10,23 @@ import { bindActionCreators } from 'redux';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
-class NOWPLAYING extends React.Component {
+class AIRING_TODAY extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       isLoading: true,
-      movies: []
+      airing: []
     }
   }
 
   componentDidMount() {
-    this.props.nowPlaying();
+    this.props.airingToday();
   }
 
  componentWillReceiveProps=(nextProps)=>{
-   if(this.props.movies!=nextProps.movies){
-     this.setState({movie:nextProps.movies, isLoading:nextProps.isLoading})
+   if(this.props.aring!=nextProps.airing){
+     this.setState({movie:nextProps.airing, isLoading:nextProps.isLoading})
    }
  }
 
@@ -48,7 +48,7 @@ class NOWPLAYING extends React.Component {
           key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
 
           numColumns={this.props.singleRow ? 3 : 1}
-          data={this.props.movies}
+          data={this.props.airing}
           renderItem={({ item }) =>
             <View style={{ flex: 1, flexDirection: this.props.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
 
@@ -59,8 +59,8 @@ class NOWPLAYING extends React.Component {
 
                 {this.props.singleRow ?
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center',backgroundColor:'#C0C0C0' }}>
-                    <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
-                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                    <View style={{ flex: 0.8, flexWrap: 'wrap', }}>
+                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.original_name}</Text>
                     </View>
                     <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
                       <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
@@ -73,11 +73,9 @@ class NOWPLAYING extends React.Component {
                   }}>
                     <View style={{ flex: 0.8, flexWrap: 'wrap', flexDirection: 'column' }}>
                       <Text style={{ fontSize: 12, textAlign: 'left', color: '#6C7A89' }} numberOfLines={2}>
-                        {new Date(item.release_date).getFullYear()}
+                        {new Date(item.first_air_date).getFullYear()}
                       </Text>
-                      <Text style={{ justifyContent: 'flex-start', fontSize: 15, fontWeight: 'bold', color: '#000' }} numberOfLines={2}>{item.title}</Text>
-
-                      <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}>{item.genre_ids}</Text>
+                      <Text style={{ justifyContent: 'flex-start', fontSize: 15, fontWeight: 'bold', color: '#000' }} numberOfLines={2}>{item.name}</Text>
                     </View>
                     <View style={{ flex: 0.2, flexDirection: 'row', marginBottom: height * 0.015 }}>
                       <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
@@ -103,8 +101,8 @@ class NOWPLAYING extends React.Component {
 mapStateToProps = (state, props) => {
   console.log("state : ", state);
   return {
-    movies: state.movieReducer.data,
-    isLoading:state.movieReducer.loading  
+    airing: state.airingTodayReducer.data,
+    isLoading:state.airingTodayReducer.loading  
   }
 }
 
@@ -112,4 +110,4 @@ mapDispatchToProps = (dispatch) => {
   return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NOWPLAYING);
+export default connect(mapStateToProps, mapDispatchToProps)(AIRING_TODAY);
