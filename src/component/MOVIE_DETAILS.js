@@ -21,24 +21,31 @@ const imgPath = "https://image.tmdb.org/t/p/w500/";
        super(props);
        this.state={
            //isLoading:true,
-           mdetails:[]
+           mdetails:[],
+           otherdetails: []
        }
    }
     componentDidMount() {
-        console.log("MID",this.props.movie.id)
+   
        this.props.moviedetails(this.props.movie.id);
+       this.props.runtime(this.props.movie.id);
       }
 
     componentWillReceiveProps=(nextProps)=>{
-        
-        if(this.props.mdetails!= nextProps.mdetails){
+        console.log("other details",nextProps.otherdetails)
+        console.log("other details22",nextProps.mdetails);
+        if(this.props.mdetails!= nextProps.mdetails ){
             
             this.setState({mdetails:nextProps.mdetails,
-            isLoading:nextProps.isLoading
+            isLoading:nextProps.isLoading,
             })
         }
-    }
 
+        if(this.props.otherdetails!= nextProps.otherdetails) {
+            this.setState({otherdetails:nextProps.otherdetails
+        })
+    }
+    }
     extractFilePath=(file)=>{
         let imgArray=[];
         let id=0;
@@ -78,27 +85,44 @@ const imgPath = "https://image.tmdb.org/t/p/w500/";
                                 </Swiper>
                         </View>
                     
-                    <View style={{flex:0.3,backgroundColor:'#696969',alignItems:'flex-end'}}>
+                    <View style={{flex:0.3,backgroundColor:'#696969'}}>
+                       <View style={{marginLeft:width(30), marginTop:width(3)}}>
+                        <View style={{flexDirection:'row'}}>  
+                            <View style={{}}>
+                                <Text style={{ color:'#C0C0C0',alignSelf:'center'}}>Audience <Icon name='circle'/> </Text>
+                                
+                            </View>
+                            <View>
+                                <Text style={{ color:'#C0C0C0'}}>{new Date(this.props.movie.release_date).getFullYear()} <Icon name='circle' /> </Text>
+                            </View>
+                            <View>
+                                <Text style={{ color:'#C0C0C0'}}>{this.props.otherdetails} Minutes</Text>
+                            </View>
+                        </View>
+
                         <View>
-                         <Text>{this.props.movie.title}</Text>
+                        <View>
+                            <Text style={{ color:'white', fontWeight:'bold', fontSize:18}}>{this.props.movie.title}</Text>
                         </View>
                         <View>
-                            <Text>{new Date(this.props.movie.release_date).getFullYear()}</Text>
+                            <Text>Categ</Text>
                         </View>
+                        </View>
+                     </View>
                     </View>
                     <View style={{borderWidth:1,height:height(18),width:width(18),position:'absolute',marginTop:width(45),marginLeft:width(6)}}><Image style={{height:height(18),width:width(18)}} source={{uri: imgPath + this.props.movie.poster_path}}/></View>
-                        <View style={{flex:0.25,position:'absolute',alignSelf:'flex-start'}}>
-                            <Icon name='arrow-left' size={height(3)} color='white' style={{marginLeft:width(2),marginTop:width(2)}} />
-                        </View>
-                        <View style={{flex:0.25,position:'absolute',marginLeft:width(72)}}>
-                            <Icon name='home' size={height(3)} color="white" style={{marginLeft:width(2),marginTop:width(2)}} />
-                        </View>
-                        <View style={{flex:0.35,position:'absolute',marginLeft:width(82)}}>
-                            <Icon name='share' size={height(3)} color='white' style={{marginLeft:width(2),marginTop:width(2)}} />
-                        </View>
-                        <View style={{flex:0.25,position:'absolute',marginLeft:width(92)}}>
-                            <Icon name='ellipsis-v' size={height(3)} color='white'  style={{marginLeft:width(2),marginTop:width(2)}} />
-                        </View> 
+                        <TouchableOpacity onPress={()=>Actions.popTo('Frontpage')} style={{flex:0.25,position:'absolute',alignSelf:'flex-start'}}>
+                            <Icon name='arrow-left' size={height(4)} color='white' style={{marginLeft:width(2),marginTop:width(2)}} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{flex:0.25,position:'absolute',marginLeft:width(68)}}>
+                            <Icon name='home' size={height(4)} color="white" style={{marginLeft:width(2),marginTop:width(2)}} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{flex:0.35,position:'absolute',marginLeft:width(80)}}>
+                            <Icon name='share' size={height(4)} color='white' style={{marginLeft:width(2),marginTop:width(2)}} />
+                        </TouchableOpacity>
+                        <TouchableOpacity style={{flex:0.25,position:'absolute',marginLeft:width(93)}}>
+                            <Icon name='ellipsis-v' size={height(4)} color='white'  style={{marginLeft:width(2),marginTop:width(2)}} />
+                        </TouchableOpacity> 
                 </View> 
                 <View style={{flex:0.5,borderWidth:1,backgroundColor:'black'}}>
                 <ScrollableTabView style={{backgroundColor:'white'}}
@@ -118,13 +142,15 @@ const imgPath = "https://image.tmdb.org/t/p/w500/";
           </View>
         );
     }
-
+   
 }
+ 
     mapStateToProps = (state, props) => {
-        console.log("state : ", state);
+        
         return {
           mdetails: state.mdetailReducer.data,
-          isLoading: state.mdetailReducer.loading
+          otherdetails: state.otherdetailReducer.data,
+          isLoading: state.mdetailReducer.loading,
         }
       }
       

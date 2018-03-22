@@ -9,6 +9,7 @@ export const AIRING_TODAY = 'AIRING_TODAY';
 export const UPCOMING = 'UPCOMING';
 export const POPULAR = 'POPULAR';
 export const MOVIE_DETAILS = 'MOVIE_DETAILS';
+export const OTHERDETAILS = 'OTHERDETAILS';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -96,13 +97,13 @@ export function moviedetails(id) {
 }
 
 
-export function moviedetails(id2) {
+export function runtime(id) {
     return(dispatch) => {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
             console.log("RUNTIEDETAILS",responseJson.runtime)
-            dispatch({type:DETAILS, payload:responseJson.runtime})
+            dispatch({type:OTHERDETAILS, payload:responseJson.runtime})
         })
         .catch((error)=>{
             console.error(error);
