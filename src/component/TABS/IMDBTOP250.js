@@ -27,7 +27,7 @@ class POPULAR extends React.Component {
   }
 
   componentWillReceiveProps=(nextProps)=> {
-      console.log("POPULAR",nextProps.imdbpopular)
+      //console.log("POPULAR",nextProps.imdbpopular)
     if(this.props.imdbpopular!=nextProps.imdbpopular) {
       this.setState({imdbpopular:nextProps.imdbpopular,
       isLoading:nextProps.isLoading
@@ -44,7 +44,7 @@ class POPULAR extends React.Component {
         </View>
       )
     }
-    console.log("props: ", this.props);
+   // console.log("props: ", this.props);
     return (
       <View style={{ flex: 1 }}>
         <FlatList
@@ -103,7 +103,7 @@ class POPULAR extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  console.log("state : ", state);
+ // console.log("state : ", state);
   return {
      imdbpopular: state.popularMovieReducer.data,
     isLoading: state.popularMovieReducer.loading

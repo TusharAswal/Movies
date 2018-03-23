@@ -9,35 +9,32 @@ import * as myActions from '../actions/actions';
 import { bindActionCreators } from 'redux';
 
 import Swiper from 'react-native-swiper';
-import INFO from './TABS_DETAILS/INFO';
-import CAST from './TABS_DETAILS/CAST';
-import REVIEW from './TABS_DETAILS/REVIEW';
+import INFO from './TABS_TV_DETAILS/INFO';
+import ACTORS from './TABS_TV_DETAILS/ACTORS';
+import SEASONS from './TABS_TV_DETAILS/SEASONS';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 
-class MOVIE_DETAILS extends Component {
+class TV_DETAILS extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            //isLoading:true,
             tvdetails: [],
             tvimg:[]
-            //extradetails: [],
-            //tvgenres: [],
+           
         }
     }
     componentDidMount() {
-        
+        console.log("AIRING AGE",this.props.tv)
         this.props.tvdetail(this.props.tv.id);
-        this.props.tvimages(this.props.id);
-        //this.props.runtime(this.props.movie.id);
-       //this.props.genress(this.props.movie.id);
+        this.props.tvimages(this.props.tv.id);
+        
     }
 
     componentWillReceiveProps = (nextProps) => {
-        console.log("AIRING AGE",this.props.tvdetails)
-        if (this.props.tvmdetails != nextProps.tvdetails) {
+        
+        if (this.props.tvdetails != nextProps.tvdetails) {
 
             this.setState({
                 tvdetails: nextProps.tvdetails,
@@ -48,24 +45,10 @@ class MOVIE_DETAILS extends Component {
         if (this.props.tvimg != nextProps.tvimg) {
 
             this.setState({
-                tvdimg: nextProps.tvimg,
+                tvimg: nextProps.tvimg,
                 
             })
         }
-        
-
-        // if (this.props.otherdetails != nextProps.otherdetails) {
-        //     this.setState({
-        //         otherdetails: nextProps.otherdetails
-        //     })
-        // }
-        // if (this.props.genres != nextProps.genres) {
-
-        //     this.setState({
-        //         genres: nextProps.genres,
-
-        //     })
-        // }
     }
 
     extractImPath = (file) => {
@@ -81,7 +64,8 @@ class MOVIE_DETAILS extends Component {
 
 
     render() {
-        var slides = this.extractImPath(this.props.tvdetails);
+        var slides = this.extractImPath(this.props.tvimg);
+        console.log("TV PICS",this.props.tvimg)
         return (
             <View style={{ flex: 1, }}>
 
@@ -126,12 +110,12 @@ class MOVIE_DETAILS extends Component {
                                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>{this.props.tv.original_name}</Text>
                                 </View>
                                 <View style={{height: height(3) }}>
-                                        {/* <FlatList
+                                        <FlatList
                                         horizontal={true}
                                         keyExtractor={item => item.id}
                                         key={`${item => item.id * 0.1.toString()}`}
                                         numColumns={1}
-                                        data={this.props.genres}
+                                        data={this.props.tvdetails}
                                         renderItem={({ item }) => {
                                             console.log("item ",item);  
                                             return (
@@ -141,7 +125,7 @@ class MOVIE_DETAILS extends Component {
                                             )
                                         }
 
-                                        } /> */}
+                                        } />
                                 </View>
                             </View>
                         </View>
@@ -161,18 +145,18 @@ class MOVIE_DETAILS extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={{ flex: 0.5, backgroundColor: 'black' }}>
-                    {/* <ScrollableTabView style={{ backgroundColor: 'white' }}
+                    <ScrollableTabView style={{ backgroundColor: 'white' }}
                         tabBarBackgroundColor="#333435"
                         tabBarActiveTextColor="#fff"
                         tabBarInactiveTextColor="#BDC3C7"
                         tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <INFO tabLabel="INFO" label="Page #1" data={{ info: this.props.tvdetails }} />
-                        <CAST tabLabel="CAST" label="Page #2" data={{ cast: this.props.tvdetails }} />
-                        <REVIEW tabLabel="REVIEW" label="Page #3" />
+                        <INFO tabLabel="INFO" label="Page #1" data={{ info: this.props.tv.id}} />
+                        <ACTORS tabLabel="ACTORS" label="Page #2" data={{ info: this.props.tv.id }} />
+                        <SEASONS tabLabel="SEASONS" label="Page #3" data={{ info: this.props.tv.id }}/>
 
-                    </ScrollableTabView> */}
+                    </ScrollableTabView>
                 </View>
 
             </View>
@@ -184,11 +168,10 @@ class MOVIE_DETAILS extends Component {
 mapStateToProps = (state, props) => {
 
     return {
-        tvetails: state.tvdetailReducer.data,
-        //otherdetails: state.otherdetailReducer.data,
+        tvdetails: state.tvdetailReducer.data,
         isLoading: state.tvdetailReducer.loading,
         tvimg: state.tvimageReducer.data,
-        //genres: state.genresReducer.data,
+       
     }
 }
 
@@ -196,7 +179,7 @@ mapDispatchToProps = (dispatch) => {
     return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MOVIE_DETAILS);
+export default connect(mapStateToProps, mapDispatchToProps)(TV_DETAILS);
 
 const styles = StyleSheet.create({
     wrapper: {

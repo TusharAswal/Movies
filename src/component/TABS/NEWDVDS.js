@@ -27,7 +27,7 @@ class NEWDVDS extends React.Component {
   }
 
   componentWillReceiveProps=(nextProps)=> {
-      console.log("UPCOMING",nextProps.upcoming_)
+      //console.log("UPCOMING",nextProps.upcoming_)
     if(this.props.upcoming_!=nextProps.upcoming_) {
       this.setState({upcoming_:nextProps.upcoming_,
       isLoading:nextProps.isLoading
@@ -44,7 +44,7 @@ class NEWDVDS extends React.Component {
         </View>
       )
     }
-    console.log("props: ", this.props);
+    //console.log("props: ", this.props);
     return (
       <View style={{ flex: 1 }}>
         <FlatList
@@ -103,7 +103,7 @@ class NEWDVDS extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  console.log("state : ", state);
+  //console.log("state : ", state);
   return {
      upcoming_: state.upcomingMovieReducer.data,
     isLoading: state.upcomingMovieReducer.loading

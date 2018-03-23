@@ -17,6 +17,7 @@ export const SIMILARMOV = 'SIMILARMOV';
 export const GENRES = 'GENRES';
 export const TVDETAILS = 'TVDETAILS';
 export const TVIMG = 'TVIMG';
+export const GETRAT = 'GETRAT';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -109,7 +110,7 @@ export function runtime(id) {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-           console.log("GENERES DETAILS",responseJson.runtime)
+           //console.log("GENERES DETAILS",responseJson.runtime)
             dispatch({type:OTHERDETAILS, payload:responseJson.runtime})
         })
         .catch((error)=>{
@@ -165,7 +166,7 @@ export function gettingsimilarMovies(id) {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'/similar?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
         .then((response)=> response.json())
         .then((responseJson)=>{
-            console.log('SIMILAR MOVIES',responseJson.results)
+            //console.log('SIMILAR MOVIES',responseJson.results)
             dispatch({type:SIMILARMOV, payload:responseJson.results})
         })
         .catch((error=> {
@@ -179,7 +180,7 @@ export function genress(id) {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-           console.log('generes ss',responseJson.genres)
+           //console.log('generes ss',responseJson.genres)
             dispatch({type:GENRES, payload:responseJson.genres})
         })
         .catch((error=> {
@@ -193,7 +194,7 @@ export function tvdetail(id) {
         fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-           console.log('generes ss',responseJson.genres)
+         // console.log('generes ss',responseJson)
             dispatch({type:TVDETAILS, payload:responseJson.genres})
         })
         .catch((error=> {
@@ -207,8 +208,22 @@ export function tvimages(id) {
         fetch('https://api.themoviedb.org/3/tv/'+ id +'/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
         .then((response)=> response.json())
         .then((responseJson)=>{
-           //console.log('generes ss',responseJson.genres)
+           //console.log('PICTURES',responseJson.backdrops)
             dispatch({type:TVIMG, payload:responseJson.backdrops})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getRat(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+          console.log('generes ss',responseJson.vote_average)
+            dispatch({type:GETRAT, payload:responseJson.vote_average})
         })
         .catch((error=> {
             console.log(error);

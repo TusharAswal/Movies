@@ -26,7 +26,7 @@ class TOPBOXOFFICE extends React.Component {
   }
 
   componentWillReceiveProps=(nextProps)=> {
-    console.log("TOP:",nextProps.topmovies)
+    //console.log("TOP:",nextProps.topmovies)
     if(this.props.topmovies!=nextProps.topmovies) {
       this.setState({movie:nextProps.topmovies,
       isLoading:nextProps.isLoading
@@ -43,7 +43,7 @@ class TOPBOXOFFICE extends React.Component {
         </View>
       )
     }
-    console.log("props: ", this.props);
+    //console.log("props: ", this.props);
     return (
       <View style={{ flex: 1 }}>
         <FlatList
@@ -102,7 +102,7 @@ class TOPBOXOFFICE extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  console.log("state : ", state);
+  //console.log("state : ", state);
   return {
     topmovies: state.topmovieReducer.data,
     isLoading: state.topmovieReducer.loading

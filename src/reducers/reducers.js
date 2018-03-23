@@ -13,7 +13,8 @@ import {
       SIMILARMOV,
       GENRES,
       TVDETAILS,
-      TVIMG
+      TVIMG,
+      GETRAT,
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -212,6 +213,19 @@ const tvimageReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const getRatReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETRAT:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -227,7 +241,8 @@ const rootReducer = combineReducers(
             similarmovReducer,
             genresReducer,
             tvdetailReducer,
-            tvimageReducer
+            tvimageReducer,
+            getRatReducer
 
       })
 export default rootReducer;

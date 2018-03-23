@@ -27,7 +27,7 @@ class NOWPLAYING extends React.Component {
   }
 
  componentWillReceiveProps=(nextProps)=>{
-  console.log("Video: ", nextProps.movies.video);
+  //console.log("Video: ", nextProps.movies.video);
    if(this.props.movies!=nextProps.movies ){
      this.setState({movie:nextProps.movies, isLoading:nextProps.isLoading})
    }
@@ -35,7 +35,7 @@ class NOWPLAYING extends React.Component {
 
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
@@ -104,7 +104,7 @@ class NOWPLAYING extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  console.log("state : ", state);
+  //console.log("state : ", state);
   return {
     movies: state.movieReducer.data,
     
