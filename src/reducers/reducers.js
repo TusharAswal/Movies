@@ -11,7 +11,9 @@ import {
       REBURE,
       CREW,
       SIMILARMOV,
-      GENRES
+      GENRES,
+      TVDETAILS,
+      TVIMG
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -184,6 +186,32 @@ const genresReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const tvdetailReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case TVDETAILS:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const tvimageReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case TVIMG:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -197,7 +225,9 @@ const rootReducer = combineReducers(
             rebureReducer,
             crewReducer,
             similarmovReducer,
-            genresReducer
+            genresReducer,
+            tvdetailReducer,
+            tvimageReducer
 
       })
 export default rootReducer;

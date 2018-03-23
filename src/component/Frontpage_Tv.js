@@ -72,7 +72,7 @@ import TOP_RATED from './TABS_TV/TOP_RATED';
                         tabBarTextStyle={{ fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <AIRING_TODAY tabLabel='AIRING TODAY' singleRow={this.state.singleRow} />
+                        <AIRING_TODAY tabLabel='AIRING TODAY' singleRow={this.state.singleRow}/>
                         <POPULAR tabLabel='POPULAR' singleRow={this.state.singleRow} />
                         <TOP_RATED tabLabel='TOP RATED' singleRow={this.state.singleRow} />
                     </ScrollableTabView> 

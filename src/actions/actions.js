@@ -15,6 +15,8 @@ export const REBURE = 'REBURE';
 export const CREW = 'CREW';
 export const SIMILARMOV = 'SIMILARMOV';
 export const GENRES = 'GENRES';
+export const TVDETAILS = 'TVDETAILS';
+export const TVIMG = 'TVIMG';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -179,6 +181,34 @@ export function genress(id) {
         .then((responseJson)=>{
            console.log('generes ss',responseJson.genres)
             dispatch({type:GENRES, payload:responseJson.genres})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function tvdetail(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+           console.log('generes ss',responseJson.genres)
+            dispatch({type:TVDETAILS, payload:responseJson.genres})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function tvimages(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+           //console.log('generes ss',responseJson.genres)
+            dispatch({type:TVIMG, payload:responseJson.backdrops})
         })
         .catch((error=> {
             console.log(error);

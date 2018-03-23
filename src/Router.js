@@ -15,6 +15,7 @@ import {
 import Frontpage from './component/Frontpage';
 import MOVIE_DETAILS from './component/MOVIE_DETAILS';
 import Frontpage_Tv from './component/Frontpage_Tv';
+import TV_DETAILS from './component/TV_DETAILS'
 const App = () => {
   return(
     <Router >
@@ -37,6 +38,13 @@ const App = () => {
               component={Frontpage_Tv}
               hideNavBar={true}
             />
+
+            <Scene
+            key='TV_DETAILS'
+            component={TV_DETAILS}
+            hideNavBar={true}
+            />
+
         </Scene>
     </Router>
   )
