@@ -34,7 +34,7 @@ class MOVIE_DETAILS extends Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
-        console.log('GEN RESS', nextProps.genre)
+       // console.log('GEN RESS', nextProps.genre)
         if (this.props.mdetails != nextProps.mdetails) {
 
             this.setState({
@@ -122,7 +122,7 @@ class MOVIE_DETAILS extends Component {
                                         numColumns={1}
                                         data={this.props.genres}
                                         renderItem={({ item }) => {
-                                            console.log("item ",item);  
+                                           // console.log("item ",item);  
                                             return (
                                                 <View style={{ }}>
                                                     <Text style={{fontSize:12}}>{item.name},</Text>

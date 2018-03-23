@@ -18,6 +18,15 @@ export const GENRES = 'GENRES';
 export const TVDETAILS = 'TVDETAILS';
 export const TVIMG = 'TVIMG';
 export const GETRAT = 'GETRAT';
+export const GETFIRSTAIR = 'GETFIRSTAIR';
+export const GETLASTAIR ='GETLASTAIR';
+export const GETNET = 'GETNET';
+export const GETSHOWTYPE ='GETSHOWTYPE';
+export const GETSHOWSTAT= 'GETSHOWSTAT';
+export const GETCREATOR = 'GETCREATOR';
+export const OVER = 'OVER';
+export const SIMILARTV ='SIMILARTV';
+export const CASTTV ='CASTTV';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -222,8 +231,134 @@ export function getRat(id) {
         fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-          console.log('generes ss',responseJson.vote_average)
+          
             dispatch({type:GETRAT, payload:responseJson.vote_average})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getfirstAir(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         // console.log('generes ss',responseJson.vote_average)
+            dispatch({type:GETFIRSTAIR, payload:responseJson.first_air_date})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getlastAir(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         // console.log('generes ss',responseJson.vote_average)
+            dispatch({type:GETLASTAIR, payload:responseJson.last_air_date})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getnet(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         //console.log('NETWORK',responseJson.networks[0].name)
+            dispatch({type:GETNET, payload:responseJson.networks[0].name})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getshowType(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         // console.log('generes ss',responseJson.vote_average)
+            dispatch({type:GETSHOWTYPE, payload:responseJson.type})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getshowStat(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         // console.log('generes ss',responseJson.vote_average)
+            dispatch({type:GETSHOWSTAT, payload:responseJson.status})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getCreator(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         //console.log('NETWORK',responseJson.networks[0].name)
+            dispatch({type:GETCREATOR, payload:responseJson.created_by[0].name})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getOverview(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         // console.log('generes ss',responseJson)
+            dispatch({type:OVER, payload:responseJson.overview})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getsimilarTv(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'/similar?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+        // console.log('Similar Tv',responseJson.results)
+            dispatch({type:SIMILARTV, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function gettingcasttv(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+         console.log('Similar Tv',responseJson.cast)
+            dispatch({type:CASTTV, payload:responseJson.cast})
         })
         .catch((error=> {
             console.log(error);

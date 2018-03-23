@@ -65,7 +65,7 @@ class TV_DETAILS extends Component {
 
     render() {
         var slides = this.extractImPath(this.props.tvimg);
-        console.log("TV PICS",this.props.tvimg)
+        console.log("TV PICS",this.props.tv.episode_run_time)
         return (
             <View style={{ flex: 1, }}>
 
@@ -101,7 +101,7 @@ class TV_DETAILS extends Component {
                                     <Text style={{ color: '#C0C0C0' }}>{new Date(this.props.tv.first_air_date).getFullYear()} <Icon name='circle' /> </Text>
                                 </View>
                                 <View>
-                                    <Text style={{ color: '#C0C0C0' }}>{this.props.otherdetails} Minutes</Text>
+                                    <Text style={{ color: '#C0C0C0' }}>{this.props.tv.episode_run_time} Minutes</Text>
                                 </View>
                             </View>
 

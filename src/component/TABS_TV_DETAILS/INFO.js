@@ -12,32 +12,73 @@ class INFO extends Component {
 
         this.state={
             rating:[],
-            fad:[],
-            lad:[],
-            netw:[],
-            sht:[],
-            sst:[],
-            // director:[],
-            // similarmov:[],
-            // generes:[]
+            firstAir:[],
+            lastAir:[],
+            net:[],
+            showType:[],
+            showStat:[],
+            creator:[],
+            overview:[],
+            similartv:[]
+            
         }
     }
 
     componentDidMount() {
        
     this.props.getRat(this.props.data.info);
+    this.props.getfirstAir(this.props.data.info);
+    this.props.getlastAir(this.props.data.info);
+    this.props.getnet(this.props.data.info);
+    this.props.getshowType(this.props.data.info);
+    this.props.getshowStat(this.props.data.info);
+    this.props.getCreator(this.props.data.info);
+    this.props.getOverview(this.props.data.info);
+    this.props.getsimilarTv(this.props.data.info);
     }
 
     componentWillReceiveProps=(nextProps)=> {
         if(this.props.rating!=nextProps.rating) {
             this.setState({rating:nextProps.rating})
         }
+
+        if(this.props.firstAir!=nextProps.firstAir) {
+            this.setState({firstAir:nextProps.firstAir})
+        }
+
+        if(this.props.lastAir!=nextProps.lastAir) {
+            this.setState({lastAir:nextProps.lastAir})
+        }
+
+        if(this.props.net!=nextProps.net) {
+            this.setState({net:nextProps.net})
+        }
+
+        if(this.props.showType!=nextProps.showType) {
+            this.setState({showType:nextProps.showType})
+        }
+
+        if(this.props.showStat!=nextProps.showStat) {
+            this.setState({showStat:nextProps.showStat})
+        }
+
+        if(this.props.creator!=nextProps.creator) {
+            this.setState({creator:nextProps.creator})
+        }
       
+        if(this.props.overview!=nextProps.overview) {
+            this.setState({overview:nextProps.overview})
+        }
+
+        if(this.props.similartv!=nextProps.similartv) {
+            this.setState({similartv:nextProps.similartv})
+        }
     }
+
 
     
     render () {
-       console.log("DAtA RECIEVED ",this.props.rating)
+      // console.log("DAtA RECIEVED ",this.props.rating)
         return(
             <View style={{flex:1}}>
                 <View style={{flex:0.2,marginTop:5,marginRight:10,marginLeft:10,flexDirection:'row'}}>
@@ -65,37 +106,37 @@ class INFO extends Component {
                 </View>
                 <View style={{marginTop:height(1),alignSelf:'center',flex:0.01,borderWidth:0.5,borderColor:'#DCDCDC',marginTop:height(1),width:width(95)}}></View>
                 <ScrollView style={{flex:0.89}}>
-                    <ScrollView style={{flex:0.4,marginLeft:width(3),marginRight:width(2)}}>
-                        <Text style={{fontSize:10,marginTop:height(1)}}>{this.props.data.info.overview}</Text>
+                    <ScrollView style={{flex:0.4,marginLeft:width(3),marginRight:width(3)}}>
+                        <Text style={{fontSize:totalSize(1.5),marginTop:height(1)}}>{this.props.overview}</Text>
                     </ScrollView>
 
-                    <View style={{flex:0.6,marginLeft:width(3),marginRight:width(2)}}>
-                        <Text style={{fontWeight:'bold',fontSize:12}}>First Air Date: {this.props.data.info.first_air_date}</Text>
-                        <Text style={{fontWeight:'bold',fontSize:12}}>Lst Air Date: N/A</Text>
-                        <Text style={{fontWeight:'bold',fontSize:12}}>Network: {this.props.data.info.last_air_date}</Text>
-                        <Text style={{fontWeight:'bold',fontSize:12}}>Created By: {this.props.data.info.networks}</Text>
-                        <Text style={{fontWeight:'bold',fontSize:12}}>Show Type: {this.props.data.info.type}</Text>
-                        <Text style={{fontWeight:'bold',fontSize:12}}>Show Status: {this.props.data.info.status}</Text>
+                    <View style={{flex:0.6,margin:width(3)}}>
+                        <Text style={{fontWeight:'bold',fontSize:12}}>First Air Date: {this.props.firstAir}</Text>
+                        <Text style={{fontWeight:'bold',fontSize:12}}>Lst Air Date: {this.props.lastAir}</Text>
+                        <Text style={{fontWeight:'bold',fontSize:12}}>Network: {this.props.net}</Text>
+                        <Text style={{fontWeight:'bold',fontSize:12}}>Created By: {this.props.creator}</Text>
+                        <Text style={{fontWeight:'bold',fontSize:12}}>Show Type: {this.props.showType}</Text>
+                        <Text style={{fontWeight:'bold',fontSize:12}}>Show Status: {this.props.showStat}</Text>
                     </View>
 
                      <View style={{alignSelf:'center',flex:0.01,borderWidth:0.5,borderColor:'#DCDCDC',marginTop:height(1),width:width(95)}}></View>
-                     <Text style={{fontSize:totalSize(2), marginLeft:width(3),color:'black'}} >Similar Movies</Text>
-                    {/* <FlatList
+                     <Text style={{fontSize:totalSize(2), marginLeft:width(3),color:'black'}} >Similar Tv Shows</Text>
+                    <FlatList
+                        
                         horizontal={true}
                         keyExtractor={item=> item.id}
                         key={`${item => item.id*0.1.toString()}`}
-                        data={this.props.cast}
                         numColumns={1}
-                        data={this.props.similarmov}
+                        data={this.props.similartv}
                         renderItem={({item}) => 
                         <View style={{ alignItems:'center',flexWrap: 'wrap', marginLeft:width(3),marginRight:width(3),marginTop:height(2)}}>
                             
                             <Image source={{ uri: imgpath + item.poster_path}} style={{width:width(25), height:height(25)}} />
-                            <Text numberOfLines={1} style={{width:width(23)}} >{item.original_title}</Text>
-                            <Text numberOfLines={2} style={{width:width(23)}} >{item.release_date}</Text>
+                            <Text numberOfLines={1} style={{width:width(23)}} >{item.original_name}</Text>
+                            <Text numberOfLines={2} style={{width:width(23)}} >{item.first_air_date}</Text>
                         </View>
                     }
-                    /> */}
+                    />
                 </ScrollView>
             </View>
         );
@@ -106,9 +147,15 @@ class INFO extends Component {
 mapStateToProps=(state, props)=>{
     return {
         rating: state.getRatReducer.data,
-        // ReBuRe: state.rebureReducer.data,
-        // director: state.crewReducer.data,
-        // similarmov: state.similarmovReducer.data,
+        firstAir: state.getfirstAirReducer.data,
+        lastAir: state.getlastAirReducer.data,
+        net: state.getnetReducer.data,
+        showType: state.getshowTypeReducer.data,
+        showStat :state.getshowStatReducer.data,
+        creator: state.getcreatorReducer.data,
+        overview: state.getoverviewReducer.data,
+        similartv: state.getsimilartvReducer.data,
+       
     }
 }
 mapDispatchToProps=(dispatch)=> {

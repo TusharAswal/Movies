@@ -75,11 +75,11 @@ class INFO extends Component {
                 </View>
                 <View style={{marginTop:height(1),alignSelf:'center',flex:0.01,borderWidth:0.5,borderColor:'#DCDCDC',marginTop:height(1),width:width(95)}}></View>
                 <ScrollView style={{flex:0.89}}>
-                    <ScrollView style={{flex:0.4,marginLeft:width(3),marginRight:width(2)}}>
-                        <Text style={{fontSize:10,marginTop:height(1)}}>{this.props.ReBuRe.overview}</Text>
+                    <ScrollView style={{flex:0.4,marginLeft:width(3),marginRight:width(3)}}>
+                        <Text style={{fontSize:totalSize(1.5),marginTop:height(1)}}>{this.props.ReBuRe.overview}</Text>
                     </ScrollView>
 
-                    <View style={{flex:0.6,marginLeft:width(3),marginRight:width(2)}}>
+                    <View style={{flex:0.6,marginLeft:width(3),marginRight:width(3),marginTop:height(3)}}>
                         <Text style={{fontWeight:'bold',fontSize:12}}>Release Date: {this.props.ReBuRe.release_date}</Text>
                         <Text style={{fontWeight:'bold',fontSize:12}}>DVD Release Date: N/A</Text>
                         <Text style={{fontWeight:'bold',fontSize:12}}>Directed By: {this.props.director}</Text>

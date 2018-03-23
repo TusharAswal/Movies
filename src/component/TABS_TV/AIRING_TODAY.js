@@ -25,7 +25,7 @@ class AIRING_TODAY extends React.Component {
   }
 
  componentWillReceiveProps=(nextProps)=>{
-   console.log("AIRING", nextProps.airing)
+   //console.log("AIRING", nextProps.airing)
    if(this.props.aring!=nextProps.airing){
      this.setState({movie:nextProps.airing, isLoading:nextProps.isLoading})
    }
@@ -33,7 +33,7 @@ class AIRING_TODAY extends React.Component {
 
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
@@ -41,7 +41,7 @@ class AIRING_TODAY extends React.Component {
         </View>
       )
     }
-    console.log("props: ", this.props);
+    //console.log("props: ", this.props);
     return (
       <View style={{ flex: 1, }}>
         <FlatList
@@ -100,7 +100,7 @@ class AIRING_TODAY extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  console.log("state : ", state);
+ // console.log("state : ", state);
   return {
     airing: state.airingTodayReducer.data,
     isLoading:state.airingTodayReducer.loading  

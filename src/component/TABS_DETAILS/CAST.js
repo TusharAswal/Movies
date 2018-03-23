@@ -18,7 +18,7 @@ class CAST extends Component {
     }
 
    componentWillReceiveProps=(nextProps)=>{
-    console.log("Cast is coming here",nextProps.cast)    
+   // console.log("Cast is coming here",nextProps.cast)    
     if(this.state.cast!=nextProps.cast){
             this.setState({cast:nextProps.cast})
         }

@@ -15,6 +15,15 @@ import {
       TVDETAILS,
       TVIMG,
       GETRAT,
+      GETFIRSTAIR,
+      GETLASTAIR,
+      GETNET,
+      GETSHOWTYPE,
+      GETSHOWSTAT,
+      GETCREATOR,
+      OVER,
+      SIMILARTV,
+      CASTTV
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -22,7 +31,7 @@ import { combineReducers } from 'redux';
 
 let defaultState = { loading: true, data: [] };
 const movieReducer = (state = defaultState, action) => {
-      console.log("Actions : ",action.payload)
+     // console.log("Actions : ",action.payload)
       switch (action.type) {
             case NOWPLAYING:
                   return {
@@ -108,7 +117,7 @@ const mdetailReducer=( state= defaultState, action)=> {
 const otherdetailReducer=( state= defaultState, action)=> {
       switch(action.type){
             case OTHERDETAILS:
-            console.log("TIME",action.payload)
+           // console.log("TIME",action.payload)
             return{
                   
                   ...state,
@@ -226,6 +235,123 @@ const getRatReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const getfirstAirReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETFIRSTAIR:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getlastAirReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETLASTAIR:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getnetReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETNET:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getshowTypeReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETSHOWTYPE:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getshowStatReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETSHOWSTAT:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getcreatorReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GETCREATOR:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getoverviewReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case OVER:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getsimilartvReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case SIMILARTV:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const casttvReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case CASTTV:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -242,7 +368,16 @@ const rootReducer = combineReducers(
             genresReducer,
             tvdetailReducer,
             tvimageReducer,
-            getRatReducer
+            getRatReducer,
+            getfirstAirReducer,
+            getlastAirReducer,
+            getnetReducer,
+            getshowTypeReducer,
+            getshowStatReducer,
+            getcreatorReducer,
+            getoverviewReducer,
+            getsimilartvReducer,
+            casttvReducer
 
       })
 export default rootReducer;
