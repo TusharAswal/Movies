@@ -4,7 +4,14 @@ import {
       TOPBOXOFFICE,
       AIRING_TODAY,
       UPCOMING,
-      POPULAR,MOVIE_DETAILS,OTHERDETAILS
+      POPULAR,
+      MOVIE_DETAILS,
+      OTHERDETAILS,
+      CAST,
+      REBURE,
+      CREW,
+      SIMILARMOV,
+      GENRES
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -110,6 +117,73 @@ const otherdetailReducer=( state= defaultState, action)=> {
             }
       }
 }
+
+const castReducer=( state= defaultState, action) =>{
+      switch(action.type){
+            case CAST: 
+                  return{
+                        ...state,
+                        data:action.payload
+                  }
+                  default: {
+                        return{...state}
+                  }
+
+      }
+}
+
+const rebureReducer=(state= defaultState, action) =>{
+      switch(action.type){
+            case REBURE:
+            return{
+                  ...state,
+                  data:action.payload
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const crewReducer=( state= defaultState, action) =>{
+      switch(action.type){
+            case CREW: 
+                  return{
+                        ...state,
+                        data:action.payload
+                  }
+                  default: {
+                        return{...state}
+                  }
+
+      }
+}
+
+const similarmovReducer=( state= defaultState, action)=> {
+      switch(action.type) {
+            case SIMILARMOV:
+            return{
+                  ...state,
+                  data:action.payload,
+            }
+            default: {
+                  return{...state}
+            }
+      }
+}
+
+const genresReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case GENRES:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -118,7 +192,12 @@ const rootReducer = combineReducers(
             upcomingMovieReducer,
             popularMovieReducer,
             mdetailReducer,
-            otherdetailReducer
+            otherdetailReducer,
+            castReducer,
+            rebureReducer,
+            crewReducer,
+            similarmovReducer,
+            genresReducer
 
       })
 export default rootReducer;

@@ -10,13 +10,18 @@ export const UPCOMING = 'UPCOMING';
 export const POPULAR = 'POPULAR';
 export const MOVIE_DETAILS = 'MOVIE_DETAILS';
 export const OTHERDETAILS = 'OTHERDETAILS';
+export const CAST = 'CAST';
+export const REBURE = 'REBURE';
+export const CREW = 'CREW';
+export const SIMILARMOV = 'SIMILARMOV';
+export const GENRES = 'GENRES';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
         fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson.results);  
+                //console.log("RESULTS ARE HERE",responseJson.results);  
                 dispatch({type: NOWPLAYING, payload:responseJson.results})
             })
             .catch((error) => {
@@ -57,7 +62,7 @@ export function upcoming() {
         fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
         .then((response)=> response.json())
         .then((responseJson)=> {
-            console.log("data: ",responseJson.results);
+            //console.log("data: ",responseJson.results);
             dispatch({type: UPCOMING, payload:responseJson.results})
         
         })
@@ -87,7 +92,7 @@ export function moviedetails(id) {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
         .then((response)=> response.json())
         .then((responseJson)=>{
-            console.log("MDETAIILS",responseJson.posters)
+            //console.log("MDETAIILS",responseJson.posters)
             dispatch({type:MOVIE_DETAILS, payload:responseJson.posters})
         })
         .catch((error)=>{
@@ -102,11 +107,81 @@ export function runtime(id) {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-            console.log("RUNTIEDETAILS",responseJson.runtime)
+           console.log("GENERES DETAILS",responseJson.runtime)
             dispatch({type:OTHERDETAILS, payload:responseJson.runtime})
         })
         .catch((error)=>{
             console.error(error);
         })
+    }
+}
+
+export function gettingcast(id) {
+    return(dispatch) => {
+        fetch('https://api.themoviedb.org/3/movie/'+ id +'/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
+        .then((response) => response.json())
+        .then((responseJson)=> {
+            //console.log("Getting Crew",responseJson.cast)
+            dispatch({type:CAST, payload:responseJson.cast})
+        })
+        .catch((error)=> {
+            console.error(error);
+        })
+    }
+}
+
+export function gettingREBURE(id) {
+    return(dispatch) => {
+        fetch('https://api.themoviedb.org/3/movie/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=> {
+            //console.log('getting rebure',responseJson.release_date)
+            dispatch({type:REBURE, payload:responseJson})
+        })
+        .catch((error)=>{
+            console.error(erroe);
+        })
+    }
+}
+
+export function gettingcrew(id) {
+    return(dispatch) => {
+        fetch('https://api.themoviedb.org/3/movie/'+ id +'/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
+        .then((response) => response.json())
+        .then((responseJson)=> {
+            //console.log("Getting Crew",responseJson.crew)
+            dispatch({type:CREW, payload:responseJson.crew[0].name})
+        })
+        .catch((error)=> {
+            console.error(error);
+        })
+    }
+}
+
+export function gettingsimilarMovies(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/movie/'+ id +'/similar?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+            console.log('SIMILAR MOVIES',responseJson.results)
+            dispatch({type:SIMILARMOV, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function genress(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/movie/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+           console.log('generes ss',responseJson.genres)
+            dispatch({type:GENRES, payload:responseJson.genres})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
     }
 }

@@ -27,6 +27,7 @@ class NOWPLAYING extends React.Component {
   }
 
  componentWillReceiveProps=(nextProps)=>{
+  console.log("Video: ", nextProps.movies.video);
    if(this.props.movies!=nextProps.movies ){
      this.setState({movie:nextProps.movies, isLoading:nextProps.isLoading})
    }
@@ -42,7 +43,7 @@ class NOWPLAYING extends React.Component {
         </View>
       )
     }
-    console.log("props: ", this.props);
+   
     return (
       <View style={{ flex: 1, }}>
         <FlatList
