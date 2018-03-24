@@ -21,15 +21,16 @@ class TV_DETAILS extends Component {
         super(props);
         this.state = {
             tvdetails: [],
-            tvimg:[]
+            tvimg:[],
+            tvruntime:[]
            
         }
     }
     componentDidMount() {
-        console.log("AIRING AGE",this.props.tv)
+        //console.log("AIRING AGE",this.props.tv)
         this.props.tvdetail(this.props.tv.id);
         this.props.tvimages(this.props.tv.id);
-        
+        this.props.runtimetv(this.props.tv.id);
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -46,6 +47,15 @@ class TV_DETAILS extends Component {
 
             this.setState({
                 tvimg: nextProps.tvimg,
+                
+            })
+        }
+
+        
+        if (this.props.tvruntime != nextProps.tvruntime) {
+
+            this.setState({
+                tvruntime: nextProps.tvruntime,
                 
             })
         }
@@ -101,7 +111,7 @@ class TV_DETAILS extends Component {
                                     <Text style={{ color: '#C0C0C0' }}>{new Date(this.props.tv.first_air_date).getFullYear()} <Icon name='circle' /> </Text>
                                 </View>
                                 <View>
-                                    <Text style={{ color: '#C0C0C0' }}>{this.props.tv.episode_run_time} Minutes</Text>
+                                    <Text style={{ color: '#C0C0C0' }}>{this.props.tvruntime} Minutes</Text>
                                 </View>
                             </View>
 
@@ -171,7 +181,7 @@ mapStateToProps = (state, props) => {
         tvdetails: state.tvdetailReducer.data,
         isLoading: state.tvdetailReducer.loading,
         tvimg: state.tvimageReducer.data,
-       
+        tvruntime: state.tvruntimeReducer.data,
     }
 }
 

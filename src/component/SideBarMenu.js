@@ -46,7 +46,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{flex:0.07,justifyContent:'center'}}>
-                    <TouchableOpacity style={{flexDirection:'row'}}>
+                    <TouchableOpacity onPress={()=>Actions.DISCOVER()} style={{flexDirection:'row'}}>
                         <View style={{flex:0.2}}>
                             <Icon size={15} name='search' style={{alignSelf:'center'}} />
                         </View>

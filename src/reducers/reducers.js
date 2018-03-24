@@ -23,7 +23,8 @@ import {
       GETCREATOR,
       OVER,
       SIMILARTV,
-      CASTTV
+      CASTTV,
+      RUNTV
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -352,6 +353,19 @@ const casttvReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const tvruntimeReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case RUNTV:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -377,7 +391,8 @@ const rootReducer = combineReducers(
             getcreatorReducer,
             getoverviewReducer,
             getsimilartvReducer,
-            casttvReducer
+            casttvReducer,
+            tvruntimeReducer
 
       })
 export default rootReducer;

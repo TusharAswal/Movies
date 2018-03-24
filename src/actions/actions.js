@@ -27,6 +27,7 @@ export const GETCREATOR = 'GETCREATOR';
 export const OVER = 'OVER';
 export const SIMILARTV ='SIMILARTV';
 export const CASTTV ='CASTTV';
+export const RUNTV = 'RUNTV';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -357,8 +358,22 @@ export function gettingcasttv(id) {
         fetch('https://api.themoviedb.org/3/tv/'+ id +'/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-         console.log('Similar Tv',responseJson.cast)
+        // console.log('Similar Tv',responseJson.cast)
             dispatch({type:CASTTV, payload:responseJson.cast})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function runtimetv(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+        // console.log('Similar Tv',responseJson.episode_run_time)
+            dispatch({type:RUNTV, payload:responseJson.episode_run_time})
         })
         .catch((error=> {
             console.log(error);
