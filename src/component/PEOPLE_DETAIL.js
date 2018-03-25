@@ -9,59 +9,38 @@ import * as myActions from '../actions/actions';
 import { bindActionCreators } from 'redux';
 
 import Swiper from 'react-native-swiper';
-import INFO from './TABS_TV_DETAILS/INFO';
-import ACTORS from './TABS_TV_DETAILS/ACTORS';
-import SEASONS from './TABS_TV_DETAILS/SEASONS';
+import INFO from './PEOPLE_DETAILS_TAB/INFO';
+import MOVIES from './PEOPLE_DETAILS_TAB/MOVIES';
+import TVSHOWS from './PEOPLE_DETAILS_TAB/TVSHOWS';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 
-class TV_DETAILS extends Component {
+class PEOPLE_DETAIL extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tvdetails: [],
-            tvimg:[],
-            tvruntime:[]
-           
+        celebdetails:[],
+        imge:[]
+         
         }
     }
     componentDidMount() {
-        //console.log("AIRING AGE",this.props.tv)
-        this.props.tvdetail(this.props.tv.id);
-        this.props.tvimages(this.props.tv.id);
-        this.props.runtimetv(this.props.tv.id);
+        
+       this.props.getcelebdetails(this.props.id);
+       this.props.getpersonalimg(this.props.id);
+        
     }
 
     componentWillReceiveProps = (nextProps) => {
-        
-        if (this.props.tvdetails != nextProps.tvdetails) {
-
-            this.setState({
-                tvdetails: nextProps.tvdetails,
-                isLoading: nextProps.isLoading,
-            })
-        }
-
-        if (this.props.tvimg != nextProps.tvimg) {
-
-            this.setState({
-                tvimg: nextProps.tvimg,
-                
-            })
-        }
-
-        
-        if (this.props.tvruntime != nextProps.tvruntime) {
-
-            this.setState({
-                tvruntime: nextProps.tvruntime,
-                
-            })
-        }
+      console.log("RECEVING",this.props.imge)
+      if(this.props.celebdetails!= nextProps.celebdetails) {
+        this.setState({celebdetails:nextProps.celebdetails,imge:nextProps.imge})
+          
+     }
     }
 
-    extractImPath = (file) => {
+    extractFilePath = (file) => {
         let imgArray = [];
         let id = 0;
         file.forEach(element => {
@@ -71,11 +50,8 @@ class TV_DETAILS extends Component {
         });
         return imgArray;
     }
-
-
     render() {
-        var slides = this.extractImPath(this.props.tvimg);
-        console.log("TV PICS",this.props.tv.episode_run_time)
+        var slides = this.extractFilePath(this.props.imge);
         return (
             <View style={{ flex: 1, }}>
 
@@ -102,46 +78,15 @@ class TV_DETAILS extends Component {
 
                     <View style={{ flex: 0.3, backgroundColor: '#696969' }}>
                         <View style={{ marginLeft: width(30), marginTop: width(3) }}>
-                            <View style={{ flexDirection: 'row' }}>
-                                <View style={{}}>
-                                    <Text style={{ color: '#C0C0C0', alignSelf: 'center' }}>Audience <Icon name='circle' /> </Text>
 
-                                </View>
-                                <View>
-                                    <Text style={{ color: '#C0C0C0' }}>{new Date(this.props.tv.first_air_date).getFullYear()} <Icon name='circle' /> </Text>
-                                </View>
-                                <View>
-                                    <Text style={{ color: '#C0C0C0' }}>{this.props.tvruntime} Minutes</Text>
-                                </View>
-                            </View>
-
-                            <View>
-                                <View>
-                                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>{this.props.tv.original_name}</Text>
-                                </View>
-                                <View style={{height: height(3) }}>
-                                        <FlatList
-                                        horizontal={true}
-                                        keyExtractor={item => item.id}
-                                        key={`${item => item.id * 0.1.toString()}`}
-                                        numColumns={1}
-                                        data={this.props.tvdetails}
-                                        renderItem={({ item }) => {
-                                            console.log("item ",item);  
-                                            return (
-                                                <View style={{ }}>
-                                                    <Text style={{fontSize:12}}>{item.name},</Text>
-                                                </View>
-                                            )
-                                        }
-
-                                        } />
-                                </View>
+                            <View style={{height: height(3) }}>
+                           <Text style={{fontSize:totalSize(2),fontWeight:'bold',marginLeft:totalSize(3)}}>{this.props.celebdetails.name}</Text>             
+                                
                             </View>
                         </View>
                     </View>
-                    <View style={{ height: height(18), width: width(18), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: height(18), width: width(18) }} source={{ uri: imgPath + this.props.tv.backdrop_path }} /></View>
-                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage_Tv')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                    <View style={{ height: height(18), width: width(18), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: height(18), width: width(18) }} /></View>
+                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
@@ -154,6 +99,7 @@ class TV_DETAILS extends Component {
                         <Icon name='ellipsis-v' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                 </View>
+                <View style={{ height:totalSize(18), width: totalSize(13), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: totalSize(18), width:totalSize(13) }} source={{ uri: imgPath + this.props.celebdetails.profile_path }} /></View>
                 <View style={{ flex: 0.5, backgroundColor: 'black' }}>
                     <ScrollableTabView style={{ backgroundColor: 'white' }}
                         tabBarBackgroundColor="#333435"
@@ -162,10 +108,9 @@ class TV_DETAILS extends Component {
                         tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <INFO tabLabel="INFO" label="Page #1" data={{ info: this.props.tv.id}} />
-                        <ACTORS tabLabel="ACTORS" label="Page #2" data={{ info: this.props.tv.id }} />
-                        <SEASONS tabLabel="SEASONS" label="Page #3" data={{ info: this.props.tv.id }}/>
-
+                        <INFO tabLabel="INFO" label="Page #1" data={{info:this.props.id}} />
+                        <MOVIES tabLabel="MOVIES" label="Page #2" data={{info:this.props.id}} />
+                        <TVSHOWS tabLabel="TV SHOWS" label="Page #3" data={{info:this.props.id}}/>
                     </ScrollableTabView>
                 </View>
 
@@ -176,12 +121,9 @@ class TV_DETAILS extends Component {
 }
 
 mapStateToProps = (state, props) => {
-
     return {
-        tvdetails: state.tvdetailReducer.data,
-        isLoading: state.tvdetailReducer.loading,
-        tvimg: state.tvimageReducer.data,
-        tvruntime: state.tvruntimeReducer.data,
+        celebdetails: state.getcelebdetailsReducer.data,
+         imge: state.gethisimgReducer.data,
     }
 }
 
@@ -189,16 +131,4 @@ mapDispatchToProps = (dispatch) => {
     return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TV_DETAILS);
-
-const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1
-    },
-
-    text: {
-        color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold',
-    }
-})
+export default connect(mapStateToProps, mapDispatchToProps)(PEOPLE_DETAIL);

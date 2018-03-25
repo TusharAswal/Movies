@@ -16,10 +16,10 @@ export default class SideBarMenu extends Component {
             <View style={{flex:1,backgroundColor:'white'}}>
                 <View style={{flex:0.25, backgroundColor:'#323232',flexDirection:'row'}}>
                 <View style={{ flex:0.45}}>
-                <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent:'flex-end' ,height: height(15), width:width(20),marginTop:height(8), marginLeft:height(3) }} />
+                <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent:'flex-end' ,height: height(13), width:width(17),marginTop:height(8), marginLeft:height(3) }} />
                 </View>
                     <View style={{justifyContent:'flex-start',flex:0.55}}>
-                         <Text style={{alignSelf:'flex-end',color:'white',fontWeight:'bold', marginTop:width(29), marginRight:width(2)}}>Connect to MDB </Text>
+                         <Text style={{marginTop:totalSize(15),color:'white',fontWeight:'bold'}}>Connect to MDB </Text>
                     </View>
                 </View>
 
@@ -57,7 +57,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{flex:0.07,justifyContent:'center'}}>
-                    <TouchableOpacity style={{flexDirection:'row'}}>
+                    <TouchableOpacity onPress={()=>Actions.POPULAR_PEOPLE()} style={{flexDirection:'row'}}>
                          <View style={{flex:0.2}}>
                             <Icon  size={15} name='user' style={{alignSelf:'center'}}/>
                         </View>

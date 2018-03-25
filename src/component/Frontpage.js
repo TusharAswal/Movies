@@ -65,8 +65,8 @@ class Frontpage extends Component {
                             </View>
 
                             <View style={{ flex: 0.5, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity  style={{ }}>
-                                    <Icon name='search' size={15} style={{ alignSelf:'center' }} color='white' />
+                                <TouchableOpacity  onPress={()=>Actions.SEARCHMOVIE()} style={{ }}>
+                                    <Icon name='search' size={totalSize(3)} style={{ alignSelf:'center' }} color='white' />
                                 </TouchableOpacity>
                             </View>
                         </View>

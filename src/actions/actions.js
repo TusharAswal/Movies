@@ -1,7 +1,3 @@
-
-
-const apiRoot = 'https://api.themoviedb.org/3/movie/';
-const apiKey = '9a2955322d7a5fbef5b01d4e52abc0ff';
 export const ERROR = 'ERROR';
 export const NOWPLAYING = 'NOWPLAYING';
 export const TOPBOXOFFICE = 'TOPBOXOFFICE';
@@ -28,6 +24,17 @@ export const OVER = 'OVER';
 export const SIMILARTV ='SIMILARTV';
 export const CASTTV ='CASTTV';
 export const RUNTV = 'RUNTV';
+export const POPULAR_PEOPLE = 'POPULAR_PEOPLE';
+export const TVSEASON = 'TVSEASON';
+export const POPULARTV ='POPULARTV';
+export const TOPRATEDTV = 'TOPRATEDTV';
+export const SEARCHMOVIE = 'SEARCHMOVIE';
+export const SEARCHTV ='SEARCHTV';
+export const SEARCH_PEOPLE='SEARCH_PEOPLE';
+export const PEOPLE_DETAIL ='PEOPLE_DETAIL';
+export const PERS_DETAIL ='PERS_DETAIL';
+export const PERS_IMG = 'PERS_IMG';
+export const WORKIN = 'WORKIN';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -374,6 +381,160 @@ export function runtimetv(id) {
         .then((responseJson)=>{
         // console.log('Similar Tv',responseJson.episode_run_time)
             dispatch({type:RUNTV, payload:responseJson.episode_run_time})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getpopularPeople(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/person/popular?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+        // console.log('Similar Tv',responseJson.episode_run_time)
+            dispatch({type:POPULAR_PEOPLE, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function gettvSeason(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/'+ id +'/season/1?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+       // console.log('SEASON @@',responseJson.episodes)
+            dispatch({type:TVSEASON, payload:responseJson.episodes})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getpopulartv() {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/popular?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+       // console.log('SEASON @@',responseJson.episodes)
+            dispatch({type:POPULARTV, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function gettopratedtv() {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/tv/top_rated?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+       // console.log('SEASON @@',responseJson.episodes)
+            dispatch({type:TOPRATEDTV, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function searchmovie(moviename) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/search/movie?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&query='+ moviename +'&page=1&include_adult=false')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+     
+            dispatch({type:SEARCHMOVIE, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function searchtv(tvname) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/search/movie?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&query='+ tvname +'&page=1&include_adult=false')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+     //console.log('SEARCHING FOR TV ',responseJson.results)
+            dispatch({type:SEARCHTV, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function searchname(name) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/search/person?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&query='+ name +'&page=1&include_adult=false')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+     //console.log('SEARCHING FOR TV ',responseJson.results)
+            dispatch({type:SEARCH_PEOPLE, payload:responseJson.results})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getcelebdetails(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/person/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+    // console.log('SEARCHING FOR PEOPLE DETAIL',responseJson)
+            dispatch({type:PEOPLE_DETAIL, payload:responseJson})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getpersonaldetails(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/person/'+ id +'?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+    // console.log('SEARCHING FOR PEOPLE DETAIL',responseJson)
+            dispatch({type:PERS_DETAIL, payload:responseJson})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getpersonalimg(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/person/'+ id +'/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+  
+            dispatch({type:PERS_IMG, payload:responseJson.profiles})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getworkinmovies(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/person/'+ id +'/movie_credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+     console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
+            dispatch({type:WORKIN, payload:responseJson.cast})
         })
         .catch((error=> {
             console.log(error);

@@ -24,7 +24,18 @@ import {
       OVER,
       SIMILARTV,
       CASTTV,
-      RUNTV
+      RUNTV,
+      POPULAR_PEOPLE,
+      TVSEASON,
+      POPULARTV,
+      TOPRATEDTV,
+      SEARCHMOVIE,
+      SEARCHTV,
+      SEARCH_PEOPLE,
+      PEOPLE_DETAIL,
+      PERS_DETAIL,
+      PERS_IMG,
+      WORKIN
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -366,6 +377,154 @@ const tvruntimeReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const popularpeepsReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case POPULAR_PEOPLE:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const tvseasonReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case TVSEASON:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const populartvReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case POPULARTV:
+            return {
+                  ...state,
+                  loading:false,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const topratedtvReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case TOPRATEDTV:
+            return {
+                  ...state,
+                  loading:false,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const gotmovieReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case SEARCHMOVIE:
+            return {
+                  ...state,
+                  loading:false,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const gottvReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case SEARCHTV:
+            return {
+                  ...state,
+                  loading:false,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const gotnameReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case SEARCH_PEOPLE:
+            return {
+                  ...state,
+                  loading:false,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const getcelebdetailsReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case PEOPLE_DETAIL:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const gettingpersonalReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case PERS_DETAIL:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const gethisimgReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case PERS_IMG:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
+
+const donemoviesReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case WORKIN:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -392,7 +551,18 @@ const rootReducer = combineReducers(
             getoverviewReducer,
             getsimilartvReducer,
             casttvReducer,
-            tvruntimeReducer
+            tvruntimeReducer,
+            popularpeepsReducer,
+            tvseasonReducer,
+            populartvReducer,
+            topratedtvReducer,
+            gotmovieReducer,
+            gottvReducer,
+            gotnameReducer,
+            getcelebdetailsReducer,
+            gettingpersonalReducer,
+            gethisimgReducer,
+            donemoviesReducer
 
       })
 export default rootReducer;

@@ -19,7 +19,7 @@ class DISCOVER extends Component {
         this.state = {
             isLoading: true,
             movies: [],
-            singleRow: true
+           // singleRow: true
         }
         this.openDrawer = this.openDrawer.bind(this);
     }
@@ -42,13 +42,7 @@ class DISCOVER extends Component {
     }
 
     render() {
-        if (this.state.isLoading) {
-            return (
-                <View style={{ flex: 1, padding: 20 }}>
-                    <ActivityIndicator />
-                </View>
-            )
-        }
+        
         return (
 
             <DrawerLayoutAndroid
