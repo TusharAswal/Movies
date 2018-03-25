@@ -35,6 +35,7 @@ export const PEOPLE_DETAIL ='PEOPLE_DETAIL';
 export const PERS_DETAIL ='PERS_DETAIL';
 export const PERS_IMG = 'PERS_IMG';
 export const WORKIN = 'WORKIN';
+export const WORKINTV = 'WORKINTV';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -535,6 +536,20 @@ export function getworkinmovies(id) {
         .then((responseJson)=>{
      console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
             dispatch({type:WORKIN, payload:responseJson.cast})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getworkintv(id) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/person/'+ id +'/tv_credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+     console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
+            dispatch({type:WORKINTV, payload:responseJson.cast})
         })
         .catch((error=> {
             console.log(error);

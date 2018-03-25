@@ -144,7 +144,7 @@ class TV_DETAILS extends Component {
                     <TouchableOpacity onPress={() => Actions.popTo('Frontpage_Tv')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
+                    <TouchableOpacity onPress={()=>Actions.popTo('Frontpage_Tv')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
                         <Icon name='home' size={height(4)} color="white" style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 0.35, position: 'absolute', marginLeft: width(80) }}>

@@ -73,7 +73,7 @@ class POPULAR_PEOPLE extends Component {
                 renderItem={({item}) => 
                 <View style={{flex:1}}>
                 <TouchableOpacity onPress={()=>Actions.PEOPLE_DETAIL({'id':item.id})} style={{flex:0.99,flexDirection:'row',  height: height(20), width: width(100), margin: height(2)}}>
-                    <View style={{flex:0.3,justifyContent:'center'}}><Image source={{ uri: imgpath + item.profile_path }} style={{alignSelf:'center',alignSelf: 'center', height: height(25), width: width(30) }} /></View>
+                    <View style={{flex:0.3,justifyContent:'center'}}><Image source={{ uri: imgpath + item.profile_path }} style={{alignSelf:'center',alignSelf: 'center', height: height(17), width: width(30),borderRadius:100}} /></View>
                     <View style={{flex:0.7,justifyContent:'center'}}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold',margin:totalSize(2)}}>Name: {item.name}</Text></View>
                 </TouchableOpacity>
                 <View style={{alignSelf:'center',flex:0.01,borderColor:'#DCDCDC',marginTop:height(1),width:width(95)}}></View>

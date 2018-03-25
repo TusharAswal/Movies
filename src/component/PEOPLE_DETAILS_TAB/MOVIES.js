@@ -57,7 +57,7 @@ class MOVIES extends Component {
                                 </View>
 
                                 <View style={{ flex: 0.2 }}>
-                                    <Text>ICON</Text>
+                                <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent:'flex-end' ,height: height(5), width:width(7) }} />
                                     <Text>{item.vote_average}</Text>
                                 </View>
                         

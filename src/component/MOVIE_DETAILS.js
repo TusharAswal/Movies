@@ -139,7 +139,7 @@ class MOVIE_DETAILS extends Component {
                     <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
+                    <TouchableOpacity onPress={()=>Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
                         <Icon name='home' size={height(4)} color="white" style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 0.35, position: 'absolute', marginLeft: width(80) }}>
@@ -159,7 +159,7 @@ class MOVIE_DETAILS extends Component {
                         renderTabBar={() => <ScrollableTabBar />}>
                         <INFO tabLabel="INFO" label="Page #1" data={{ info: this.props.movie }} />
                         <CAST tabLabel="CAST" label="Page #2" data={{ cast: this.props.movie }} />
-                        <REVIEW tabLabel="REVIEW" label="Page #3" />
+                        <REVIEW tabLabel="REVIEW" label="Page #3" data={{ cast: this.props.movie }} />
 
                     </ScrollableTabView>
                 </View>

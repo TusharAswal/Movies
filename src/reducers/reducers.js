@@ -35,7 +35,8 @@ import {
       PEOPLE_DETAIL,
       PERS_DETAIL,
       PERS_IMG,
-      WORKIN
+      WORKIN,
+      WORKINTV
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -525,6 +526,19 @@ const donemoviesReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const donetvReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case WORKINTV:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -562,7 +576,8 @@ const rootReducer = combineReducers(
             getcelebdetailsReducer,
             gettingpersonalReducer,
             gethisimgReducer,
-            donemoviesReducer
+            donemoviesReducer,
+            donetvReducer
 
       })
 export default rootReducer;
