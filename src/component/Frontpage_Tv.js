@@ -57,7 +57,7 @@ import TOP_RATED from './TABS_TV/TOP_RATED';
                                 </TouchableOpacity>
                             </View>
 
-                            <View style={{ flex: 0.5, backgroundColor: '#323232', margin: 10, justifyContent: 'center' }}>
+                            <View style={{ flex: 0.5, backgroundColor: '#323232', justifyContent: 'center' }}>
                                 <TouchableOpacity onPress={()=> Actions.SEARCHTV()}>
                                     <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'flex-end' }} color='white' />
                                 </TouchableOpacity>

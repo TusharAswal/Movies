@@ -117,7 +117,7 @@ class MOVIE_DETAILS extends Component {
                                 <View style={{height: height(3) }}>
                                         <FlatList
                                         horizontal={true}
-                                        keyExtractor={item => item.id}
+                                        keyExtractor={item => item.id.toString()}
                                         key={`${item => item.id * 0.1.toString()}`}
                                         numColumns={1}
                                         data={this.props.genres}

@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { ScrollView,TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -45,6 +45,7 @@ class SEARCHMOVIE extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
+            <ScrollView>
                 <View style={{ flex: 0.1,flexDirection:'row', backgroundColor: '#323232'}}>
                     <View style={{ flex: 0.15, }}>
                         <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
@@ -60,8 +61,9 @@ class SEARCHMOVIE extends Component {
                         <TextInput style={{color:'white'}} placeholderTextColor="white"  placeholder="Search Movies" onChangeText={(moviename) => this.setState({moviename})}/>
                     </View>
                 </View>
+                </ScrollView>
                 <FlatList
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                     key={`${item => item.id * 0.1.toString()}`}
                     data={this.props.gotmovie}
                     numColumns={1}

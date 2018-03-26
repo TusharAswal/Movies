@@ -34,7 +34,7 @@ class CAST extends Component {
         return(
         <View style={{flex:1}}>
             <FlatList 
-                keyExtractor={item=> item.id}
+                keyExtractor={item=> item.id.toString()}
                 key={`${item => item.id*0.1.toString()}`}
                 data={this.props.cast}
                 numColumns={1}

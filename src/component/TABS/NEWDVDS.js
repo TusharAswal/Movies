@@ -48,7 +48,7 @@ class NEWDVDS extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <FlatList
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
           key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
 
           numColumns={this.props.singleRow ? 3 : 1}

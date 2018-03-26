@@ -22,6 +22,7 @@ import SEARCHMOVIE from './component/SEARCHMOVIE';
 import SEARCHTV from './component/SEARCHTV';
 import SEARCH_PEOPLE from './component/SEARCH_PEOPLE';
 import PEOPLE_DETAIL from './component/PEOPLE_DETAIL';
+import filtermovies from './component/filtermovies';
 
 const App = () => {
   return(
@@ -85,6 +86,12 @@ const App = () => {
             <Scene 
              key='PEOPLE_DETAIL'
              component={PEOPLE_DETAIL}
+             hideNavBar={true}
+             />
+
+              <Scene 
+             key='filtermovies'
+             component={filtermovies}
              hideNavBar={true}
              />
         </Scene>

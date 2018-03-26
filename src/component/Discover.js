@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Modal, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -11,6 +11,8 @@ import * as myActions from '../actions/actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+import PickerExample from './filtermovies';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 class DISCOVER extends Component {
@@ -19,19 +21,24 @@ class DISCOVER extends Component {
         this.state = {
             isLoading: true,
             movies: [],
-           // singleRow: true
+            singleRow: true,
+            modalVisible: false,
         }
+
         this.openDrawer = this.openDrawer.bind(this);
     }
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
+
 
     componentDidMount() {
         this.props.nowPlaying();
 
     }
 
-
     componentWillReceiveProps = (nextProps) => {
-        //console.log("Video: ", nextProps.movies.video);
+        //console.log("IT IS LOADING: ", this.props.isLoading);
         if (this.props.movies != nextProps.movies) {
             this.setState({ movie: nextProps.movies, isLoading: nextProps.isLoading })
         }
@@ -41,11 +48,9 @@ class DISCOVER extends Component {
         this.drawer.openDrawer();
     }
 
-    openDrawer2() {
-        this.drawer.openDrawer();
-    }
+
     render() {
-        
+
         return (
 
             <DrawerLayoutAndroid
@@ -69,7 +74,7 @@ class DISCOVER extends Component {
                         <View style={{ flex: 0.4, flexDirection: 'row', backgroundColor: '#323232', margin: 10 }}>
 
                             <View style={{ flex: 0.333, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity onPress={() => this.openDrawer2()}>
+                                <TouchableOpacity onPress={()=>Actions.filtermovies()}>
                                     <Icon name='filter' size={totalSize(3)} style={{ alignSelf: 'center' }} color='white' />
                                 </TouchableOpacity>
                             </View>
@@ -90,20 +95,20 @@ class DISCOVER extends Component {
 
                     <View style={{ flex: 0.9 }}>
                         <FlatList style={{ backgroundColor: 'white' }}
-                            keyExtractor={item => item.id}
-                            key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
+                            keyExtractor={item => item.id.toString()}
+                            key={`${this.state.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
 
-                            numColumns={this.props.singleRow ? 3 : 1}
+                            numColumns={this.state.singleRow ? 3 : 1}
                             data={this.props.movies}
                             renderItem={({ item }) =>
-                                <View style={{ flex: 1, flexDirection: this.props.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
+                                <View style={{ flex: 1, flexDirection: this.state.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
 
-                                    <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30), }}>
+                                    <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.state.singleRow ? 'column' : 'row', width: this.state.singleRow ? width(30) : width(70), height: height(30), }}>
                                         <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
-                                            <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
+                                            <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.state.singleRow ? width(30) : width(30) }} />
                                         </View>
 
-                                        {this.props.singleRow ?
+                                        {this.state.singleRow ?
                                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0' }}>
                                                 <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
                                                     <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
@@ -135,21 +140,18 @@ class DISCOVER extends Component {
 
                                     </TouchableOpacity>
 
-                                    <View style={{ borderWidth: this.props.singleRow ? 0 : 0.2, marginTop: this.props.singleRow ? 0 : 5, borderColor: 'grey' }}>
+                                    <View style={{ borderWidth: this.state.singleRow ? 0 : 0.2, marginTop: this.state.singleRow ? 0 : 5, borderColor: 'grey' }}>
                                     </View>
                                 </View>}
                             keyExtractor={(item, index) => index}
                         />
+
                     </View>
                 </View>
-                <DrawerLayoutAndroid drawerWidth={width(60)}
-                ref={(_drawer) => this.drawer = _drawer}
-                drawerBackgroundColor="#323232"
-                drawerPosition={DrawerLayoutAndroid.positions.Left}
-                renderNavigationView={() => <SideBarMenu />}/>
+                
             </DrawerLayoutAndroid>
 
-            
+
         );
     }
 }

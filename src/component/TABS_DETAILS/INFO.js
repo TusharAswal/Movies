@@ -91,7 +91,7 @@ class INFO extends Component {
                      <Text style={{fontSize:totalSize(2), marginLeft:width(3),color:'black'}} >Similar Movies</Text>
                     <FlatList
                         horizontal={true}
-                        keyExtractor={item=> item.id}
+                        keyExtractor={item=> item.id.toString()}
                         key={`${item => item.id*0.1.toString()}`}
                         data={this.props.cast}
                         numColumns={1}

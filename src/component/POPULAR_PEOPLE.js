@@ -66,7 +66,7 @@ class POPULAR_PEOPLE extends Component {
 
                 <View style={{flex:0.9}}>
                 <FlatList 
-                keyExtractor={item=> item.id}
+                keyExtractor={item=> item.id.toString()}
                 key={`${item => item.id*0.1.toString()}`}
                 data={this.props.popularPeople}
                 numColumns={1}

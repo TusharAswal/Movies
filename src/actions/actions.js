@@ -36,6 +36,7 @@ export const PERS_DETAIL ='PERS_DETAIL';
 export const PERS_IMG = 'PERS_IMG';
 export const WORKIN = 'WORKIN';
 export const WORKINTV = 'WORKINTV';
+export const ALLGENRES= 'ALLGENRES';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -226,7 +227,7 @@ export function tvimages(id) {
         fetch('https://api.themoviedb.org/3/tv/'+ id +'/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
         .then((response)=> response.json())
         .then((responseJson)=>{
-           //console.log('PICTURES',responseJson.backdrops)
+           console.log('PICTURES',responseJson.backdrops)
             dispatch({type:TVIMG, payload:responseJson.backdrops})
         })
         .catch((error=> {
@@ -534,7 +535,7 @@ export function getworkinmovies(id) {
         fetch('https://api.themoviedb.org/3/person/'+ id +'/movie_credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-     console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
+   //  console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
             dispatch({type:WORKIN, payload:responseJson.cast})
         })
         .catch((error=> {
@@ -548,8 +549,22 @@ export function getworkintv(id) {
         fetch('https://api.themoviedb.org/3/person/'+ id +'/tv_credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
         .then((response)=> response.json())
         .then((responseJson)=>{
-     console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
+     //console.log('SEARCHING FOR PEOPLE cast',responseJson.cast)
             dispatch({type:WORKINTV, payload:responseJson.cast})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getallgenres() {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+   console.log('SEARCHING FOR All genres',responseJson)
+            dispatch({type:ALLGENRES, payload:responseJson})
         })
         .catch((error=> {
             console.log(error);

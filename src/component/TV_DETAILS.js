@@ -36,7 +36,7 @@ class TV_DETAILS extends Component {
     componentWillReceiveProps = (nextProps) => {
         
         if (this.props.tvdetails != nextProps.tvdetails) {
-
+            
             this.setState({
                 tvdetails: nextProps.tvdetails,
                 isLoading: nextProps.isLoading,
@@ -44,7 +44,7 @@ class TV_DETAILS extends Component {
         }
 
         if (this.props.tvimg != nextProps.tvimg) {
-
+            
             this.setState({
                 tvimg: nextProps.tvimg,
                 
@@ -75,7 +75,7 @@ class TV_DETAILS extends Component {
 
     render() {
         var slides = this.extractImPath(this.props.tvimg);
-        console.log("TV PICS",this.props.tv.episode_run_time)
+       
         return (
             <View style={{ flex: 1, }}>
 
@@ -122,7 +122,7 @@ class TV_DETAILS extends Component {
                                 <View style={{height: height(3) }}>
                                         <FlatList
                                         horizontal={true}
-                                        keyExtractor={item => item.id}
+                                        keyExtractor={item => item.id.toString()}
                                         key={`${item => item.id * 0.1.toString()}`}
                                         numColumns={1}
                                         data={this.props.tvdetails}
