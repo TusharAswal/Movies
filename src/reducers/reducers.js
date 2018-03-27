@@ -37,7 +37,9 @@ import {
       PERS_IMG,
       WORKIN,
       WORKINTV,
-      ALLGENRES
+      ALLGENRES,
+      ALLGENRES1,
+      CONTENTIS
       } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -553,6 +555,33 @@ const filtergenReducer=( state= defaultState, action)=>{
             }
       }
 }
+
+const filtergenReducer1=( state= defaultState, action)=>{
+      switch(action.type) {
+            case ALLGENRES1:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+
+}
+
+const contentisReducer=( state= defaultState, action)=>{
+      switch(action.type) {
+            case CONTENTIS:
+            return {
+                  ...state,
+                  data:action.payload,
+            }
+            default:{
+                  return{...state}
+            }
+      }
+}
 const rootReducer = combineReducers(
       {
             movieReducer,
@@ -592,7 +621,9 @@ const rootReducer = combineReducers(
             gethisimgReducer,
             donemoviesReducer,
             donetvReducer,
-            filtergenReducer
+            filtergenReducer,
+            filtergenReducer1,
+            contentisReducer
 
       })
 export default rootReducer;

@@ -22,8 +22,9 @@ import SEARCHMOVIE from './component/SEARCHMOVIE';
 import SEARCHTV from './component/SEARCHTV';
 import SEARCH_PEOPLE from './component/SEARCH_PEOPLE';
 import PEOPLE_DETAIL from './component/PEOPLE_DETAIL';
-import filtermovies from './component/filtermovies';
-
+//import MODAL from './component/MODAL';
+//import filtermovies from './component/filtermovies';
+import mov2 from './component/mov2';
 const App = () => {
   return(
     <Router >
@@ -89,11 +90,19 @@ const App = () => {
              hideNavBar={true}
              />
 
-              <Scene 
+              {/* <Scene 
              key='filtermovies'
              component={filtermovies}
              hideNavBar={true}
+             /> */}
+
+               <Scene 
+             key='mov2'
+             component={mov2}
+             hideNavBar={true}
              />
+
+             
         </Scene>
     </Router>
   )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { Modal, FlatList, ActivityIndicator, Text, View, Image, TouchableHighlight, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -21,11 +21,17 @@ class MOVIE_DETAILS extends Component {
         super(props);
         this.state = {
             //isLoading:true,
+            modalVisible: false,
             mdetails: [],
             otherdetails: [],
             genres: [],
         }
     }
+
+    setModalVisible(visible) {
+        this.setState({ modalVisible: visible });
+    }
+
     componentDidMount() {
 
         this.props.moviedetails(this.props.movie.id);
@@ -34,7 +40,7 @@ class MOVIE_DETAILS extends Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
-       // console.log('GEN RESS', nextProps.genre)
+        // console.log('GEN RESS', nextProps.genre)
         if (this.props.mdetails != nextProps.mdetails) {
 
             this.setState({
@@ -114,18 +120,18 @@ class MOVIE_DETAILS extends Component {
                                 <View>
                                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>{this.props.movie.title}</Text>
                                 </View>
-                                <View style={{height: height(3) }}>
-                                        <FlatList
+                                <View style={{ height: height(3) }}>
+                                    <FlatList
                                         horizontal={true}
                                         keyExtractor={item => item.id.toString()}
                                         key={`${item => item.id * 0.1.toString()}`}
                                         numColumns={1}
                                         data={this.props.genres}
                                         renderItem={({ item }) => {
-                                           // console.log("item ",item);  
+                                            // console.log("item ",item);  
                                             return (
-                                                <View style={{ }}>
-                                                    <Text style={{fontSize:12}}>{item.name},</Text>
+                                                <View style={{}}>
+                                                    <Text style={{ fontSize: 12 }}>{item.name},</Text>
                                                 </View>
                                             )
                                         }
@@ -139,13 +145,13 @@ class MOVIE_DETAILS extends Component {
                     <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
+                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
                         <Icon name='home' size={height(4)} color="white" style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 0.35, position: 'absolute', marginLeft: width(80) }}>
                         <Icon name='share' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flex: 0.25, position: 'absolute', marginLeft: width(93) }}>
+                    <TouchableOpacity onPress={() => { this.setModalVisible(true); }} style={{ flex: 0.25, position: 'absolute', marginLeft: width(93) }}>
                         <Icon name='ellipsis-v' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                 </View>
@@ -163,7 +169,26 @@ class MOVIE_DETAILS extends Component {
 
                     </ScrollableTabView>
                 </View>
+                <Modal style={{}}
+                    animationType="slide"
+                    transparent={false}
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                        alert('Modal has been closed.');
+                    }}>
+                    <View style={{backgroundColor: 'transparent'}}>
+                        <View style={{backgroundColor: '#fff', padding: 20,borderWidth:3}}>
+                            <Text>Hello World!</Text>
 
+                            <TouchableHighlight
+                                onPress={() => {
+                                    this.setModalVisible(!this.state.modalVisible);
+                                }}>
+                                <Text>Hide Modal</Text>
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+                </Modal>
             </View>
         );
     }

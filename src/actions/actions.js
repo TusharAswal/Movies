@@ -37,6 +37,8 @@ export const PERS_IMG = 'PERS_IMG';
 export const WORKIN = 'WORKIN';
 export const WORKINTV = 'WORKINTV';
 export const ALLGENRES= 'ALLGENRES';
+export const ALLGENRES1= 'ALLGENRES1';
+export const CONTENTIS= 'CONTENTIS';
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
@@ -171,8 +173,7 @@ export function gettingcrew(id) {
         fetch('https://api.themoviedb.org/3/movie/'+ id +'/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
         .then((response) => response.json())
         .then((responseJson)=> {
-            //console.log("Getting Crew",responseJson.crew)
-            dispatch({type:CREW, payload:responseJson.crew[0].name})
+        dispatch({type:CREW, payload:responseJson.crew[0].name})
         })
         .catch((error)=> {
             console.error(error);
@@ -571,3 +572,32 @@ export function getallgenres(sy,ey,gen) {
         }))
     }
 }
+
+export function getallgenres1() {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+   //console.log('SEARCHING FOR Allgeneres',responseJson)
+            dispatch({type:ALLGENRES1, payload:responseJson})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+
+export function getcontent(from,to,gen) {
+    return(dispatch)=>{
+        fetch('https://api.themoviedb.org/3/discover/movie?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte='+ from +'&primary_release_date.lte='+ to +'&with_genres='+gen)
+        .then((response)=> response.json())
+        .then((responseJson)=>{
+   console.log('SEARCHING FOR FILTERS',responseJson)
+            dispatch({type:CONTENTIS, payload:responseJson})
+        })
+        .catch((error=> {
+            console.log(error);
+        }))
+    }
+}
+

@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Text,View,Image,ScrollView,FlatList} from 'react-native';
+import {Text,View,Image,ScrollView,FlatList,TouchableOpacity} from 'react-native';
 import {height,width,totalSize} from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import * as myActions from '../../actions/actions';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
+import { Actions } from 'react-native-router-flux';
 class INFO extends Component {
     constructor(props) {
         super(props);
@@ -98,10 +99,11 @@ class INFO extends Component {
                         data={this.props.similarmov}
                         renderItem={({item}) => 
                         <View style={{ alignItems:'center',flexWrap: 'wrap', marginLeft:width(3),marginRight:width(3),marginTop:height(2)}}>
-                            
+                            <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })}>
                             <Image source={{ uri: imgpath + item.poster_path}} style={{width:width(25), height:height(25)}} />
                             <Text numberOfLines={1} style={{width:width(23)}} >{item.original_title}</Text>
                             <Text numberOfLines={2} style={{width:width(23)}} >{item.release_date}</Text>
+                            </TouchableOpacity>
                         </View>
                     }
                     />

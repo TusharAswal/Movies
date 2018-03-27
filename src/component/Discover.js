@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
-import PickerExample from './filtermovies';
+//import PickerExample from './filtermovies';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 class DISCOVER extends Component {
@@ -74,7 +74,7 @@ class DISCOVER extends Component {
                         <View style={{ flex: 0.4, flexDirection: 'row', backgroundColor: '#323232', margin: 10 }}>
 
                             <View style={{ flex: 0.333, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity onPress={()=>Actions.filtermovies()}>
+                                <TouchableOpacity onPress={()=>Actions.mov2()}>
                                     <Icon name='filter' size={totalSize(3)} style={{ alignSelf: 'center' }} color='white' />
                                 </TouchableOpacity>
                             </View>

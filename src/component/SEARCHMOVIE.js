@@ -69,10 +69,10 @@ class SEARCHMOVIE extends Component {
                     numColumns={1}
                     renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <View style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
+                            <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
                                 <View style={{ flex: 0.35, justifyContent: 'center' }}><Image source={{ uri: imgpath + item.poster_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
                                 <View style={{ flex: 0.65, justifyContent: 'center' }}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Name: {item.title}</Text></View>
-                            </View>
+                            </TouchableOpacity>
                             <View style={{ alignSelf: 'center', flex: 0.01, borderWidth: 1, borderColor: '#DCDCDC', margin: height(2), width: width(95) }}></View>
                         </View>
                     } />
