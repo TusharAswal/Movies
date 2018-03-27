@@ -6,16 +6,14 @@ import { connect } from 'react-redux';
 import * as myActions from '../actions/actions';
 import { bindActionCreators } from 'redux';
 import Picker from 'react-native-picker';
-// import StartDatePicker from './startDatePicker'
-// import EndDatePicker from './endDatePicker'
+import StartDatePicker from './startDatePicker'
+import EndDatePicker from './endDatePicker'
 
 class mov2 extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      syear: '',
-      eyear: '',
       genres: '',
       filtergen1: [],
       contentis:[]
@@ -25,8 +23,9 @@ class mov2 extends Component {
   }
 
   componentWillMount() {
+   
     this.props.getallgenres1();
-    this.props.getcontent(this.state.syear,this.state.eyear,this.state.genres);
+    //this.props.getcontent(this.state.syear,this.state.endyear,this.state.genres);
   }
 
   componentWillReceiveProps = (nextProps) => {
@@ -52,62 +51,66 @@ class mov2 extends Component {
         console.log(data);
       }
     });
-    Picker.show();
+    
   }
 
 
 
   pickerShow() {
-
+Picker.show();
 
   }
 
 
-  startdate() {
-    let data2 = [];
-    for (var i = 1990; i < 2018; i++) {
-      data2.push(i);
-    }
+  // startdate() {
+  //   let data2 = [];
+  //   for (var i = 1990; i < 2018; i++) {
+  //     data2.push(i);
+  //   }
 
-    Picker.init({
-      pickerData: data2,
-      onPickerConfirm: data2 => {
-        this.setState({ syear: data2 })
-      },
-      onPickerCancel: data2 => {
-        console.log(data2);
-      },
-      onPickerSelect: data2 => {
-        console.log(data2);
-      }
-    });
-    Picker.show();
-  }
+  //   Picker.init({
+  //     pickerData: data2,
+  //     onPickerConfirm: data2 => {
+  //       this.setState({ syear: data2 })
+  //     },
+  //     onPickerCancel: data2 => {
+  //       console.log(data2);
+  //     },
+  //     onPickerSelect: data2 => {
+  //       console.log(data2);
+  //     }
+  //   });
+  //   Picker.show();
+  // }
 
 
-  enddate() {
-    let data3 = [];
-    for (var i = 1990; i < 2018; i++) {
-      data3.push(i);
-    }
+  // enddate() {
+  //   let data3 = [];
+  //   for (var i = 1991; i < 2017; i++) {
+  //     data3.push(i);
+  //   }
 
-    Picker.init({
-      pickerData: data3,
-      onPickerConfirm: data3 => {
-        this.setState({ eyear: data3 })
-      },
-      onPickerCancel: data3 => {
-        console.log(data3);
-      },
-      onPickerSelect: data => {
-        console.log(data3);
-      }
-    });
-    Picker.show();
-  }
+  //   Picker.init({
+  //     pickerData: data3,
+  //     onPickerConfirm: data3 => {
+  //       this.setState({ endyear: data3 })
+  //       console.log('conform',this.state.endyear);
+  //     },
+  //     onPickerCancel: data3 => {
+  //       console.log("cancel",data3);
+  //     },
+  //     onPickerSelect: data3 => {
+  //       console.log('select',data3);
+  //     }
+  //   });
+  //   Picker.show();
+  // }
 
   render() {
-    // this.pickerShow();
+  console.log("Toooo",this.props.enddate);
+    console.log("from",this.props.startdate);
+    
+    console.log("genres",this.props.genres)
     return (
       <View style={{ flex: 1 }}>
         <View style={{ flex: 0.1,  flexDirection: 'row', backgroundColor: '#323232' }}>
@@ -126,17 +129,19 @@ class mov2 extends Component {
 
         <View style={{ flexDirection: 'row', flex: 0.1, margin: totalSize(1) }}>
           <View style={{ flex: 0.5 }}>
-            <TouchableOpacity onPress={this.startdate.bind(this)} style={{ flex: 1 }}>
+            {/* <TouchableOpacity onPress={this.startdate.bind(this)} style={{ flex: 1 }}>
               <Text style={{ }}>From</Text>
               <Text style={{  }} >{this.state.syear}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <StartDatePicker />
           </View>
 
           <View style={{ flex: 0.5 }}>
-            <TouchableOpacity onPress={this.enddate.bind(this)} style={{ flex: 1, marginLeft: totalSize(2) }} style={{ flex: 1, marginLeft: totalSize(2) }}>
+            {/* <TouchableOpacity onPress={this.enddate.bind(this)} style={{ flex: 1, marginLeft: totalSize(2) }} style={{ flex: 1, marginLeft: totalSize(2) }}>
               <Text style={{  }}>To</Text>
               <Text style={{  }} >{this.state.eyear}</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
+            <EndDatePicker />
           </View>
         </View>
         
@@ -145,9 +150,9 @@ class mov2 extends Component {
           </View>
 
           <View style={{flex:0.7}}>
-          <TouchableOpacity onPress={this.componentWillMount.bind(this)} style={{flex:0.2}}>
+          <TouchableOpacity onPress={this.pickerShow()} style={{flex:0.2}}>
           <Text style={{ flex:0.5,margin:totalSize(1) }}>Select your Genres</Text>
-          <Text style={{ fles:0.5,margin:totalSize(1) }}>{this.state.genres}</Text>
+          <Text style={{ flex:0.5,margin:totalSize(1) }}>{this.state.genres}</Text>
           </TouchableOpacity>
           </View>
       </View>
@@ -160,7 +165,7 @@ mapStateToProps = (state, props) => {
 
   return {
     filtergen1: state.filtergenReducer1.data,
-    contentis: state.contentisReducer.data
+   // contentis: state.contentisReducer.data
   }
 }
 
