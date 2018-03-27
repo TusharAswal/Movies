@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput ,Button} from 'react-native'
 import { width, height, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -15,110 +15,63 @@ class filtermovies extends Component {
       syear: '',
       eyear: '',
       genres: '',
-      filtergen: [],
-      selectedValue: '',
+      filtered: []
 
 
     }
   }
 
   componentDidMount() {
-    this.props.getallgenres();
+    this.props.getallgenres(this.state.syear, this.state.eyear, this.state.genres);
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log("RECIECING", nextProps.filtergen.genres)
-    this.setState({ filtergen: nextProps.filtergen.genres })
-    let data = [];
-    this.state.filtergen.map((item) => {
-      data.push(item.name)
-    })
-    
-    Picker.init({
-        pickerData: data,
-        onPickerConfirm: data => {
-            console.log(data);
-        },
-        onPickerCancel: data => {
-            console.log(data);
-        },
-        onPickerSelect: data => {
-            console.log(data);
-        }
-    });
+    if (this.props.filtered != nextProps.filtered) {
+      this.setState({ filtered: nextProps.filtered })
+    }
   }
 
-  pickerShow(){
-    
-    Picker.show();
-  }
+setting() {
+  this.setState()
+}
 
-  updateStartyear = (syear) => {
-    this.setState({ syear: syear })
-  }
 
-  updateEndyear = (eyear) => {
-    this.setState({ eyear: eyear })
-  }
+  // extractGenres = (one) => {
+  //   let genresArray = [];
+  //   let id = 0;
+  //   one.forEach(element => {
+  //     if (id++ < 18)
+  //       genresArray.push(element.name);
 
-  updateGenres = (genres) => {
-    this.setState({ genres: genres })
-  }
-
-  extractGenres = (one) => {
-    let genresArray = [];
-    let id = 0;
-    one.forEach(element => {
-      if (id++ < 18)
-        genresArray.push(element.name);
-
-    });
-    return genresArray;
-  }
+  //   });
+  //   return genresArray;
+  // }
 
   render() {
-
-    var genslides = this.extractGenres(this.props.filtergen && this.props.filtergen.genres ? this.props.filtergen.genres : []);
-    console.log(genslides, "fklhdskfhdskl");
-
     return (
-      <View style={{ flex: 1 }}>
-        <View style={{ flex: 0.1, backgroundColor: '#323232', flexDirection: 'row' }}>
-          <View style={{ flex: 0.3, justifyContent: 'center' }}><Text style={{ fontSize: totalSize(3), fontWeight: 'bold', color: 'white', marginLeft: totalSize(2) }}>Filters</Text></View>
-          <View style={{ flex: 0.5 }}></View>
-          <View style={{ flex: 0.2, justifyContent: 'center' }}>
-            <TouchableOpacity onPress={() => {this.pickerShow()}}>
-              <Text style={{ fontSize: totalSize(3), color: 'white' }}>Apply</Text>
-            </TouchableOpacity>
+     
+          <View style={{flex:1}}>
+
+          <View style={{ flex: 0.1, flexDirection: 'row' }}>
+            <View style={{ flex: 0.5, marginLeft: totalSize(2), borderWidth: 1 }}>
+              <Text>Start</Text>
+              <TextInput placeholder='1990' />
+            </View>
+            <View style={{ flex: 0.5, marginLeft: totalSize(2), borderWidth: 1 }}>
+              <Text>End</Text>
+              <TextInput placeholder='2018' />
+            </View>
+
           </View>
+          <View style={{ flex: 0.05, backgroundColor: '#C0C0C0' }}><Text style={{ fontSize: totalSize(2.5), marginLeft: totalSize(2) }}>Generes</Text></View>
+          <View style-={{ flex: 0.7, marginLeft: totalSize(2), borderWidth: 1 }}>
+            <Text>Genres</Text>
+            <TextInput placeholder='Genres' onChangeText={(genres) => this.setState({ genres })} />
+          </View>
+          <Button title="asdfsd" onPress={this.setting} />
         </View>
-
-        <View style={{ flex: 0.05, backgroundColor: '#C0C0C0' }}><Text style={{ fontSize: totalSize(2.5), marginLeft: totalSize(2) }}>Year Range</Text></View>
-
-        <View style={{ flex: 0.1, flexDirection: 'row' }}>
-          <View style={{ flex: 0.5, marginLeft: totalSize(2) }}>
-            <Picker selectedValue={this.state.syear} onValueChange={this.updateStartyear}>
-              <Picker.Item label="2010" value="2010" />
-              <Picker.Item label="2011" value="2011" />
-              <Picker.Item label="2012" value="2012" />
-            </Picker>
-          </View>
-          <View style={{ flex: 0.5, marginLeft: totalSize(2) }}>
-            <Picker selectedValue={this.state.eyear} onValueChange={this.updateEndyear}>
-              <Picker.Item label="2010" value="2010" />
-              <Picker.Item label="2011" value="2011" />
-              <Picker.Item label="2012" value="2012" />
-            </Picker>
-          </View>
-          {/* <Text style={styles.text}>{this.state.eyear}</Text> */}
-        </View>
-        <View style={{ flex: 0.05, backgroundColor: '#C0C0C0' }}><Text style={{ fontSize: totalSize(2.5), marginLeft: totalSize(2) }}>Generes</Text></View>
-        <View style-={{ flex: 0.7, marginLeft: totalSize(2) }}>
-
       
-        </View>
-      </View>
-    )
+    );
   }
 }
 

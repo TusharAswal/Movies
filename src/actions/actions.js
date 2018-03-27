@@ -558,12 +558,12 @@ export function getworkintv(id) {
     }
 }
 
-export function getallgenres() {
+export function getallgenres(sy,ey,gen) {
     return(dispatch)=>{
-        fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch('https://api.themoviedb.org/3/discover/movie?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&release_date.gte='+ sy +'&release_date.lte='+ ey +'&with_genres='+ gen)
         .then((response)=> response.json())
         .then((responseJson)=>{
-   console.log('SEARCHING FOR All genres',responseJson)
+   console.log('SEARCHING FOR All ffiltered data',responseJson.id)
             dispatch({type:ALLGENRES, payload:responseJson})
         })
         .catch((error=> {
