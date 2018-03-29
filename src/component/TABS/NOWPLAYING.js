@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Image from 'react-native-image-progress';
 import Progress from 'react-native-progress';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/movieAction';
 import { bindActionCreators } from 'redux';
 import Modal from "react-native-modal";
 const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -108,7 +108,7 @@ class NOWPLAYING extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    movies: state.movieReducer.data,
+    movies: state.movieReducer.moviedata,
 
     isLoading: state.movieReducer.loading
   }

@@ -3,7 +3,7 @@ import {Text,View,ScrollView,FlatList,ActivityIndicator,} from 'react-native';
 import {height,width,totalSize} from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/tvshowsAction';
 import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
@@ -148,15 +148,15 @@ class INFO extends Component {
 
 mapStateToProps=(state, props)=>{
     return {
-        rating: state.getRatReducer.data,
-        firstAir: state.getfirstAirReducer.data,
-        lastAir: state.getlastAirReducer.data,
-        net: state.getnetReducer.data,
-        showType: state.getshowTypeReducer.data,
-        showStat :state.getshowStatReducer.data,
-        creator: state.getcreatorReducer.data,
-        overview: state.getoverviewReducer.data,
-        similartv: state.getsimilartvReducer.data,
+        rating: state.tvshowsReducer.data,
+        firstAir: state.tvshowsReducer.data,
+        lastAir: state.tvshowsReducer.data,
+        net: state.tvshowsReducer.data,
+        showType: state.tvshowsReducer.data,
+        showStat :state.tvshowsReducer.data,
+        creator: state.tvshowsReducer.data,
+        overview: state.tvshowsReducer.data11,
+        similartv: state.tvshowsReducer.data,
        
     }
 }

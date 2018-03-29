@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
 import TabBar from "react-native-underline-tabbar";
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import * as myActions from '../actions/actions/';
+import * as myActions from '../actions/peopleAction/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
@@ -91,7 +91,7 @@ class POPULAR_PEOPLE extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        popularPeople: state.popularpeepsReducer.data,
+        popularPeople: state.peopleinfoReducer.data,
 
     }
 }

@@ -4,7 +4,7 @@ import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/tvshowsAction';
 import { bindActionCreators } from 'redux';
 import Image from 'react-native-image-progress';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -85,7 +85,7 @@ class POPULAR extends React.Component {
 
               </TouchableOpacity>
 
-              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.5, marginTop: this.state.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
+              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.0, marginTop: this.state.singleRow ? 0 : 5, borderColor: 'white' }}>
               </View>
             </View>}
           keyExtractor={(item, index) => index}
@@ -98,8 +98,8 @@ class POPULAR extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    topratedtv: state.topratedtvReducer.data,
-    isLoading: state.topratedtvReducer.loading
+    topratedtv: state.tvshowsReducer.data,
+    isLoading: state.tvshowsReducer.loading
   }
 }
 

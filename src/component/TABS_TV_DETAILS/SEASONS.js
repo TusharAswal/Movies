@@ -3,7 +3,7 @@ import { Text, View, ScrollView, FlatList,ActivityIndicator, } from 'react-nativ
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/tvshowsAction';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
 import Image from 'react-native-image-progress';
@@ -61,7 +61,7 @@ class SEASONS extends Component {
 mapStateToProps = (state, props) => {
 
     return {
-        tvseason: state.tvseasonReducer.data,
+        tvseason: state.tvshowsReducer.data,
     }
 }
 

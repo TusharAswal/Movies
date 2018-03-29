@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { View, Text, ActivityIndicator, FlatList, ScrollView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/movieAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { totalSize } from 'react-native-dimension';

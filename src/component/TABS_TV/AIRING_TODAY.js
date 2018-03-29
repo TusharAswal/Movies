@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Image from 'react-native-image-progress';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/tvshowsAction';
 import { bindActionCreators } from 'redux';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -85,7 +85,7 @@ class AIRING_TODAY extends React.Component {
 
               </TouchableOpacity>
 
-              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.2, marginTop: this.state.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
+              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.0, marginTop: this.state.singleRow ? 0 : 5, borderColor: 'white' }}>
               </View>
             </View>}
           keyExtractor={(item, index) => index}
@@ -98,8 +98,8 @@ class AIRING_TODAY extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    airing: state.airingTodayReducer.data,
-    isLoading: state.airingTodayReducer.loading
+    airing: state.tvshowsReducer.data,
+    isLoading: state.tvshowsReducer.loading
   }
 }
 

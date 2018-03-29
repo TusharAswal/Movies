@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import * as myActions from '../actions/actions';
+import * as myActions from '../actions/peopleAction';
 import { bindActionCreators } from 'redux';
 import Image from 'react-native-image-progress';
 import Swiper from 'react-native-swiper';
@@ -33,6 +33,7 @@ class PEOPLE_DETAIL extends Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
+        
         if (this.props.celebdetails != nextProps.celebdetails) {
             this.setState({ celebdetails: nextProps.celebdetails, imge: nextProps.imge })
 
@@ -50,8 +51,11 @@ class PEOPLE_DETAIL extends Component {
         return imgArray;
     }
     render() {
+    
         var slides = this.extractFilePath(this.props.imge);
+        
         return (
+            this.props.imge?
             <View style={{ flex: 1, }}>
 
                 <View style={{ flex: 0.5, }}>
@@ -114,15 +118,16 @@ class PEOPLE_DETAIL extends Component {
                 </View>
 
             </View>
-        );
+       
+        ); 
     }
 
 }
 
 mapStateToProps = (state, props) => {
     return {
-        celebdetails: state.getcelebdetailsReducer.data,
-        imge: state.gethisimgReducer.data,
+        celebdetails: state.peopleinfoReducer.data,
+        imge: state.peopleinfoReducer.data,
     }
 }
 

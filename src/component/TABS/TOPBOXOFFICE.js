@@ -3,7 +3,7 @@ import { FlatList, ActivityIndicator, Text, View, TouchableOpacity } from 'react
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/movieAction';
 import { bindActionCreators } from 'redux';
 import Image from 'react-native-image-progress';
 import { Actions } from 'react-native-router-flux';
@@ -104,8 +104,8 @@ class TOPBOXOFFICE extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    topmovies: state.topmovieReducer.data,
-    isLoading: state.topmovieReducer.loading
+    topmovies: state.movieReducer.data1,
+    isLoading: state.movieReducer.loading
   }
 }
 

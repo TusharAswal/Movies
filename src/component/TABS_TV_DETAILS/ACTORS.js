@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text,View,ScrollView,FlatList,TouchableOpacity,ActivityIndicator,} from 'react-native';
 import {height,width,totalSize} from 'react-native-dimension';
 import { connect } from 'react-redux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/tvshowsAction';
 import { bindActionCreators } from 'redux';
 import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
@@ -58,7 +58,7 @@ class ACTORS extends Component {
 
 mapStateToProps=(state, props) => {
     return{
-        casttv: state.casttvReducer.data,
+        casttv: state.tvshowsReducer.data,
 
     }
 } 

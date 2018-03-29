@@ -3,7 +3,7 @@ import { Text, View, Image, ScrollView, FlatList,ActivityIndicator, } from 'reac
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/peopleAction';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
 class INFO extends Component {
@@ -41,6 +41,7 @@ class INFO extends Component {
     render() {
 
         return (
+            this.props.gettingpersonal?
             <View style={{ flex: 1 }}>
                 <ScrollView style={{ flex: 0.89 }}>
                     <ScrollView style={{ flex: 0.4, marginLeft: width(3), marginRight: width(3) }}>
@@ -72,6 +73,8 @@ class INFO extends Component {
                     />
                 </ScrollView>
             </View>
+            :
+            null
         );
 
     }
@@ -79,8 +82,8 @@ class INFO extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        gettingpersonal: state.gettingpersonalReducer.data,
-        gethisimg: state.gethisimgReducer.data
+        gettingpersonal: state.peopleinfoReducer.data21,
+        gethisimg: state.peopleinfoReducer.data22
 
     }
 }

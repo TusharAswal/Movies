@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
 import TabBar from "react-native-underline-tabbar";
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import * as myActions from '../actions/actions/';
+import * as myActions from '../actions/movieAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -18,7 +18,6 @@ import TOPBOXOFFICE from './TABS/TOPBOXOFFICE';
 import ANTICIPATED from './TABS/ANTICIPATED';
 import IMDBTOP250 from './TABS/IMDBTOP250';
 import NEWDVDS from './TABS/NEWDVDS';
-import TOPRATED from './TABS/TOPRATED';
 import TRENDING from './TABS/TRENDING';
 import UPCOMING from './TABS/UPCOMING';
 import UPCOMINGDVDS from './TABS/UPCOMINGDVDS';

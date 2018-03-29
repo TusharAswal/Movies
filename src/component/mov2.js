@@ -3,7 +3,7 @@ import { FlatList, View, Text, StyleSheet, TouchableOpacity, TextInput, Button,A
 import { width, height, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import * as myActions from '../actions/actions';
+import * as myActions from '../actions/filterAction';
 import { bindActionCreators } from 'redux';
 import Picker from 'react-native-picker';
 import StartDatePicker from './startDatePicker'
@@ -55,7 +55,7 @@ class mov2 extends Component {
 mapStateToProps = (state, props) => {
 
   return {
-    filtergen1: state.filtergenReducer1.data,
+    filtergen1: state.filterReducer.data,
   }
 }
 

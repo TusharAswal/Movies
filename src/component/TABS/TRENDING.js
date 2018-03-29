@@ -4,7 +4,7 @@ import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/movieAction';
 import { bindActionCreators } from 'redux';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";

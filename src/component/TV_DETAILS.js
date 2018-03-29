@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import * as myActions from '../actions/actions';
+import * as myActions from '../actions/tvshowsAction';
 import { bindActionCreators } from 'redux';
 import Share, { ShareSheet, Button } from "react-native-share"
 import Swiper from 'react-native-swiper';
@@ -307,10 +307,10 @@ class TV_DETAILS extends Component {
 mapStateToProps = (state, props) => {
 
     return {
-        tvdetails: state.tvdetailReducer.data,
-        isLoading: state.tvdetailReducer.loading,
-        tvimg: state.tvimageReducer.data,
-        tvruntime: state.tvruntimeReducer.data,
+        tvdetails: state.tvshowsReducer.data,
+        isLoading: state.tvshowsReducer.loading,
+        tvimg: state.tvshowsReducer.data,
+        tvruntime: state.tvshowsReducer.data,
     }
 }
 

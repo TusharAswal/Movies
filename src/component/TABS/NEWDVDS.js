@@ -4,7 +4,7 @@ import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import Image from 'react-native-image-progress';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/movieAction';
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
@@ -105,8 +105,8 @@ class NEWDVDS extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    upcoming_: state.upcomingMovieReducer.data,
-    isLoading: state.upcomingMovieReducer.loading
+    upcoming_: state.movieReducer.data,
+    isLoading: state.movieReducer.loading
   }
 }
 

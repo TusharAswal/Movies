@@ -3,7 +3,7 @@ import { Text, View, ScrollView, FlatList, TouchableOpacity,ActivityIndicator, }
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
-import * as myActions from '../../actions/actions';
+import * as myActions from '../../actions/movieAction';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
@@ -22,7 +22,7 @@ class INFO extends Component {
     }
 
     componentDidMount() {
-
+       
         this.props.gettingREBURE(this.props.data.info.id);
         this.props.gettingcrew(this.props.data.info.id);
         this.props.gettingsimilarMovies(this.props.data.info.id);
@@ -45,8 +45,8 @@ class INFO extends Component {
 
 
     render() {
-
         return (
+             this.props.ReBuRe?
             <View style={{ flex: 1 }}>
                 <View style={{ flex: 0.2, marginTop: 5, marginRight: 10, marginLeft: 10, flexDirection: 'row' }}>
                     <View style={{ flex: 0.1666, alignItems: 'center' }}>
@@ -106,16 +106,17 @@ class INFO extends Component {
                     />
                 </ScrollView>
             </View>
-        );
-
+            : null 
+        ); 
     }
-}
+    }
+
 
 mapStateToProps = (state, props) => {
     return {
-        ReBuRe: state.rebureReducer.data,
-        director: state.crewReducer.data,
-        similarmov: state.similarmovReducer.data,
+        ReBuRe: state.movieReducer.data9,
+        director: state.movieReducer.data10,
+        similarmov: state.movieReducer.data7,
     }
 }
 mapDispatchToProps = (dispatch) => {

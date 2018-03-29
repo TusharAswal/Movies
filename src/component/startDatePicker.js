@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput, Button,ActivityInd
 import { width, height, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import * as myActions from '../actions/actions';
+import * as myActions from '../actions/filterAction';
 import { bindActionCreators } from 'redux';
 import Picker from 'react-native-picker';
 
@@ -140,7 +140,7 @@ mapStateToProps = (state, props) => {
 
   return {
 
-    gotagenres: state.contentisReducer.data
+    gotagenres: state.filterReducer.data
   }
 }
 

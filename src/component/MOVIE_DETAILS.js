@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import * as myActions from '../actions/actions';
+import * as myActions from '../actions/movieAction';
 import { bindActionCreators } from 'redux';
 import Modal from "react-native-modal";
 import Image from 'react-native-image-progress';
@@ -62,6 +62,7 @@ class MOVIE_DETAILS extends Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
+
         if (this.props.mdetails != nextProps.mdetails) {
 
             this.setState({
@@ -97,7 +98,8 @@ class MOVIE_DETAILS extends Component {
 
 
     render() {
-        var slides = this.extractFilePath(this.props.mdetails);
+        console.log("Detail props",this.props.movie);
+        var slides = this.props.mdetails?this.extractFilePath(this.props.mdetails):[];
         return (
             <View style={{ flex: 1, }}>
 
@@ -311,10 +313,10 @@ class MOVIE_DETAILS extends Component {
 mapStateToProps = (state, props) => {
 
     return {
-        mdetails: state.mdetailReducer.data,
-        otherdetails: state.otherdetailReducer.data,
-        isLoading: state.mdetailReducer.loading,
-        genres: state.genresReducer.data,
+        mdetails: state.movieReducer.data4,
+        otherdetails: state.movieReducer.data5,
+        isLoading: state.movieReducer.loading,
+        genres: state.movieReducer.data6,
     }
 }
 
