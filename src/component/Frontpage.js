@@ -65,29 +65,29 @@ class Frontpage extends Component {
                             </View>
 
                             <View style={{ flex: 0.5, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity  onPress={()=>Actions.SEARCHMOVIE()} style={{ }}>
-                                    <Icon name='search' size={totalSize(3)} style={{ alignSelf:'center' }} color='white' />
+                                <TouchableOpacity onPress={() => Actions.SEARCHMOVIE()} style={{}}>
+                                    <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'center' }} color='white' />
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </View>
 
-                    <ScrollableTabView style={{backgroundColor:'white'}}
+                    <ScrollableTabView style={{ backgroundColor: 'white' }}
                         tabBarBackgroundColor="#333435"
                         tabBarActiveTextColor="#fff"
                         tabBarInactiveTextColor="#BDC3C7"
                         tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <NOWPLAYING tabLabel= "NOW PLAYING" label="Page #1" singleRow={this.state.singleRow} />
-                        <TOPBOXOFFICE tabLabel= "TOP BOX OFFICE" label="Page #2" singleRow={this.state.singleRow} />
+                        <NOWPLAYING tabLabel="NOW PLAYING" label="Page #1" singleRow={this.state.singleRow} />
+                        <TOPBOXOFFICE tabLabel="TOP BOX OFFICE" label="Page #2" singleRow={this.state.singleRow} />
                         <ANTICIPATED tabLabel="ANTICIPATED" label="Page #3" singleRow={this.state.singleRow} />
-                        <IMDBTOP250 tabLabel= "IMDB TOP 250" label="Page #4" singleRow={this.state.singleRow} />
-                        <NEWDVDS tabLabel="NEW DVDS"  label="Page #5" singleRow={this.state.singleRow} />
-                        <ONNETFLIX tabLabel= "ON NET FLIX" label="Page #6" singleRow={this.state.singleRow} />
+                        <IMDBTOP250 tabLabel="IMDB TOP 250" label="Page #4" singleRow={this.state.singleRow} />
+                        <NEWDVDS tabLabel="NEW DVDS" label="Page #5" singleRow={this.state.singleRow} />
+                        <ONNETFLIX tabLabel="ON NET FLIX" label="Page #6" singleRow={this.state.singleRow} />
                         <TRENDING tabLabel="TRENDING" label="Page #7" singleRow={this.state.singleRow} />
-                        <UPCOMING tabLabel= "UPCOMING"  label="Page #8"singleRow={this.state.singleRow}  />
-                        <UPCOMINGDVDS tabLabel= "UPCOMING DVDS"  label="Page #9" singleRow={this.state.singleRow} />
+                        <UPCOMING tabLabel="UPCOMING" label="Page #8" singleRow={this.state.singleRow} />
+                        <UPCOMINGDVDS tabLabel="UPCOMING DVDS" label="Page #9" singleRow={this.state.singleRow} />
                     </ScrollableTabView>
 
                 </View>

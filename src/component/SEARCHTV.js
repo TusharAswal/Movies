@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { ScrollView,TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { ScrollView, TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -29,10 +29,9 @@ class SEARCHTV extends Component {
         this.props.searchtv(this.state.tvname);
     }
 
-   
+
 
     componentWillReceiveProps = (nextProps) => {
-       console.log("TV NAMES",nextProps.gottv)
         if (this.props.gottv != nextProps.gottv) {
             this.setState({ gottv: nextProps.gottv })
         }
@@ -41,22 +40,22 @@ class SEARCHTV extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-            <ScrollView>
-                <View style={{ flex: 0.1,flexDirection:'row', backgroundColor: '#323232'}}>
-                    <View style={{ flex: 0.15, }}>
-                        <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
-                            <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
-                        </TouchableOpacity>
-                    </View>
+                <ScrollView>
+                    <View style={{ flex: 0.1, flexDirection: 'row', backgroundColor: '#323232' }}>
+                        <View style={{ flex: 0.15, }}>
+                            <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                                <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
+                            </TouchableOpacity>
+                        </View>
 
-                    <View style={{ flex: 0.1 }}>
-                        <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'center',marginTop:height(1.5) }} color='white' />
-                    </View>
+                        <View style={{ flex: 0.1 }}>
+                            <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'center', marginTop: height(1.5) }} color='white' />
+                        </View>
 
-                    <View style={{flex:0.75}}>
-                        <TextInput style={{color:'white'}} placeholderTextColor="white"  placeholder="Search Tv Shows" onChangeText={(tvname) => this.setState({tvname})}/>
+                        <View style={{ flex: 0.75 }}>
+                            <TextInput style={{ color: 'white' }} placeholderTextColor="white" placeholder="Search Tv Shows" onChangeText={(tvname) => this.setState({ tvname })} />
+                        </View>
                     </View>
-                </View>
                 </ScrollView>
                 <FlatList
                     keyExtractor={item => item.id.toString()}

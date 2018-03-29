@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { KeyboardAvoidingView,TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight,TouchableOpacity,ScrollView } from 'react-native';
+import { KeyboardAvoidingView, TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity, ScrollView } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -26,14 +26,12 @@ class SEARCH_PEOPLE extends Component {
     }
 
     componentWillUpdate = () => {
-        console.log("POPULAR PEOPLE one",this.state.name)
         this.props.searchname(this.state.name);
     }
 
-   
+
 
     componentWillReceiveProps = (nextProps) => {
-       console.log("POPULAR PEOPLE",nextProps.gotname)
         if (this.props.gotname != nextProps.gotname) {
             this.setState({ gotname: nextProps.gotname })
         }
@@ -42,30 +40,30 @@ class SEARCH_PEOPLE extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-             <ScrollView>
-                <View style={{ flex: 0.1,flexDirection:'row', backgroundColor: '#323232',}}>
-                    <View style={{ flex: 0.15, }}>
-                        <TouchableOpacity onPress={() => Actions.popTo('POPULAR_PEOPLE')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
-                            <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
-                        </TouchableOpacity>
-                    </View>
+                <ScrollView>
+                    <View style={{ flex: 0.1, flexDirection: 'row', backgroundColor: '#323232', }}>
+                        <View style={{ flex: 0.15, }}>
+                            <TouchableOpacity onPress={() => Actions.popTo('POPULAR_PEOPLE')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                                <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
+                            </TouchableOpacity>
+                        </View>
 
-                    <View style={{ flex: 0.1 }}>
-                        <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'center',marginTop:height(1.5) }} color='white' />
-                    </View>
+                        <View style={{ flex: 0.1 }}>
+                            <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'center', marginTop: height(1.5) }} color='white' />
+                        </View>
 
-                    <View style={{flex:0.75}}>
-                        <TextInput style={{color:'white'}} placeholderTextColor="white"  placeholder="Search for People" onChangeText={(name) => this.setState({name})}/>
+                        <View style={{ flex: 0.75 }}>
+                            <TextInput style={{ color: 'white' }} placeholderTextColor="white" placeholder="Search for People" onChangeText={(name) => this.setState({ name })} />
+                        </View>
                     </View>
-                </View>
                 </ScrollView>
-                 
-                    <FlatList
-                        keyExtractor={item => item.id.toString()}
-                        key={`${item => item.id * 0.1.toString()}`}
-                        data={this.props.gotname}
-                        numColumns={1}
-                        renderItem={({ item }) =>
+
+                <FlatList
+                    keyExtractor={item => item.id.toString()}
+                    key={`${item => item.id * 0.1.toString()}`}
+                    data={this.props.gotname}
+                    numColumns={1}
+                    renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'column' }}>
                             <TouchableOpacity style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
                                 <View style={{ flex: 0.35, justifyContent: 'center' }}><Image source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
@@ -74,7 +72,7 @@ class SEARCH_PEOPLE extends Component {
                             <View style={{ alignSelf: 'center', flex: 0.01, borderWidth: 1, borderColor: '#DCDCDC', margin: height(2), width: width(95) }}></View>
                         </View>
                     } />
-                    
+
             </View>
 
         );

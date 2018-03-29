@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { Modal, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -11,36 +11,39 @@ import * as myActions from '../actions/actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
+import Modal from "react-native-modal";
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 //import PickerExample from './filtermovies';
+import { Radio, List, ListItem, Right } from "native-base";
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 class DISCOVER extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isVisible: false,
             isLoading: true,
-            movies: [],
+            discover: [],
             singleRow: true,
-            modalVisible: false,
+            start: 1990,
+            end: 2018,
+            arrange: 'popularity.desc'
+
         }
 
         this.openDrawer = this.openDrawer.bind(this);
     }
-    setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
-    }
+
 
 
     componentDidMount() {
-        this.props.nowPlaying();
+        this.props.Discovernow(this.props.starting, this.props.ending, this.props.geniss, this.state.arrange);
 
     }
 
     componentWillReceiveProps = (nextProps) => {
-        //console.log("IT IS LOADING: ", this.props.isLoading);
-        if (this.props.movies != nextProps.movies) {
-            this.setState({ movie: nextProps.movies, isLoading: nextProps.isLoading })
+        if (this.props.discover != nextProps.discover) {
+            this.setState({ discover: nextProps.discover, isLoading: nextProps.isLoading })
         }
     }
 
@@ -74,13 +77,13 @@ class DISCOVER extends Component {
                         <View style={{ flex: 0.4, flexDirection: 'row', backgroundColor: '#323232', margin: 10 }}>
 
                             <View style={{ flex: 0.333, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity onPress={()=>Actions.mov2()}>
+                                <TouchableOpacity onPress={() => Actions.mov2()}>
                                     <Icon name='filter' size={totalSize(3)} style={{ alignSelf: 'center' }} color='white' />
                                 </TouchableOpacity>
                             </View>
 
                             <View style={{ flex: 0.333, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity >
+                                <TouchableOpacity onPress={() => { this.setState({ isVisible: true }); }}>
                                     <Icon name='sort' size={totalSize(3)} style={{ alignSelf: 'center' }} color='white' />
                                 </TouchableOpacity>
                             </View>
@@ -94,61 +97,174 @@ class DISCOVER extends Component {
                     </View>
 
                     <View style={{ flex: 0.9 }}>
-                        <FlatList style={{ backgroundColor: 'white' }}
-                            keyExtractor={item => item.id.toString()}
-                            key={`${this.state.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
+                        {this.props.discover ?
+                            <FlatList style={{ backgroundColor: 'white' }}
+                                keyExtractor={item => item.id.toString()}
+                                key={`${this.state.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
 
-                            numColumns={this.state.singleRow ? 3 : 1}
-                            data={this.props.movies}
-                            renderItem={({ item }) =>
-                                <View style={{ flex: 1, flexDirection: this.state.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
+                                numColumns={this.state.singleRow ? 3 : 1}
+                                data={this.props.discover.results}
+                                renderItem={({ item }) =>
 
-                                    <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.state.singleRow ? 'column' : 'row', width: this.state.singleRow ? width(30) : width(70), height: height(30), }}>
-                                        <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
-                                            <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.state.singleRow ? width(30) : width(30) }} />
+                                    <View style={{ flex: 1, flexDirection: this.state.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
+
+                                        <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.state.singleRow ? 'column' : 'row', width: this.state.singleRow ? width(30) : width(70), height: height(30), }}>
+                                            <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
+                                                <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.state.singleRow ? width(30) : width(30) }} />
+                                            </View>
+
+                                            {this.state.singleRow ?
+                                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0', width: width(30) }}>
+                                                    <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
+                                                        <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.original_title}</Text>
+                                                    </View>
+                                                    <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
+                                                        <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
+                                                    </View>
+                                                </View>
+                                                :
+                                                <View style={{
+                                                    flexDirection: 'column',
+                                                    justifyContent: 'space-between', flex: 0.8, marginBottom: height * 0.0015, marginLeft: width * 0.02
+                                                }}>
+                                                    <View style={{ flex: 0.8, flexWrap: 'wrap', flexDirection: 'column' }}>
+                                                        <Text style={{ fontSize: 12, textAlign: 'left', color: '#6C7A89' }} numberOfLines={2}>
+                                                            {new Date(item.release_date).getFullYear()}
+                                                        </Text>
+                                                        <Text style={{ justifyContent: 'flex-start', fontSize: 15, fontWeight: 'bold', color: '#000' }} numberOfLines={2}>{item.original_title}</Text>
+
+                                                        <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}>{item.genre_ids}</Text>
+                                                    </View>
+                                                    <View style={{ flex: 0.2, flexDirection: 'row', marginBottom: height * 0.015 }}>
+                                                        <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
+                                                        <Text style={{ textAlign: 'center', textAlignVertical: 'center', color: '#000' }}>  {item.vote_average}</Text>
+                                                    </View>
+                                                </View>
+
+                                            }
+
+                                        </TouchableOpacity>
+
+                                        <View style={{ borderWidth: this.state.singleRow ? 0 : 0.5, marginTop: this.state.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
                                         </View>
-
-                                        {this.state.singleRow ?
-                                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0' }}>
-                                                <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
-                                                    <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
-                                                </View>
-                                                <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
-                                                    <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
-                                                </View>
-                                            </View>
-                                            :
-                                            <View style={{
-                                                flexDirection: 'column',
-                                                justifyContent: 'space-between', flex: 0.8, marginBottom: height * 0.0015, marginLeft: width * 0.02
-                                            }}>
-                                                <View style={{ flex: 0.8, flexWrap: 'wrap', flexDirection: 'column' }}>
-                                                    <Text style={{ fontSize: 12, textAlign: 'left', color: '#6C7A89' }} numberOfLines={2}>
-                                                        {new Date(item.release_date).getFullYear()}
-                                                    </Text>
-                                                    <Text style={{ justifyContent: 'flex-start', fontSize: 15, fontWeight: 'bold', color: '#000' }} numberOfLines={2}>{item.title}</Text>
-
-                                                    <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}>{item.genre_ids}</Text>
-                                                </View>
-                                                <View style={{ flex: 0.2, flexDirection: 'row', marginBottom: height * 0.015 }}>
-                                                    <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
-                                                    <Text style={{ textAlign: 'center', textAlignVertical: 'center', color: '#000' }}>  {item.vote_average}</Text>
-                                                </View>
-                                            </View>
-
-                                        }
-
-                                    </TouchableOpacity>
-
-                                    <View style={{ borderWidth: this.state.singleRow ? 0 : 0.2, marginTop: this.state.singleRow ? 0 : 5, borderColor: 'grey' }}>
-                                    </View>
-                                </View>}
-                            keyExtractor={(item, index) => index}
-                        />
+                                    </View>}
+                                keyExtractor={(item, index) => index}
+                            /> :
+                            <View><Text>Empty</Text></View>}
 
                     </View>
                 </View>
-                
+                <Modal
+                    isVisible={this.state.isVisible}
+                    onBackdropPress={() => this.setState({ isVisible: false })}
+                >
+                    <View style={{ backgroundColor: "#fff", flex: 0.6 }}>
+                        <Text
+                            style={{
+                                color: "#000",
+                                fontSize: 16,
+                                fontWeight: "bold",
+                                padding: 15
+                            }}
+                        >
+                            Apply Sorting By
+                  </Text>
+                        <List>
+                            <ListItem
+                                onPress={() => {
+                                    this.setState({
+                                        arrange: "original_title.desc",
+                                        isVisible: false,
+                                        loading: true
+                                    });
+                                    this.props.Discovernow(this.props.starting, this.props.ending, this.props.geniss, this.state.arrange);
+                                }}
+                            >
+                                <Radio
+                                    selected={
+                                        this.state.arrange == "original_title.desc"
+                                    }
+                                />
+                                <Text style={{ paddingLeft: 10, color: "#000" }}>Title</Text>
+                            </ListItem>
+                            <ListItem
+                                onPress={() => {
+                                    this.setState({
+                                        arrange: "popularity.desc",
+                                        isVisible: false,
+                                        loading: true
+                                    });
+                                    this.props.Discovernow(this.props.starting, this.props.ending, this.props.geniss, this.state.arrange);
+                                }}
+                            >
+                                <Radio
+                                    selected={this.state.arrange == "popularity.desc"}
+                                />
+                                <Text style={{ paddingLeft: 10, color: "#000" }}>Popularity</Text>
+                            </ListItem>
+                            <ListItem
+                                onPress={() => {
+                                    this.setState({
+                                        arrange: "vote_average.desc",
+                                        isVisible: false,
+                                        loading: true
+                                    });
+                                    this.props.Discovernow(this.props.starting, this.props.ending, this.props.geniss, this.state.arrange);
+                                }}
+                            >
+                                <Radio
+                                    selected={
+                                        this.state.arrange == "vote_average.desc"
+                                    }
+                                />
+                                <Text style={{ paddingLeft: 10, color: "#000" }}>Rating</Text>
+                            </ListItem>
+                            <ListItem
+                                onPress={() => {
+                                    this.setState({
+                                        arrange: "release_date.desc",
+                                        isVisible: false,
+                                        loading: true
+                                    });
+                                    this.props.Discovernow(this.props.starting, this.props.ending, this.props.geniss, this.state.arrange);
+                                }}
+                            >
+                                <Radio
+                                    selected={
+                                        this.state.arrange == "release_date.desc"
+                                    }
+                                />
+                                <Text style={{ paddingLeft: 10, color: "#000" }}>Release Date</Text>
+                            </ListItem>
+                            <ListItem
+                                onPress={() => {
+                                    this.setState({
+                                        arrange: "revenue.desc",
+                                        isVisible: false,
+                                        loading: true
+                                    });
+                                    this.props.Discovernow(this.props.starting, this.props.ending, this.props.geniss, this.state.arrange);
+                                }}
+                            >
+                                <Radio
+                                    selected={this.state.arrange == "revenue.desc"}
+                                />
+                                <Text style={{ paddingLeft: 10, color: "#000" }}>Revenue</Text>
+                            </ListItem>
+                        </List>
+                        <Text
+                            style={{
+                                textAlign: "right",
+                                color: "green",
+                                fontSize: 12,
+                                marginRight: 10
+                            }}
+                            onPress={() => this.setState({ isVisible: false })}
+                        >
+                            CANCEL
+                  </Text>
+                    </View>
+                </Modal>
             </DrawerLayoutAndroid>
 
 
@@ -157,9 +273,8 @@ class DISCOVER extends Component {
 }
 
 mapStateToProps = (state, props) => {
-    //console.log("state : ", state);
     return {
-        movies: state.movieReducer.data,
+        discover: state.discoverReducer.data,
         isLoading: state.movieReducer.loading
     }
 }

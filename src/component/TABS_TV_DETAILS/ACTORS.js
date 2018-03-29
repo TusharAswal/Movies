@@ -50,6 +50,7 @@ class ACTORS extends Component {
                 <View style={{alignSelf:'center',flex:0.01,borderWidth:1,borderColor:'#DCDCDC',marginTop:height(1),width:width(95)}}></View>
                 </View>                
             } />
+            <SHARE/>
         </View>           
                
         );

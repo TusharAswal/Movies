@@ -4,7 +4,6 @@ import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-
 import * as myActions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
 
@@ -17,25 +16,23 @@ class TRENDING extends React.Component {
     this.state = {
       isLoading: true,
       movies: [],
-      
+
     }
   }
 
   componentDidMount() {
     this.props.nowPlaying();
-    
+
   }
 
- componentWillReceiveProps=(nextProps)=>{
-//  console.log("Video: ", nextProps.movies.video);
-   if(this.props.movies!=nextProps.movies ){
-     this.setState({movie:nextProps.movies, isLoading:nextProps.isLoading})
-   }
- }
+  componentWillReceiveProps = (nextProps) => {
+    if (this.props.movies != nextProps.movies) {
+      this.setState({ movie: nextProps.movies, isLoading: nextProps.isLoading })
+    }
+  }
 
 
   render() {
-   // console.log(this.props);
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
@@ -43,7 +40,7 @@ class TRENDING extends React.Component {
         </View>
       )
     }
-   
+
     return (
       <View style={{ flex: 1, }}>
         <FlatList
@@ -61,9 +58,9 @@ class TRENDING extends React.Component {
                 </View>
 
                 {this.props.singleRow ?
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center',backgroundColor:'#C0C0C0' }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0', width: width(30) }}>
                     <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
-                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000', marginLeft: totalSize(1) }} numberOfLines={2}>{item.title}</Text>
                     </View>
                     <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
                       <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
@@ -80,7 +77,7 @@ class TRENDING extends React.Component {
                       </Text>
                       <Text style={{ justifyContent: 'flex-start', fontSize: 15, fontWeight: 'bold', color: '#000' }} numberOfLines={2}>{item.title}</Text>
 
-                      <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}>{item.genre_ids}</Text>
+                      <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}> {item.genre_ids}</Text>
                     </View>
                     <View style={{ flex: 0.2, flexDirection: 'row', marginBottom: height * 0.015 }}>
                       <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
@@ -92,7 +89,7 @@ class TRENDING extends React.Component {
 
               </TouchableOpacity>
 
-              <View style={{ borderWidth: this.props.singleRow ? 0 : 0.2, marginTop: this.props.singleRow ? 0 : 5, borderColor: 'grey' }}>
+              <View style={{ borderWidth: this.props.singleRow ? 0 : 0.5, marginTop: this.props.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
               </View>
             </View>}
           keyExtractor={(item, index) => index}
@@ -104,11 +101,10 @@ class TRENDING extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  //console.log("state : ", state);
   return {
     movies: state.movieReducer.data,
-    
-    isLoading:state.movieReducer.loading  
+
+    isLoading: state.movieReducer.loading
   }
 }
 

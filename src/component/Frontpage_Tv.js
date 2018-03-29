@@ -11,13 +11,12 @@ import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab
 import * as myActions from '../actions/actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import SideBarMenu from './SideBarMenu';
 import AIRING_TODAY from './TABS_TV/AIRING_TODAY';
 import POPULAR from './TABS_TV/POPULAR';
 import TOP_RATED from './TABS_TV/TOP_RATED';
 
- class Frontpage_Tv extends Component{
+class Frontpage_Tv extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -58,24 +57,24 @@ import TOP_RATED from './TABS_TV/TOP_RATED';
                             </View>
 
                             <View style={{ flex: 0.5, backgroundColor: '#323232', justifyContent: 'center' }}>
-                                <TouchableOpacity onPress={()=> Actions.SEARCHTV()}>
+                                <TouchableOpacity onPress={() => Actions.SEARCHTV()}>
                                     <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'flex-end' }} color='white' />
                                 </TouchableOpacity>
                             </View>
                         </View>
                     </View>
 
-                    <ScrollableTabView style={{backgroundColor:'white'}}
+                    <ScrollableTabView style={{ backgroundColor: 'white' }}
                         tabBarBackgroundColor="#333435"
                         tabBarActiveTextColor="#fff"
                         tabBarInactiveTextColor="#BDC3C7"
                         tabBarTextStyle={{ fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <AIRING_TODAY tabLabel='AIRING TODAY' singleRow={this.state.singleRow}/>
+                        <AIRING_TODAY tabLabel='AIRING TODAY' singleRow={this.state.singleRow} />
                         <POPULAR tabLabel='POPULAR  ' singleRow={this.state.singleRow} />
                         <TOP_RATED tabLabel='TOP RATED' singleRow={this.state.singleRow} />
-                    </ScrollableTabView> 
+                    </ScrollableTabView>
 
                 </View>
             </DrawerLayoutAndroid>
@@ -92,4 +91,4 @@ mapDispatchToProps = (dispatch) => {
     return bindActionCreators(myActions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)( Frontpage_Tv );
+export default connect(mapStateToProps, mapDispatchToProps)(Frontpage_Tv);

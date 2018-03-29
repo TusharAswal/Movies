@@ -17,25 +17,23 @@ class Anticipated extends React.Component {
     this.state = {
       isLoading: true,
       movies: [],
-      
+
     }
   }
 
   componentDidMount() {
     this.props.nowPlaying();
-    
+
   }
 
- componentWillReceiveProps=(nextProps)=>{
-  //console.log("Video: ", nextProps.movies.video);
-   if(this.props.movies!=nextProps.movies ){
-     this.setState({movie:nextProps.movies, isLoading:nextProps.isLoading})
-   }
- }
+  componentWillReceiveProps = (nextProps) => {
+    if (this.props.movies != nextProps.movies) {
+      this.setState({ movie: nextProps.movies, isLoading: nextProps.isLoading })
+    }
+  }
 
 
   render() {
-    //console.log(this.props);
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
@@ -43,7 +41,7 @@ class Anticipated extends React.Component {
         </View>
       )
     }
-   
+
     return (
       <View style={{ flex: 1, }}>
         <FlatList
@@ -61,9 +59,9 @@ class Anticipated extends React.Component {
                 </View>
 
                 {this.props.singleRow ?
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center',backgroundColor:'#C0C0C0' }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0', width: width(30) }}>
                     <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
-                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.title}</Text>
+                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000', marginLeft: totalSize(1) }} numberOfLines={2}>{item.title}</Text>
                     </View>
                     <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
                       <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
@@ -92,7 +90,7 @@ class Anticipated extends React.Component {
 
               </TouchableOpacity>
 
-              <View style={{ borderWidth: this.props.singleRow ? 0 : 0.2, marginTop: this.props.singleRow ? 0 : 5, borderColor: 'grey' }}>
+              <View style={{ borderWidth: this.props.singleRow ? 0 : 0.5, marginTop: this.props.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
               </View>
             </View>}
           keyExtractor={(item, index) => index}
@@ -104,11 +102,11 @@ class Anticipated extends React.Component {
 
 
 mapStateToProps = (state, props) => {
-  //console.log("state : ", state);
+
   return {
     movies: state.movieReducer.data,
-    
-    isLoading:state.movieReducer.loading  
+
+    isLoading: state.movieReducer.loading
   }
 }
 

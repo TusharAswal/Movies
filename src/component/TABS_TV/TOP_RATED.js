@@ -4,7 +4,6 @@ import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-
 import * as myActions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
 
@@ -24,16 +23,14 @@ class POPULAR extends React.Component {
     this.props.gettopratedtv();
   }
 
- componentWillReceiveProps=(nextProps)=>{
-   //console.log("AIRING", nextProps.airing)
-   if(this.props.topratedtv!=nextProps.topratedtv){
-     this.setState({topratedtv:nextProps.topratedtv, isLoading:nextProps.isLoading})
-   }
- }
+  componentWillReceiveProps = (nextProps) => {
+    if (this.props.topratedtv != nextProps.topratedtv) {
+      this.setState({ topratedtv: nextProps.topratedtv, isLoading: nextProps.isLoading })
+    }
+  }
 
 
   render() {
-    //console.log(this.props);
     if (this.state.isLoading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
@@ -41,7 +38,7 @@ class POPULAR extends React.Component {
         </View>
       )
     }
-    //console.log("props: ", this.props);
+
     return (
       <View style={{ flex: 1, }}>
         <FlatList
@@ -59,9 +56,9 @@ class POPULAR extends React.Component {
                 </View>
 
                 {this.props.singleRow ?
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center',backgroundColor:'#C0C0C0' }}>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0', width: width(30) }}>
                     <View style={{ flex: 0.8, flexWrap: 'wrap', }}>
-                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000' }} numberOfLines={2}> {item.original_name}</Text>
+                      <Text style={{ fontSize: 12, textAlign: 'left', textAlignVertical: 'top', color: '#000', marginLeft: width(1) }} numberOfLines={2}>{item.original_name}</Text>
                     </View>
                     <View style={{ flex: 0.2, justifyContent: 'flex-end', alignItems: 'flex-end', marginRight: 5 }}>
                       <Icon name="ellipsis-v" size={20} color="#000" onPress={() => { alert(item) }} />
@@ -88,7 +85,7 @@ class POPULAR extends React.Component {
 
               </TouchableOpacity>
 
-              <View style={{ borderWidth: this.props.singleRow ? 0 : 0.2, marginTop: this.props.singleRow ? 0 : 5, borderColor: 'grey' }}>
+              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.5, marginTop: this.state.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
               </View>
             </View>}
           keyExtractor={(item, index) => index}
@@ -100,10 +97,9 @@ class POPULAR extends React.Component {
 
 
 mapStateToProps = (state, props) => {
- // console.log("state : ", state);
   return {
     topratedtv: state.topratedtvReducer.data,
-    isLoading:state.topratedtvReducer.loading  
+    isLoading: state.topratedtvReducer.loading
   }
 }
 

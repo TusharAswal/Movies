@@ -20,24 +20,23 @@ class PEOPLE_DETAIL extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        celebdetails:[],
-        imge:[]
-         
+            celebdetails: [],
+            imge: []
+
         }
     }
     componentDidMount() {
-        
-       this.props.getcelebdetails(this.props.id);
-       this.props.getpersonalimg(this.props.id);
-        
+
+        this.props.getcelebdetails(this.props.id);
+        this.props.getpersonalimg(this.props.id);
+
     }
 
     componentWillReceiveProps = (nextProps) => {
-      console.log("RECEVING",this.props.imge)
-      if(this.props.celebdetails!= nextProps.celebdetails) {
-        this.setState({celebdetails:nextProps.celebdetails,imge:nextProps.imge})
-          
-     }
+        if (this.props.celebdetails != nextProps.celebdetails) {
+            this.setState({ celebdetails: nextProps.celebdetails, imge: nextProps.imge })
+
+        }
     }
 
     extractFilePath = (file) => {
@@ -79,9 +78,9 @@ class PEOPLE_DETAIL extends Component {
                     <View style={{ flex: 0.3, backgroundColor: '#696969' }}>
                         <View style={{ marginLeft: width(30), marginTop: width(3) }}>
 
-                            <View style={{height: height(3) }}>
-                           <Text style={{fontSize:totalSize(2),fontWeight:'bold',marginLeft:totalSize(3)}}>{this.props.celebdetails.name}</Text>             
-                                
+                            <View style={{ height: height(3) }}>
+                                <Text style={{ fontSize: totalSize(2), fontWeight: 'bold', marginLeft: totalSize(3) }}>{this.props.celebdetails.name}</Text>
+
                             </View>
                         </View>
                     </View>
@@ -89,7 +88,7 @@ class PEOPLE_DETAIL extends Component {
                     <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={()=>Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
+                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
                         <Icon name='home' size={height(4)} color="white" style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 0.35, position: 'absolute', marginLeft: width(80) }}>
@@ -99,7 +98,7 @@ class PEOPLE_DETAIL extends Component {
                         <Icon name='ellipsis-v' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ height:totalSize(18), width: totalSize(13), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: totalSize(18), width:totalSize(13) }} source={{ uri: imgPath + this.props.celebdetails.profile_path }} /></View>
+                <View style={{ height: totalSize(18), width: totalSize(13), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: totalSize(18), width: totalSize(13) }} source={{ uri: imgPath + this.props.celebdetails.profile_path }} /></View>
                 <View style={{ flex: 0.5, backgroundColor: 'black' }}>
                     <ScrollableTabView style={{ backgroundColor: 'white' }}
                         tabBarBackgroundColor="#333435"
@@ -108,9 +107,9 @@ class PEOPLE_DETAIL extends Component {
                         tabBarTextStyle={{ fontFamily: 'Roboto', fontSize: 12 }}
                         tabBarUnderlineStyle={{ backgroundColor: '#3FC380' }}
                         renderTabBar={() => <ScrollableTabBar />}>
-                        <INFO tabLabel="INFO" label="Page #1" data={{info:this.props.id}} />
-                        <MOVIES tabLabel="MOVIES" label="Page #2" data={{info:this.props.id}} />
-                        <TVSHOWS tabLabel="TV SHOWS" label="Page #3" data={{info:this.props.id}}/>
+                        <INFO tabLabel="INFO" label="Page #1" data={{ info: this.props.id }} />
+                        <MOVIES tabLabel="MOVIES" label="Page #2" data={{ info: this.props.id }} />
+                        <TVSHOWS tabLabel="TV SHOWS" label="Page #3" data={{ info: this.props.id }} />
                     </ScrollableTabView>
                 </View>
 
@@ -123,7 +122,7 @@ class PEOPLE_DETAIL extends Component {
 mapStateToProps = (state, props) => {
     return {
         celebdetails: state.getcelebdetailsReducer.data,
-         imge: state.gethisimgReducer.data,
+        imge: state.gethisimgReducer.data,
     }
 }
 

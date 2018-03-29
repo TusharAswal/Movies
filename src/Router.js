@@ -90,12 +90,6 @@ const App = () => {
              hideNavBar={true}
              />
 
-              {/* <Scene 
-             key='filtermovies'
-             component={filtermovies}
-             hideNavBar={true}
-             /> */}
-
                <Scene 
              key='mov2'
              component={mov2}

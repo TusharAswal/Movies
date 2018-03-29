@@ -10,7 +10,6 @@ import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab
 import * as myActions from '../../actions/actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-//import SideBarMenu from './SideBarMenu';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 
 class TVSHOWSCHAR extends Component {
@@ -22,7 +21,6 @@ class TVSHOWSCHAR extends Component {
 
     }
     componentWillMount = () => {
-        console.log("Iam get id", this.props.data.info)
         this.props.getworkintv(this.props.data.info)
     }
 
@@ -33,7 +31,7 @@ class TVSHOWSCHAR extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1,}}>
+            <View style={{ flex: 1, }}>
                 <Text style={{ fontWeight: 'bold', fontSize: totalSize(2.3), marginLeft: totalSize(2) }}>Acting</Text>
                 <FlatList
                     keyExtractor={item => item.id}
@@ -41,34 +39,34 @@ class TVSHOWSCHAR extends Component {
                     data={this.props.donetv}
                     numColumns={1}
                     renderItem={({ item }) =>
-                    <View>
-                        <View style={{ flex: 0.99, flexDirection: 'row',margin:totalSize(1) }}>
-                            <View style={{ flex: 0.35 }}>
-                                <Image source={{ uri:imgpath + item.poster_path}} style={{ alignSelf: 'center', height: height(25), width: width(32) }} />
-                            </View>
-                            <View style={{ flex: 0.65,margin:totalSize(2)}}>
-                                <View style={{ flex: 0.1, flexDirection: 'row' }}>
-                                    <View style={{ flex: 0.5}}><Text>{item.first_air_date}</Text></View>
-                                    <View style={{ flex: 0.5}}><Text style={{fontStyle:'italic'}}>As:{item.character}</Text></View>
+                        <View>
+                            <View style={{ flex: 0.99, flexDirection: 'row', margin: totalSize(1) }}>
+                                <View style={{ flex: 0.35 }}>
+                                    <Image source={{ uri: imgpath + item.poster_path }} style={{ alignSelf: 'center', height: height(25), width: width(32) }} />
+                                </View>
+                                <View style={{ flex: 0.65, margin: totalSize(2) }}>
+                                    <View style={{ flex: 0.1, flexDirection: 'row' }}>
+                                        <View style={{ flex: 0.5 }}><Text>{item.first_air_date}</Text></View>
+                                        <View style={{ flex: 0.5 }}><Text style={{ fontStyle: 'italic' }}>As:{item.character}</Text></View>
+                                    </View>
+
+                                    <View style={{ flex: 0.7, }}>
+                                        <Text style={{ fontSize: totalSize(2), fontWeight: 'bold' }}>{item.original_name}</Text>
+                                    </View>
+
+                                    <View style={{ flex: 0.2 }}>
+                                        <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent: 'flex-end', height: height(5), width: width(7) }} />
+                                        <Text>{item.vote_average}</Text>
+                                    </View>
+
                                 </View>
 
-                                <View style={{ flex: 0.7, }}>
-                                    <Text style={{fontSize:totalSize(2),fontWeight:'bold'}}>{item.original_name}</Text>
-                                </View>
-
-                                <View style={{ flex: 0.2 }}>
-                                <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent:'flex-end' ,height: height(5), width:width(7) }} />
-                                    <Text>{item.vote_average}</Text>
-                                </View>
-                        
                             </View>
-                            
+                            <View style={{ flex: 0.01, borderWidth: 1, borderColor: '#DCDCDC', width: width(95), alignSelf: 'center' }} ></View>
                         </View>
-                        <View style={{ flex: 0.01, borderWidth: 1, borderColor: '#DCDCDC',width:width(95) ,alignSelf:'center' }} ></View>
-                        </View>
-                        
+
                     } />
-                
+
             </View>
 
         );
