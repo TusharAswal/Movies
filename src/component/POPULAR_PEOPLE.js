@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import {FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -11,6 +11,7 @@ import * as myActions from '../actions/actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
+import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 
 class POPULAR_PEOPLE extends Component {
@@ -72,7 +73,7 @@ class POPULAR_PEOPLE extends Component {
                             renderItem={({ item }) =>
                                 <View style={{ flex: 1 }}>
                                     <TouchableOpacity onPress={() => Actions.PEOPLE_DETAIL({ 'id': item.id })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
-                                        <View style={{ flex: 0.3, justifyContent: 'center' }}><Image source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', alignSelf: 'center', height: height(17), width: width(30), borderRadius: 100 }} /></View>
+                                        <View style={{ flex: 0.3, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', alignSelf: 'center', height: height(17), width: width(30), borderRadius: 100 }} /></View>
                                         <View style={{ flex: 0.7, justifyContent: 'center' }}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', margin: totalSize(2) }}>Name: {item.name}</Text></View>
                                     </TouchableOpacity>
                                     <View style={{ alignSelf: 'center', flex: 0.01, borderColor: '#DCDCDC', marginTop: height(1), width: width(95) }}></View>

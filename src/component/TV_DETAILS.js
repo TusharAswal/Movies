@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -11,6 +11,7 @@ import Share, { ShareSheet, Button } from "react-native-share"
 import Swiper from 'react-native-swiper';
 import INFO from './TABS_TV_DETAILS/INFO';
 import ACTORS from './TABS_TV_DETAILS/ACTORS';
+import Image from 'react-native-image-progress';
 import SEASONS from './TABS_TV_DETAILS/SEASONS';
 import {
     Menu,
@@ -110,19 +111,19 @@ class TV_DETAILS extends Component {
                     <View style={{ flex: 0.7 }}>
                         <Swiper style={{ flex: 1, }} showsButtons={false}>
                             <View style={{ flex: 1 }}>
-                                <Image source={{ uri: imgPath + slides[0] }} style={{ alignSelf: 'stretch', flex: 1 }} />
+                                <Image indicator={ActivityIndicator} source={{ uri: imgPath + slides[0] }} style={{ alignSelf: 'stretch', flex: 1 }} />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Image source={{ uri: imgPath + slides[1] }} style={{ alignSelf: 'stretch', flex: 1 }} />
+                                <Image indicator={ActivityIndicator} source={{ uri: imgPath + slides[1] }} style={{ alignSelf: 'stretch', flex: 1 }} />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Image source={{ uri: imgPath + slides[2] }} style={{ alignSelf: 'stretch', flex: 1 }} />
+                                <Image indicator={ActivityIndicator} source={{ uri: imgPath + slides[2] }} style={{ alignSelf: 'stretch', flex: 1 }} />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Image source={{ uri: imgPath + slides[3] }} style={{ alignSelf: 'stretch', flex: 1 }} />
+                                <Image indicator={ActivityIndicator} source={{ uri: imgPath + slides[3] }} style={{ alignSelf: 'stretch', flex: 1 }} />
                             </View>
                             <View style={{ flex: 1 }}>
-                                <Image source={{ uri: imgPath + slides[4] }} style={{ alignSelf: 'stretch', flex: 1 }} />
+                                <Image indicator={ActivityIndicator} source={{ uri: imgPath + slides[4] }} style={{ alignSelf: 'stretch', flex: 1 }} />
                             </View>
                         </Swiper>
                     </View>

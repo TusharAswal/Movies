@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { KeyboardAvoidingView, TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, TextInput, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity, ScrollView } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -11,6 +11,7 @@ import * as myActions from '../actions/actions/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
+import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 
 class SEARCH_PEOPLE extends Component {
@@ -66,7 +67,7 @@ class SEARCH_PEOPLE extends Component {
                     renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'column' }}>
                             <TouchableOpacity style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
-                                <View style={{ flex: 0.35, justifyContent: 'center' }}><Image source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
+                                <View style={{ flex: 0.35, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
                                 <View style={{ flex: 0.65, justifyContent: 'center' }}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Name: {item.name}</Text></View>
                             </TouchableOpacity>
                             <View style={{ alignSelf: 'center', flex: 0.01, borderWidth: 1, borderColor: '#DCDCDC', margin: height(2), width: width(95) }}></View>

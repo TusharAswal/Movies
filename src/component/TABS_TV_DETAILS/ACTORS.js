@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Text,View,Image,ScrollView,FlatList,TouchableOpacity} from 'react-native';
+import {Text,View,ScrollView,FlatList,TouchableOpacity} from 'react-native';
 import {height,width,totalSize} from 'react-native-dimension';
 import { connect } from 'react-redux';
 import * as myActions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
+import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import {
     Actions,
@@ -43,7 +44,7 @@ class ACTORS extends Component {
                 renderItem={({item}) => 
                 <View style={{flex:1}}>
                 <TouchableOpacity onPress={()=>Actions.PEOPLE_DETAIL({'id':item.id})} style={{flex:0.99,flexDirection:'row', height:height(10),width:width(100),marginTop:height(3)}}>
-                    <View style={{flex:0.2,justifyContent:'center'}}><Image source={{ uri: imgpath + item.profile_path }} style={{alignSelf:'center', borderRadius:100,height:height(10),width:width(10) }} /></View>
+                    <View style={{flex:0.2,justifyContent:'center'}}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{alignSelf:'center', borderRadius:100,height:height(10),width:width(10) }} /></View>
                     <View style={{flex:0.4,justifyContent:'center'}}><Text style={{fontSize:12, color:'black'}}>Name: {item.name}</Text></View>
                     <View style={{flex:0.4,justifyContent:'center'}}><Text style={{fontStyle: 'italic',color:'#778899',fontSize:12, color:'black'}}>As: {item.character}</Text></View>
                 </TouchableOpacity>

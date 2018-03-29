@@ -2,10 +2,11 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { View, Text, Button, TouchableOpacity, Image } from 'react-native';
+import { View, Text, Button, TouchableOpacity} from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
+import Image from 'react-native-image-progress';
 
 
 export default class SideBarMenu extends Component {
@@ -16,7 +17,7 @@ export default class SideBarMenu extends Component {
             <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={{ flex: 0.25, backgroundColor: '#323232', flexDirection: 'row' }}>
                     <View style={{ flex: 0.45 }}>
-                        <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent: 'flex-end', height: height(13), width: width(17), marginTop: height(8), marginLeft: height(3) }} />
+                        <Image indicator={ActivityIndicator} source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ justifyContent: 'flex-end', height: height(13), width: width(17), marginTop: height(8), marginLeft: height(3) }} />
                     </View>
                     <View style={{ justifyContent: 'flex-start', flex: 0.55 }}>
                         <Text style={{ marginTop: totalSize(15), color: 'white', fontWeight: 'bold' }}>Connect to MDB </Text>

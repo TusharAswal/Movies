@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
-import {Text,View,Image,ScrollView,FlatList} from 'react-native';
+import {Text,View,ScrollView,FlatList} from 'react-native';
 import {height,width,totalSize} from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import * as myActions from '../../actions/actions';
+import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
+
 class INFO extends Component {
     constructor(props) {
         super(props);
@@ -95,11 +97,11 @@ class INFO extends Component {
                         <Text style={{fontSize:10}}>{this.props.rating}</Text>
                     </View>
                     <View style={{flex:0.1666,alignItems:'center'}}>
-                        <Image source={{ uri: 'https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/ATV_Template_Guide/Art/Rotten-Tomatoes-Certified-Fresh_2x.png' }} style={{height: height(5),width:width(9) }} />
+                        <Image indicator={ActivityIndicator} source={{ uri: 'https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/ATV_Template_Guide/Art/Rotten-Tomatoes-Certified-Fresh_2x.png' }} style={{height: height(5),width:width(9) }} />
                         <Text style={{fontSize:10}}>{this.props.rating}</Text>
                     </View>
                     <View style={{flex:0.1666,alignItems:'center'}}>
-                        <Image source={{ uri: 'https://cdn2.iconfinder.com/data/icons/movix-circular/128/popcorn_cinema_bucket_food_movie_entertainment-128.png' }} style={{height: height(5),width:width(9) }} />
+                        <Image indicator={ActivityIndicator} source={{ uri: 'https://cdn2.iconfinder.com/data/icons/movix-circular/128/popcorn_cinema_bucket_food_movie_entertainment-128.png' }} style={{height: height(5),width:width(9) }} />
                         <Text style={{fontSize:10}}>{this.props.rating}</Text>
                     </View>
                     <View style={{flex:0.1666,alignItems:'center'}}></View>
@@ -131,7 +133,7 @@ class INFO extends Component {
                         renderItem={({item}) => 
                         <View style={{ alignItems:'center',flexWrap: 'wrap', marginLeft:width(3),marginRight:width(3),marginTop:height(2)}}>
                             
-                            <Image source={{ uri: imgpath + item.poster_path}} style={{width:width(25), height:height(25)}} />
+                            <Image indicator={ActivityIndicator} source={{ uri: imgpath + item.poster_path}} style={{width:width(25), height:height(25)}} />
                             <Text numberOfLines={1} style={{width:width(23)}} >{item.original_name}</Text>
                             <Text numberOfLines={2} style={{width:width(23)}} >{item.first_air_date}</Text>
                         </View>

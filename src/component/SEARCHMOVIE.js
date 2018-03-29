@@ -1,7 +1,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { ScrollView, TextInput, Image, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
+import { ScrollView, TextInput, FlatList, ActivityIndicator, View, Text, Button, TouchableHighlight, TouchableOpacity } from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
+import Image from 'react-native-image-progress';
 
 class SEARCHMOVIE extends Component {
     constructor(props) {
@@ -69,7 +70,7 @@ class SEARCHMOVIE extends Component {
                     renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'column' }}>
                             <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
-                                <View style={{ flex: 0.35, justifyContent: 'center' }}><Image source={{ uri: imgpath + item.poster_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
+                                <View style={{ flex: 0.35, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.poster_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
                                 <View style={{ flex: 0.65, justifyContent: 'center' }}>
                                     <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Name: {item.title}</Text>
                                     <Text style={{ fontSize: 10, color: 'black', fontWeight: 'bold' }}>Release Date: {item.release_date}</Text>

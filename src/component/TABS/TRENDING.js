@@ -54,7 +54,7 @@ class TRENDING extends React.Component {
 
               <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30), }}>
                 <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
-                  <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
+                  <Image indicator={ActivityIndicator} source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
                 </View>
 
                 {this.props.singleRow ?
@@ -80,7 +80,7 @@ class TRENDING extends React.Component {
                       <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}> {item.genre_ids}</Text>
                     </View>
                     <View style={{ flex: 0.2, flexDirection: 'row', marginBottom: height * 0.015 }}>
-                      <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
+                      <Image indicator={ActivityIndicator} source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
                       <Text style={{ textAlign: 'center', textAlignVertical: 'center', color: '#000' }}>  {item.vote_average}</Text>
                     </View>
                   </View>

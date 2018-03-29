@@ -1,10 +1,11 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image, TouchableOpacity } from 'react-native';
+import { FlatList, ActivityIndicator, Text, View, TouchableOpacity } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-
+import Image from 'react-native-image-progress';
+import Progress from 'react-native-progress';
 import * as myActions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
 import Modal from "react-native-modal";
@@ -28,6 +29,7 @@ class NOWPLAYING extends React.Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
+
     if (this.props.movies != nextProps.movies) {
       this.setState({ movie: nextProps.movies, isLoading: nextProps.isLoading })
     }
@@ -57,7 +59,7 @@ class NOWPLAYING extends React.Component {
               <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30), }}>
 
                 <View style={{ flex: this.singleRow ? 0.2 : 0.8, width: width(30) }}>
-                  <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
+                  <Image indicator={ActivityIndicator}  source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
                 </View>
 
                 {this.props.singleRow ?
@@ -83,7 +85,7 @@ class NOWPLAYING extends React.Component {
                       <Text style={{ fontFamily: "Times New Roman", fontSize: 12, textAlign: 'left', fontWeight: 'bold', color: '#6C7A89', marginTop: height(2) }} numberOfLines={2}> {item.genre_ids}</Text>
                     </View>
                     <View style={{ flex: 0.2, flexDirection: 'row', marginBottom: height * 0.015 }}>
-                      <Image source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
+                      <Image indicator={ActivityIndicator} source={{ uri: 'https://cdn-images-1.medium.com/fit/c/45/45/1*vIR7iO-1GnY2xYxL6NiYkw.png' }} style={{ height: 30, width: 30 }} />
                       <Text style={{ textAlign: 'center', textAlignVertical: 'center', color: '#000' }}>  {item.vote_average}</Text>
                     </View>
                   </View>
