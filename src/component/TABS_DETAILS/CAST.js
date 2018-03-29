@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, FlatList,ActivityIndicator, } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import { connect } from 'react-redux';
 import * as myActions from '../../actions/actions';

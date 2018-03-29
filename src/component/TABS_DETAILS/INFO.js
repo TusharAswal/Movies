@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, FlatList, TouchableOpacity,ActivityIndicator, } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';

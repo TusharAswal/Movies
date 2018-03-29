@@ -19,7 +19,6 @@ import {
     MenuOption,
     MenuTrigger,
 } from 'react-native-popup-menu';
-import SHARE from './share'
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 

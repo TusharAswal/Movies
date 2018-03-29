@@ -98,7 +98,7 @@ class PEOPLE_DETAIL extends Component {
                         <Icon name='ellipsis-v' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ height: totalSize(18), width: totalSize(13), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: totalSize(18), width: totalSize(13) }} source={{ uri: imgPath + this.props.celebdetails.profile_path }} /></View>
+                <View style={{ height: totalSize(18), width: totalSize(13), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: totalSize(18), width: totalSize(13), borderRadius:100}} source={{ uri: imgPath + this.props.celebdetails.profile_path }} /></View>
                 <View style={{ flex: 0.5, backgroundColor: 'black' }}>
                     <ScrollableTabView style={{ backgroundColor: 'white' }}
                         tabBarBackgroundColor="#333435"

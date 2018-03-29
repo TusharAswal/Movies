@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, Text, StyleSheet, TouchableOpacity, TextInput, Button } from 'react-native'
+import { FlatList, View, Text, StyleSheet, TouchableOpacity, TextInput, Button,ActivityIndicator, } from 'react-native'
 import { width, height, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';

@@ -8,9 +8,9 @@ export default class App extends Component {
       render() {
             return (
                   <MenuProvider>
-                  <Provider store={store}>
-                        <Router />
-                  </Provider>
+                        <Provider store={store}>
+                              <Router />
+                        </Provider>
                   </MenuProvider>
             )
       }

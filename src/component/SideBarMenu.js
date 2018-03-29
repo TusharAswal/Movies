@@ -2,7 +2,7 @@
 import { Actions, Router } from 'react-native-router-flux';
 import Drawer from 'react-native-drawer';
 import React, { Component } from 'react'
-import { View, Text, Button, TouchableOpacity} from 'react-native';
+import { View, Text, Button, TouchableOpacity,ActivityIndicator,} from 'react-native';
 import DrawerLayoutAndroid from 'react-native-drawer-layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';

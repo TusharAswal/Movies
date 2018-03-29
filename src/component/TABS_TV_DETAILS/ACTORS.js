@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text,View,ScrollView,FlatList,TouchableOpacity} from 'react-native';
+import {Text,View,ScrollView,FlatList,TouchableOpacity,ActivityIndicator,} from 'react-native';
 import {height,width,totalSize} from 'react-native-dimension';
 import { connect } from 'react-redux';
 import * as myActions from '../../actions/actions';
@@ -51,7 +51,7 @@ class ACTORS extends Component {
                 <View style={{alignSelf:'center',flex:0.01,borderWidth:1,borderColor:'#DCDCDC',marginTop:height(1),width:width(95)}}></View>
                 </View>                
             } />
-            <SHARE/>
+
         </View>           
                
         );

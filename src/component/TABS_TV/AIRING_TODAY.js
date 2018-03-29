@@ -85,7 +85,7 @@ class AIRING_TODAY extends React.Component {
 
               </TouchableOpacity>
 
-              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.5, marginTop: this.state.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
+              <View style={{ borderWidth: this.state.singleRow ? 0 : 0.2, marginTop: this.state.singleRow ? 0 : 5, borderColor: '#A9A9A9' }}>
               </View>
             </View>}
           keyExtractor={(item, index) => index}
