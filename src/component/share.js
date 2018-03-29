@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Clipboard,
-  ToastAndroid,
-  AlertIOS,
-  Platform
-} from 'react-native';
+import {AppRegistry, StyleSheet, Text,TouchableOpacity,View,Clipboard,ToastAndroid,AlertIOS,Platform} from 'react-native';
 import Share, { ShareSheet, Button } from 'react-native-share';
 
 export default class TestShare extends Component {

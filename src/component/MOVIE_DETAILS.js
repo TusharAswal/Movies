@@ -14,12 +14,7 @@ import Swiper from 'react-native-swiper';
 import INFO from './TABS_DETAILS/INFO';
 import CAST from './TABS_DETAILS/CAST';
 import REVIEW from './TABS_DETAILS/REVIEW';
-import {
-    Menu,
-    MenuOptions,
-    MenuOption,
-    MenuTrigger,
-} from 'react-native-popup-menu';
+import {Menu, MenuOptions,MenuOption,MenuTrigger,} from 'react-native-popup-menu';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 

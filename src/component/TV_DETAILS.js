@@ -13,12 +13,7 @@ import INFO from './TABS_TV_DETAILS/INFO';
 import ACTORS from './TABS_TV_DETAILS/ACTORS';
 import Image from 'react-native-image-progress';
 import SEASONS from './TABS_TV_DETAILS/SEASONS';
-import {
-    Menu,
-    MenuOptions,
-    MenuOption,
-    MenuTrigger,
-} from 'react-native-popup-menu';
+import { Menu, MenuOptions,MenuOption, MenuTrigger,} from 'react-native-popup-menu';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
 

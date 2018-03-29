@@ -7,7 +7,6 @@ import * as myActions from '../actions/actions';
 import { bindActionCreators } from 'redux';
 import Picker from 'react-native-picker';
 import StartDatePicker from './startDatePicker'
-//import EndDatePicker from './endDatePicker'
 
 class mov2 extends Component {
   constructor(props) {

@@ -6,10 +6,7 @@ import * as myActions from '../../actions/actions';
 import { bindActionCreators } from 'redux';
 import Image from 'react-native-image-progress';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
-import {
-    Actions,
-    
-  } from 'react-native-router-flux';
+import {Actions,} from 'react-native-router-flux';
 class ACTORS extends Component {
     constructor(props) {
         super(props);
