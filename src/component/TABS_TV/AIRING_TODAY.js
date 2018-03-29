@@ -98,7 +98,7 @@ class AIRING_TODAY extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    airing: state.tvshowsReducer.data,
+    airing: state.tvshowsReducer.data25,
     isLoading: state.tvshowsReducer.loading
   }
 }

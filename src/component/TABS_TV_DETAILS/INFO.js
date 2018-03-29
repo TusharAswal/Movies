@@ -148,15 +148,15 @@ class INFO extends Component {
 
 mapStateToProps=(state, props)=>{
     return {
-        rating: state.tvshowsReducer.data,
-        firstAir: state.tvshowsReducer.data,
-        lastAir: state.tvshowsReducer.data,
-        net: state.tvshowsReducer.data,
-        showType: state.tvshowsReducer.data,
-        showStat :state.tvshowsReducer.data,
-        creator: state.tvshowsReducer.data,
+        rating: state.tvshowsReducer.data31,
+        firstAir: state.tvshowsReducer.data32,
+        lastAir: state.tvshowsReducer.data33,
+        net: state.tvshowsReducer.data34,
+        showType: state.tvshowsReducer.data35,
+        showStat :state.tvshowsReducer.data36,
+        creator: state.tvshowsReducer.data37,
         overview: state.tvshowsReducer.data11,
-        similartv: state.tvshowsReducer.data,
+        similartv: state.tvshowsReducer.data38,
        
     }
 }

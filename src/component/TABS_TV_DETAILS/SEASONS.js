@@ -61,7 +61,7 @@ class SEASONS extends Component {
 mapStateToProps = (state, props) => {
 
     return {
-        tvseason: state.tvshowsReducer.data,
+        tvseason: state.tvshowsReducer.data30,
     }
 }
 

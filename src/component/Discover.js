@@ -149,8 +149,7 @@ class DISCOVER extends Component {
                                         </View>
                                     </View>}
                                 keyExtractor={(item, index) => index}
-                            /> :
-                            <View><Text>Empty</Text></View>}
+                            /> :<ActivityIndicator/>}
 
                     </View>
                 </View>
@@ -274,7 +273,7 @@ class DISCOVER extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        discover: state.movieReducer.data,
+        discover: state.movieReducer.data12,
         isLoading: state.movieReducer.loading
     }
 }

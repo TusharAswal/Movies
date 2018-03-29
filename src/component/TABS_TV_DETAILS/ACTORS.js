@@ -58,7 +58,7 @@ class ACTORS extends Component {
 
 mapStateToProps=(state, props) => {
     return{
-        casttv: state.tvshowsReducer.data,
+        casttv: state.tvshowsReducer.data39,
 
     }
 } 

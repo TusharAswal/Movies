@@ -162,18 +162,7 @@ export function genress(id) {
 }
 
 
-export function getOverview(id) {
-    return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
-            .then((response) => response.json())
-            .then((responseJson) => {
-                dispatch({ type: OVER, payload: responseJson.overview })
-            })
-            .catch((error => {
-                console.log(error);
-            }))
-    }
-}
+
 
 
 export function Discovernow(start = 1990, end = 2018, genis = 28, popdes = 'popularity.desc') {

@@ -55,7 +55,7 @@ class mov2 extends Component {
 mapStateToProps = (state, props) => {
 
   return {
-    filtergen1: state.filterReducer.data,
+    filtergen1: state.filterReducer.data14,
   }
 }
 

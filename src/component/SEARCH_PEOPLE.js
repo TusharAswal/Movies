@@ -39,6 +39,7 @@ class SEARCH_PEOPLE extends Component {
     }
 
     render() {
+       
         return (
             <View style={{ flex: 1 }}>
                 <ScrollView>
@@ -83,7 +84,7 @@ class SEARCH_PEOPLE extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        gotname: state.filterReducer.data,
+        gotname: state.filterReducer.data16,
 
     }
 }

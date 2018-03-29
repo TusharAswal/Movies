@@ -52,12 +52,11 @@ class PEOPLE_DETAIL extends Component {
     }
     render() {
     
-        var slides = this.extractFilePath(this.props.imge);
+       var slides = this.props.imge?this.extractFilePath(this.props.imge):[];
         
         return (
-            this.props.imge?
+            this.props.celebdetails?
             <View style={{ flex: 1, }}>
-
                 <View style={{ flex: 0.5, }}>
                     <View style={{ flex: 0.7 }}>
                         <Swiper style={{ flex: 1, }} showsButtons={false}>
@@ -118,7 +117,7 @@ class PEOPLE_DETAIL extends Component {
                 </View>
 
             </View>
-       
+       :[]
         ); 
     }
 
@@ -126,8 +125,8 @@ class PEOPLE_DETAIL extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        celebdetails: state.peopleinfoReducer.data,
-        imge: state.peopleinfoReducer.data,
+        celebdetails: state.peopleinfoReducer.data20,
+        imge: state.peopleinfoReducer.data22,
     }
 }
 

@@ -140,7 +140,7 @@ mapStateToProps = (state, props) => {
 
   return {
 
-    gotagenres: state.filterReducer.data
+    gotagenres: state.filterReducer.data15
   }
 }
 

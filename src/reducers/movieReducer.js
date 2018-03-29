@@ -11,7 +11,6 @@ import {
     SIMILARMOV,
     DISCOVERNOW,
     CREW,
-    OVER,
     GENRES,
 
 } from '../actions/movieAction';
@@ -90,12 +89,6 @@ console.log("MOVIE DETAILS",action.payload)
             return {
                 ...state,
                 data10: action.payload
-            }
-
-        case OVER:
-            return {
-                ...state,
-                data11: action.payload,
             }
 
         case DISCOVERNOW:

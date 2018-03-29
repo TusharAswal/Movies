@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { width, height, totalSize } from 'react-native-dimension';
 import TabBar from "react-native-underline-tabbar";
 import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
-import * as myActions from '../../actions/tvshowsAction';
+import * as myActions from '../../actions/peopleAction';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 const imgpath = "https://image.tmdb.org/t/p/w500/";
@@ -75,7 +75,7 @@ class TVSHOWSCHAR extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        donetv: state.donetvReducer.data,
+        donetv: state.peopleinfoReducer.data24,
     }
 }
 

@@ -98,7 +98,7 @@ class POPULAR extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    populartv: state.tvshowsReducer.data3,
+    populartv: state.tvshowsReducer.data26,
     isLoading: state.tvshowsReducer.loading
   }
 }

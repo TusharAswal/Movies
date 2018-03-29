@@ -96,7 +96,7 @@ class TV_DETAILS extends Component {
 
 
     render() {
-        var slides = this.extractImPath(this.props.tvimg);
+        var slides = this.props.tvimg?this.extractImPath(this.props.tvimg):[];
 
         return (
             <View style={{ flex: 1, }}>
@@ -307,10 +307,10 @@ class TV_DETAILS extends Component {
 mapStateToProps = (state, props) => {
 
     return {
-        tvdetails: state.tvshowsReducer.data,
+        tvdetails: state.tvshowsReducer.data28,
         isLoading: state.tvshowsReducer.loading,
-        tvimg: state.tvshowsReducer.data,
-        tvruntime: state.tvshowsReducer.data,
+        tvimg: state.tvshowsReducer.data29,
+        tvruntime: state.tvshowsReducer.data40,
     }
 }
 

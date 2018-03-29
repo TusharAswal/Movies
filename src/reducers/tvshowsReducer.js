@@ -1,21 +1,21 @@
 import {
     SIMILARTV,
-      CASTTV,
-      RUNTV,
-      TVDETAILS,
-      TVIMG,
-      GETRAT,
-      GETFIRSTAIR,
-      GETLASTAIR,
-      GETNET,
-      GETSHOWTYPE,
-      GETSHOWSTAT,
-      GETCREATOR,
-      TOPRATEDTV,
-      TVSEASON,
-      AIRING_TODAY,
-      POPULARTV,
-      
+    CASTTV,
+    RUNTV,
+    TVDETAILS,
+    TVIMG,
+    GETRAT,
+    GETFIRSTAIR,
+    GETLASTAIR,
+    GETNET,
+    GETSHOWTYPE,
+    GETSHOWSTAT,
+    GETCREATOR,
+    TOPRATEDTV,
+    TVSEASON,
+    AIRING_TODAY,
+    POPULARTV,
+    OVER,
 } from '../actions/tvshowsAction';
 let defaultState = { loading: true, data: [] };
 
@@ -107,6 +107,11 @@ export const tvshowsReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 data40: action.payload,
+            }
+        case OVER:
+            return {
+                ...state,
+                data11: action.payload,
             }
         default:
             return { ...state }

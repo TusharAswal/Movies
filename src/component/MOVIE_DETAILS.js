@@ -14,7 +14,7 @@ import Swiper from 'react-native-swiper';
 import INFO from './TABS_DETAILS/INFO';
 import CAST from './TABS_DETAILS/CAST';
 import REVIEW from './TABS_DETAILS/REVIEW';
-import {Menu, MenuOptions,MenuOption,MenuTrigger,} from 'react-native-popup-menu';
+import { Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
@@ -98,8 +98,8 @@ class MOVIE_DETAILS extends Component {
 
 
     render() {
-        console.log("Detail props",this.props.movie);
-        var slides = this.props.mdetails?this.extractFilePath(this.props.mdetails):[];
+        console.log("Detail props", this.props.movie);
+        var slides = this.props.mdetails ? this.extractFilePath(this.props.mdetails) : [];
         return (
             <View style={{ flex: 1, }}>
 
@@ -207,99 +207,87 @@ class MOVIE_DETAILS extends Component {
                     visible={this.state.visible}
                     onCancel={this.onCancel.bind(this)}
                 >
-                    <Button
-                        iconSrc={{ uri: TWITTER_ICON }}
-                        onPress={() => {
-                            this.onCancel();
-                            setTimeout(() => {
-                                Share.shareSingle(
-                                    Object.assign(this.state.shareOptions, {
-                                        social: "twitter"
-                                    })
-                                );
-                            }, 300);
-                        }}
+                    <Button iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
+                        this.onCancel();
+                        setTimeout(() => {
+                            Share.shareSingle(
+                                Object.assign(this.state.shareOptions, {
+                                    social: "twitter"
+                                })
+                            );
+                        }, 300);
+                    }}
                     >
                         Twitter
 		            </Button>
-                    <Button
-                        iconSrc={{ uri: FACEBOOK_ICON }}
-                        onPress={() => {
-                            this.onCancel();
-                            setTimeout(() => {
-                                Share.shareSingle(
-                                    Object.assign(this.state.shareOptions, {
-                                        social: "facebook"
-                                    })
-                                );
-                            }, 300);
-                        }}
+                    <Button iconSrc={{ uri: FACEBOOK_ICON }} onPress={() => {
+                        this.onCancel();
+                        setTimeout(() => {
+                            Share.shareSingle(
+                                Object.assign(this.state.shareOptions, {
+                                    social: "facebook"
+                                })
+                            );
+                        }, 300);
+                    }}
                     >
                         Facebook
 		            </Button>
-                    <Button
-                        iconSrc={{ uri: WHATSAPP_ICON }}
-                        onPress={() => {
-                            this.onCancel();
-                            setTimeout(() => {
-                                Share.shareSingle(
-                                    Object.assign(this.state.shareOptions, {
-                                        social: "whatsapp"
-                                    })
-                                );
-                            }, 300);
-                        }}
+                    <Button iconSrc={{ uri: WHATSAPP_ICON }} onPress={() => {
+                        this.onCancel();
+                        setTimeout(() => {
+                            Share.shareSingle(
+                                Object.assign(this.state.shareOptions, {
+                                    social: "whatsapp"
+                                })
+                            );
+                        }, 300);
+                    }}
                     >
                         Whatsapp
 		            </Button>
-                    <Button
-                        iconSrc={{ uri: GOOGLE_PLUS_ICON }}
-                        onPress={() => {
-                            this.onCancel();
-                            setTimeout(() => {
-                                Share.shareSingle(
-                                    Object.assign(this.state.shareOptions, {
-                                        social: "googleplus"
-                                    })
-                                );
-                            }, 300);
-                        }}
+                    <Button iconSrc={{ uri: GOOGLE_PLUS_ICON }} onPress={() => {
+                        this.onCancel();
+                        setTimeout(() => {
+                            Share.shareSingle(
+                                Object.assign(this.state.shareOptions, {
+                                    social: "googleplus"
+                                })
+                            );
+                        }, 300);
+                    }}
                     >
                         Google +
 		            </Button>
-                    <Button
-                        iconSrc={{ uri: EMAIL_ICON }}
-                        onPress={() => {
-                            this.onCancel();
-                            setTimeout(() => {
-                                Share.shareSingle(
-                                    Object.assign(this.state.shareOptions, {
-                                        social: "email"
-                                    })
-                                );
-                            }, 300);
-                        }}
+                    <Button iconSrc={{ uri: EMAIL_ICON }} onPress={() => {
+                        this.onCancel();
+                        setTimeout(() => {
+                            Share.shareSingle(
+                                Object.assign(this.state.shareOptions, {
+                                    social: "email"
+                                })
+                            );
+                        }, 300);
+                    }}
                     >
                         Email
 		            </Button>
-                    <Button
-                        iconSrc={{ uri: CLIPBOARD_ICON }}
-                        onPress={() => {
-                            this.onCancel();
-                            setTimeout(() => {
-                                if (typeof this.state.shareOptions["url"] !== undefined) {
-                                    Clipboard.setString(this.state.shareOptions["url"]);
-                                    if (Platform.OS === "android") {
-                                        ToastAndroid.show(
-                                            "link Copied to Clipboard",
-                                            ToastAndroid.SHORT
-                                        );
-                                    } else if (Platform.OS === "ios") {
-                                        AlertIOS.alert("Link Copied to Clipboard");
-                                    }
+                    <Button iconSrc={{ uri: CLIPBOARD_ICON }} onPress={() => {
+                        this.onCancel();
+                        setTimeout(() => {
+                            if (typeof this.state.shareOptions["url"] !== undefined) {
+                                Clipboard.setString(this.state.shareOptions["url"]);
+                                if (Platform.OS === "android") {
+                                    ToastAndroid.show(
+                                        "link Copied to Clipboard",
+                                        ToastAndroid.SHORT
+                                    );
+                                } else if (Platform.OS === "ios") {
+                                    AlertIOS.alert("Link Copied to Clipboard");
                                 }
-                            }, 300);
-                        }}
+                            }
+                        }, 300);
+                    }}
                     >
                         Copy Link
 		            </Button>
