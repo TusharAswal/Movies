@@ -96,7 +96,7 @@ class INFO extends Component {
                         data={this.props.similarmov}
                         renderItem={({ item }) =>
                             <View style={{ alignItems: 'center', flexWrap: 'wrap', marginLeft: width(3), marginRight: width(3), marginTop: height(2) }}>
-                                <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })}>
+                                <TouchableOpacity onPress={() => Actions.movie_details({ 'movie': item })}>
                                     <Image indicator={ActivityIndicator} source={{ uri: imgpath + item.poster_path }} style={{ width: width(25), height: height(25) }} />
                                     <Text numberOfLines={1} style={{ width: width(23) }} >{item.original_title}</Text>
                                     <Text numberOfLines={2} style={{ width: width(23) }} >{item.release_date}</Text>

@@ -58,7 +58,7 @@ class POPULAR_PEOPLE extends Component {
                         </View>
                         <View style={{ flex: 0.6 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: 'white', margin: totalSize(2) }}>Popular People</Text></View>
                         <View style={{ flex: 0.2 }}>
-                            <TouchableOpacity onPress={() => Actions.SEARCH_PEOPLE()}>
+                            <TouchableOpacity onPress={() => Actions.search_people()}>
                                 <Icon name='search' size={totalSize(3)} style={{ alignSelf: 'flex-end', margin: totalSize(2) }} color='white' />
                             </TouchableOpacity>
                         </View>
@@ -72,8 +72,8 @@ class POPULAR_PEOPLE extends Component {
                             numColumns={1}
                             renderItem={({ item }) =>
                                 <View style={{ flex: 1 }}>
-                                    <TouchableOpacity onPress={() => Actions.PEOPLE_DETAIL({ 'id': item.id })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
-                                        <View style={{ flex: 0.3, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', alignSelf: 'center', height: height(25), width: width(30) }} /></View>
+                                    <TouchableOpacity onPress={() => Actions.people_detail({ 'id': item.id })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
+                                        <View style={{ flex: 0.3, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', alignSelf: 'center', height: height(18), width: width(27) }} imageStyle={{borderRadius:100}}/></View>
                                         <View style={{ flex: 0.7, justifyContent: 'center' }}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold', margin: totalSize(2) }}>Name: {item.name}</Text></View>
                                     </TouchableOpacity>
                                     <View style={{ alignSelf: 'center', flex: 0.01, borderColor: '#DCDCDC', marginTop: height(1), width: width(95) }}></View>

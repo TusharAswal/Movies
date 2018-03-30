@@ -66,7 +66,7 @@ class SEARCHTV extends Component {
                     numColumns={1}
                     renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <TouchableOpacity onPress={() => Actions.TV_DETAILS({ "tv": item })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
+                            <TouchableOpacity onPress={() => Actions.tv_details({ "tv": item })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
                                 <View style={{ flex: 0.35, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.poster_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
                                 <View style={{ flex: 0.65, justifyContent: 'center' }}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Name: {item.title}</Text></View>
                             </TouchableOpacity>

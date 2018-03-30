@@ -50,7 +50,7 @@ class POPULAR extends React.Component {
           renderItem={({ item }) =>
             <View style={{ flex: 1, flexDirection: this.props.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
 
-              <TouchableOpacity onPress={() => Actions.TV_DETAILS({ "tv": item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30), }}>
+              <TouchableOpacity onPress={() => Actions.tv_details({ "tv": item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30), }}>
                 <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
                   <Image indicator={ActivityIndicator} source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
                 </View>

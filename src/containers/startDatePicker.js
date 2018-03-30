@@ -101,7 +101,7 @@ class startDatePicker extends Component {
         <View style={{ flex: 0.1, flexDirection: 'row', backgroundColor: '#323232' }}>
           <Text style={{ flex: 0.2, color: 'white', alignSelf: 'center', fontSize: totalSize(2.5), fontWeight: 'bold', marginLeft: totalSize(2) }}>Filters</Text>
           <View style={{ flex: 0.6 }} />
-          <TouchableOpacity onPress={() => Actions.DISCOVER({ 'starting': this.state.startdate, 'ending': this.state.enddate, 'geniss': this.state.genresidis })} style={{ flex: 0.2, alignSelf: 'center' }}><Text style={{ fontSize: totalSize(2.5), fontWeight: 'bold', color: 'white' }}>Apply</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => Actions.discover({ 'starting': this.state.startdate, 'ending': this.state.enddate, 'geniss': this.state.genresidis })} style={{ flex: 0.2, alignSelf: 'center' }}><Text style={{ fontSize: totalSize(2.5), fontWeight: 'bold', color: 'white' }}>Apply</Text></TouchableOpacity>
         </View>
 
         <View style={{ flex: 0.05, backgroundColor: '#C0C0C0' }}>

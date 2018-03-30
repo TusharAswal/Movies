@@ -108,7 +108,7 @@ class DISCOVER extends Component {
 
                                     <View style={{ flex: 1, flexDirection: this.state.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
 
-                                        <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 1, flexDirection: this.state.singleRow ? 'column' : 'row', width: this.state.singleRow ? width(30) : width(70), height: height(30), }}>
+                                        <TouchableOpacity onPress={() => Actions.movie_details({ 'movie': item })} style={{ flex: 1, flexDirection: this.state.singleRow ? 'column' : 'row', width: this.state.singleRow ? width(30) : width(70), height: height(30), }}>
                                             <View style={{ flex: this.singleRow ? 0.2 : 0.8 }}>
                                                 <Image source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.state.singleRow ? width(30) : width(30) }} />
                                             </View>

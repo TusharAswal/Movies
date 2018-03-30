@@ -36,7 +36,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{ flex: 0.07, justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => Actions.Frontpage_Tv()} style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity onPress={() => Actions.frontpage_tv()} style={{ flexDirection: 'row' }}>
                         <View style={{ flex: 0.2 }}>
                             <Icon name='tv' size={15} style={{ alignSelf: 'center' }} />
                         </View>
@@ -47,7 +47,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{ flex: 0.07, justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => Actions.DISCOVER()} style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity onPress={() => Actions.discover()} style={{ flexDirection: 'row' }}>
                         <View style={{ flex: 0.2 }}>
                             <Icon size={15} name='search' style={{ alignSelf: 'center' }} />
                         </View>
@@ -58,7 +58,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{ flex: 0.07, justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => Actions.POPULAR_PEOPLE()} style={{ flexDirection: 'row' }}>
+                    <TouchableOpacity onPress={() => Actions.popular_people()} style={{ flexDirection: 'row' }}>
                         <View style={{ flex: 0.2 }}>
                             <Icon size={15} name='user' style={{ alignSelf: 'center' }} />
                         </View>
