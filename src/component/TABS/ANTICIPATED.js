@@ -43,6 +43,7 @@ class Anticipated extends React.Component {
     }
 
     return (
+      this.props.movies?
       <View style={{ flex: 1, }}>
         <FlatList
           keyExtractor={item => item.id.toString()}
@@ -95,7 +96,7 @@ class Anticipated extends React.Component {
             </View>}
           keyExtractor={(item, index) => index}
         />
-      </View>
+      </View>:[]
     );
   }
 }
@@ -104,7 +105,7 @@ class Anticipated extends React.Component {
 mapStateToProps = (state, props) => {
 
   return {
-    movies: state.movieReducer.data,
+    movies: state.movieReducer.moviedata,
 
     isLoading: state.movieReducer.loading
   }

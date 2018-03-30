@@ -89,7 +89,7 @@ class SEARCHMOVIE extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        gotmovie: state.filterReducer.data,
+        gotmovie: state.filterReducer.data18,
 
     }
 }

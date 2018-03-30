@@ -14,10 +14,11 @@ export const TOPRATEDTV = 'TOPRATEDTV';
 export const TVSEASON = 'TVSEASON';
 export const AIRING_TODAY = 'AIRING_TODAY';
 export const POPULARTV = 'POPULARTV';
+import { URL, APIKEY } from '../utils/types'
 
 export function airingToday() {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/airing_today?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'tv/airing_today?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: AIRING_TODAY, payload: responseJson.results })
@@ -31,7 +32,7 @@ export function airingToday() {
 
 export function tvdetail(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: TVDETAILS, payload: responseJson.genres })
@@ -44,7 +45,7 @@ export function tvdetail(id) {
 
 export function tvimages(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
+        fetch(URL + 'tv/' + id + '/images?api_key=' + APIKEY + '&language=en-US&include_image_language=en')
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log('PICTURES', responseJson.backdrops)
@@ -58,7 +59,7 @@ export function tvimages(id) {
 
 export function getRat(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETRAT, payload: responseJson.vote_average })
@@ -71,7 +72,7 @@ export function getRat(id) {
 
 export function getfirstAir(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETFIRSTAIR, payload: responseJson.first_air_date })
@@ -84,7 +85,7 @@ export function getfirstAir(id) {
 
 export function getlastAir(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETLASTAIR, payload: responseJson.last_air_date })
@@ -97,7 +98,7 @@ export function getlastAir(id) {
 
 export function getnet(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETNET, payload: responseJson.networks[0].name })
@@ -110,7 +111,7 @@ export function getnet(id) {
 
 export function getshowType(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETSHOWTYPE, payload: responseJson.type })
@@ -123,7 +124,7 @@ export function getshowType(id) {
 
 export function getshowStat(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETSHOWSTAT, payload: responseJson.status })
@@ -136,7 +137,7 @@ export function getshowStat(id) {
 
 export function getCreator(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GETCREATOR, payload: responseJson.created_by[0].name })
@@ -151,7 +152,7 @@ export function getCreator(id) {
 
 export function getsimilarTv(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '/similar?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'tv/' + id + '/similar?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: SIMILARTV, payload: responseJson.results })
@@ -164,7 +165,7 @@ export function getsimilarTv(id) {
 
 export function gettingcasttv(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '/credits?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: CASTTV, payload: responseJson.cast })
@@ -177,7 +178,7 @@ export function gettingcasttv(id) {
 
 export function runtimetv(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: RUNTV, payload: responseJson.episode_run_time })
@@ -191,7 +192,7 @@ export function runtimetv(id) {
 
 export function gettvSeason(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '/season/1?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '/season/1?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: TVSEASON, payload: responseJson.episodes })
@@ -204,7 +205,7 @@ export function gettvSeason(id) {
 
 export function getpopulartv() {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/popular?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'tv/popular?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: POPULARTV, payload: responseJson.results })
@@ -217,7 +218,7 @@ export function getpopulartv() {
 
 export function gettopratedtv() {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/top_rated?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'tv/top_rated?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: TOPRATEDTV, payload: responseJson.results })
@@ -230,7 +231,7 @@ export function gettopratedtv() {
 
 export function getOverview(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/tv/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: OVER, payload: responseJson.overview })

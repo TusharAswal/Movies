@@ -103,7 +103,7 @@ class UPCOMINGDVDS extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    movies: state.movieReducer.data,
+    movies: state.movieReducer.moviedata,
 
     isLoading: state.movieReducer.loading
   }

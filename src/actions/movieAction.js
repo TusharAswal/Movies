@@ -12,10 +12,11 @@ export const SIMILARMOV = 'SIMILARMOV';
 export const GENRES = 'GENRES';
 export const OVER = 'OVER';
 export const DISCOVERNOW = 'DISCOVERNOW';
+import { URL, APIKEY } from '../utils/types'
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'movie/now_playing?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: NOWPLAYING, payload: responseJson.results })
@@ -28,7 +29,7 @@ export function nowPlaying(lang = 'en-US', page = 1) {
 
 export function topBoxoffice() {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'movie/top_rated?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: TOPBOXOFFICE, payload: responseJson.results })
@@ -41,7 +42,7 @@ export function topBoxoffice() {
 
 export function upcoming() {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'movie/upcoming?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: UPCOMING, payload: responseJson.results })
@@ -56,7 +57,7 @@ export function upcoming() {
 
 export function popular() {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/popular?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'movie/popular?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: POPULAR, payload: responseJson.results })
@@ -70,10 +71,10 @@ export function popular() {
 
 export function moviedetails(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&include_image_language=en')
+        fetch(URL + 'movie/' + id + '/images?api_key=' + APIKEY + '&language=en-US&include_image_language=en')
             .then((response) => response.json())
             .then((responseJson) => {
-                console.log("posters",responseJson.posters)
+                console.log("posters", responseJson.posters)
                 dispatch({ type: MOVIE_DETAILS, payload: responseJson.posters })
             })
             .catch((error) => {
@@ -83,7 +84,7 @@ export function moviedetails(id) {
 }
 export function runtime(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'movie/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
 
@@ -98,7 +99,7 @@ export function runtime(id) {
 
 export function gettingcast(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
+        fetch(URL + 'movie/' + id + '/credits?api_key=' + APIKEY + '')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: CAST, payload: responseJson.cast })
@@ -111,7 +112,7 @@ export function gettingcast(id) {
 
 export function gettingREBURE(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'movie/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: REBURE, payload: responseJson })
@@ -124,7 +125,7 @@ export function gettingREBURE(id) {
 
 export function gettingcrew(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
+        fetch(URL + 'movie/' + id + '/credits?api_key=' + APIKEY + '')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: CREW, payload: responseJson.crew[0].name })
@@ -137,7 +138,7 @@ export function gettingcrew(id) {
 
 export function gettingsimilarMovies(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '/similar?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'movie/' + id + '/similar?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: SIMILARMOV, payload: responseJson.results })
@@ -150,7 +151,7 @@ export function gettingsimilarMovies(id) {
 
 export function genress(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/movie/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'movie/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: GENRES, payload: responseJson.genres })
@@ -167,7 +168,7 @@ export function genress(id) {
 
 export function Discovernow(start = 1990, end = 2018, genis = 28, popdes = 'popularity.desc') {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/discover/movie?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&sort_by=' + popdes + '&include_adult=false&include_video=false&page=1&primary_release_date.gte=' + start + '&primary_release_date.lte=' + end + '&with_genres=' + genis)
+        fetch(URL + 'discover/movie?api_key=' + APIKEY + '&language=en-US&sort_by=' + popdes + '&include_adult=false&include_video=false&page=1&primary_release_date.gte=' + start + '&primary_release_date.lte=' + end + '&with_genres=' + genis)
             .then((response) => response.json())
             .then((responseJson) => {
 

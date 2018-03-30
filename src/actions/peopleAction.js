@@ -4,10 +4,11 @@ export const PERS_IMG = 'PERS_IMG';
 export const WORKIN = 'WORKIN';
 export const WORKINTV = 'WORKINTV';
 export const POPULAR_PEOPLE = 'POPULAR_PEOPLE';
+import { URL, APIKEY } from '../utils/types'
 
 export function getcelebdetails(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/person/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'person/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: PEOPLE_DETAIL, payload: responseJson })
@@ -20,7 +21,7 @@ export function getcelebdetails(id) {
 
 export function getpersonaldetails(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/person/' + id + '?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'person/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: PERS_DETAIL, payload: responseJson })
@@ -33,7 +34,7 @@ export function getpersonaldetails(id) {
 
 export function getpersonalimg(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/person/' + id + '/images?api_key=9a2955322d7a5fbef5b01d4e52abc0ff')
+        fetch(URL + 'person/' + id + '/images?api_key=' + APIKEY + '')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: PERS_IMG, payload: responseJson.profiles })
@@ -46,7 +47,7 @@ export function getpersonalimg(id) {
 
 export function getworkinmovies(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/person/' + id + '/movie_credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'person/' + id + '/movie_credits?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: WORKIN, payload: responseJson.cast })
@@ -59,7 +60,7 @@ export function getworkinmovies(id) {
 
 export function getworkintv(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/person/' + id + '/tv_credits?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US')
+        fetch(URL + 'person/' + id + '/tv_credits?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: WORKINTV, payload: responseJson.cast })
@@ -71,7 +72,7 @@ export function getworkintv(id) {
 }
 export function getpopularPeople(id) {
     return (dispatch) => {
-        fetch('https://api.themoviedb.org/3/person/popular?api_key=9a2955322d7a5fbef5b01d4e52abc0ff&language=en-US&page=1')
+        fetch(URL + 'person/popular?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
                 dispatch({ type: POPULAR_PEOPLE, payload: responseJson.results })

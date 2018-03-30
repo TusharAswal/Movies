@@ -82,7 +82,7 @@ class SEARCHTV extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        gottv: state.filterReducer.data,
+        gottv: state.filterReducer.data17,
 
     }
 }

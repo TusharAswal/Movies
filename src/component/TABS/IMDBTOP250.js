@@ -105,7 +105,7 @@ class POPULAR extends React.Component {
 
 mapStateToProps = (state, props) => {
   return {
-    imdbpopular: state.movieReducer.data,
+    imdbpopular: state.movieReducer.data3,
     isLoading: state.movieReducer.loading
   }
 }
