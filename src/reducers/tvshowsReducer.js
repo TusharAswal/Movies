@@ -1,114 +1,97 @@
-import {
-    SIMILARTV,
-    CASTTV,
-    RUNTV,
-    TVDETAILS,
-    TVIMG,
-    GETRAT,
-    GETFIRSTAIR,
-    GETLASTAIR,
-    GETNET,
-    GETSHOWTYPE,
-    GETSHOWSTAT,
-    GETCREATOR,
-    TOPRATEDTV,
-    TVSEASON,
-    AIRING_TODAY,
-    POPULARTV,
-    OVER,
-} from '../actions/tvshowsAction';
+import { TVS } from '../utils/types';
+
 let defaultState = { loading: true, data: [] };
 
 export const tvshowsReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case AIRING_TODAY:
+        case TVS.AIRING_TODAY:
             return {
                 ...state,
                 loading: false,
                 data25: action.payload
             }
-        case POPULARTV:
+        case TVS.POPULARTV:
             return {
                 ...state,
                 loading: false,
                 data26: action.payload,
             }
-        case TOPRATEDTV:
+        case TVS.TOPRATEDTV:
             return {
                 ...state,
                 loading: false,
                 data27: action.payload,
             }
 
-        case TVDETAILS:
+        case TVS.TVDETAILS:
             return {
                 ...state,
                 data28: action.payload,
             }
 
-        case TVIMG:
+        case TVS.TVIMG:
             return {
                 ...state,
                 data29: action.payload,
             }
-        case TVSEASON:
+        case TVS.TVSEASON:
             return {
                 ...state,
                 data30: action.payload,
             }
-        case GETRAT:
+        case TVS.GETRAT:
             return {
                 ...state,
                 data31: action.payload,
             }
-        case GETFIRSTAIR:
+        case TVS.GETFIRSTAIR:
             return {
                 ...state,
                 data32: action.payload,
             }
-        case GETLASTAIR:
+        case TVS.GETLASTAIR:
             return {
                 ...state,
                 data33: action.payload,
             }
-        case GETNET:
+        case TVS.GETNET:
             return {
                 ...state,
                 data34: action.payload,
             }
-        case GETSHOWTYPE:
+        case TVS.GETSHOWTYPE:
             return {
                 ...state,
                 data35: action.payload,
             }
 
-        case GETSHOWSTAT:
+        case TVS.GETSHOWSTAT:
             return {
                 ...state,
                 data36: action.payload,
             }
-        case GETCREATOR:
+        case TVS.GETCREATOR:
             return {
                 ...state,
                 data37: action.payload,
             }
 
-        case SIMILARTV:
+        case TVS.SIMILARTV:
             return {
                 ...state,
                 data38: action.payload,
             }
-        case CASTTV:
+        case TVS.CASTTV:
             return {
                 ...state,
                 data39: action.payload,
             }
-        case RUNTV:
+        case TVS.RUNTV:
             return {
                 ...state,
                 data40: action.payload,
             }
-        case OVER:
+        case TVS.OVER:
             return {
                 ...state,
                 data11: action.payload,

@@ -1,25 +1,12 @@
-export const ERROR = 'ERROR';
-export const NOWPLAYING = 'NOWPLAYING';
-export const TOPBOXOFFICE = 'TOPBOXOFFICE';
-export const UPCOMING = 'UPCOMING';
-export const POPULAR = 'POPULAR';
-export const MOVIE_DETAILS = 'MOVIE_DETAILS';
-export const OTHERDETAILS = 'OTHERDETAILS';
-export const CAST = 'CAST';
-export const REBURE = 'REBURE';
-export const CREW = 'CREW';
-export const SIMILARMOV = 'SIMILARMOV';
-export const GENRES = 'GENRES';
-export const OVER = 'OVER';
-export const DISCOVERNOW = 'DISCOVERNOW';
-import { URL, APIKEY } from '../utils/types'
+
+import { URL, APIKEY, MOVIER } from '../utils/types'
 
 export function nowPlaying(lang = 'en-US', page = 1) {
     return (dispatch) => {
-        fetch(URL + 'movie/now_playing?api_key=' + APIKEY + '&language=en-US&page=1')
+        fetch(URL + 'movie/now_playing?api_key=' + APIKEY + '&language' + lang + '&page=' + page)
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: NOWPLAYING, payload: responseJson.results })
+                dispatch({ type: MOVIER.NOWPLAYING, payload: responseJson.results })
             })
             .catch((error) => {
                 console.error(error);
@@ -32,7 +19,7 @@ export function topBoxoffice() {
         fetch(URL + 'movie/top_rated?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: TOPBOXOFFICE, payload: responseJson.results })
+                dispatch({ type: MOVIER.TOPBOXOFFICE, payload: responseJson.results })
             })
             .catch((error) => {
                 console.error(error);
@@ -45,7 +32,7 @@ export function upcoming() {
         fetch(URL + 'movie/upcoming?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: UPCOMING, payload: responseJson.results })
+                dispatch({ type: MOVIER.UPCOMING, payload: responseJson.results })
 
             })
 
@@ -60,7 +47,7 @@ export function popular() {
         fetch(URL + 'movie/popular?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: POPULAR, payload: responseJson.results })
+                dispatch({ type: MOVIER.POPULAR, payload: responseJson.results })
             })
 
             .catch((error) => {
@@ -75,7 +62,7 @@ export function moviedetails(id) {
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log("posters", responseJson.posters)
-                dispatch({ type: MOVIE_DETAILS, payload: responseJson.posters })
+                dispatch({ type: MOVIER.MOVIE_DETAILS, payload: responseJson.posters })
             })
             .catch((error) => {
                 console.error(error);
@@ -88,7 +75,7 @@ export function runtime(id) {
             .then((response) => response.json())
             .then((responseJson) => {
 
-                dispatch({ type: OTHERDETAILS, payload: responseJson.runtime })
+                dispatch({ type: MOVIER.OTHERDETAILS, payload: responseJson.runtime })
             })
             .catch((error) => {
                 console.error(error);
@@ -102,7 +89,7 @@ export function gettingcast(id) {
         fetch(URL + 'movie/' + id + '/credits?api_key=' + APIKEY + '')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: CAST, payload: responseJson.cast })
+                dispatch({ type: MOVIER.CAST, payload: responseJson.cast })
             })
             .catch((error) => {
                 console.error(error);
@@ -115,7 +102,7 @@ export function gettingREBURE(id) {
         fetch(URL + 'movie/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: REBURE, payload: responseJson })
+                dispatch({ type: MOVIER.REBURE, payload: responseJson })
             })
             .catch((error) => {
                 console.error(erroe);
@@ -128,7 +115,7 @@ export function gettingcrew(id) {
         fetch(URL + 'movie/' + id + '/credits?api_key=' + APIKEY + '')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: CREW, payload: responseJson.crew[0].name })
+                dispatch({ type: MOVIER.CREW, payload: responseJson.crew[0].name })
             })
             .catch((error) => {
                 console.error(error);
@@ -141,7 +128,7 @@ export function gettingsimilarMovies(id) {
         fetch(URL + 'movie/' + id + '/similar?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: SIMILARMOV, payload: responseJson.results })
+                dispatch({ type: MOVIER.SIMILARMOV, payload: responseJson.results })
             })
             .catch((error => {
                 console.log(error);
@@ -154,7 +141,7 @@ export function genress(id) {
         fetch(URL + 'movie/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GENRES, payload: responseJson.genres })
+                dispatch({ type: MOVIER.GENRES, payload: responseJson.genres })
             })
             .catch((error => {
                 console.log(error);
@@ -172,7 +159,7 @@ export function Discovernow(start = 1990, end = 2018, genis = 28, popdes = 'popu
             .then((response) => response.json())
             .then((responseJson) => {
 
-                dispatch({ type: DISCOVERNOW, payload: responseJson })
+                dispatch({ type: MOVIER.DISCOVERNOW, payload: responseJson })
             })
             .catch((error => {
                 console.log(error);

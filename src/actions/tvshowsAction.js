@@ -1,27 +1,12 @@
-export const SIMILARTV = 'SIMILARTV';
-export const CASTTV = 'CASTTV';
-export const RUNTV = 'RUNTV';
-export const TVDETAILS = 'TVDETAILS';
-export const TVIMG = 'TVIMG';
-export const GETRAT = 'GETRAT';
-export const GETFIRSTAIR = 'GETFIRSTAIR';
-export const GETLASTAIR = 'GETLASTAIR';
-export const GETNET = 'GETNET';
-export const GETSHOWTYPE = 'GETSHOWTYPE';
-export const GETSHOWSTAT = 'GETSHOWSTAT';
-export const GETCREATOR = 'GETCREATOR';
-export const TOPRATEDTV = 'TOPRATEDTV';
-export const TVSEASON = 'TVSEASON';
-export const AIRING_TODAY = 'AIRING_TODAY';
-export const POPULARTV = 'POPULARTV';
-import { URL, APIKEY } from '../utils/types'
+
+import { URL, APIKEY, TVS } from '../utils/types'
 
 export function airingToday() {
     return (dispatch) => {
         fetch(URL + 'tv/airing_today?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: AIRING_TODAY, payload: responseJson.results })
+                dispatch({ type: TVS.AIRING_TODAY, payload: responseJson.results })
             })
             .catch((error) => {
                 console.error(error);
@@ -35,7 +20,7 @@ export function tvdetail(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: TVDETAILS, payload: responseJson.genres })
+                dispatch({ type: TVS.TVDETAILS, payload: responseJson.genres })
             })
             .catch((error => {
                 console.log(error);
@@ -49,7 +34,7 @@ export function tvimages(id) {
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log('PICTURES', responseJson.backdrops)
-                dispatch({ type: TVIMG, payload: responseJson.backdrops })
+                dispatch({ type: TVS.TVIMG, payload: responseJson.backdrops })
             })
             .catch((error => {
                 console.log(error);
@@ -62,7 +47,7 @@ export function getRat(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETRAT, payload: responseJson.vote_average })
+                dispatch({ type: TVS.GETRAT, payload: responseJson.vote_average })
             })
             .catch((error => {
                 console.log(error);
@@ -75,7 +60,7 @@ export function getfirstAir(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETFIRSTAIR, payload: responseJson.first_air_date })
+                dispatch({ type: TVS.GETFIRSTAIR, payload: responseJson.first_air_date })
             })
             .catch((error => {
                 console.log(error);
@@ -88,7 +73,7 @@ export function getlastAir(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETLASTAIR, payload: responseJson.last_air_date })
+                dispatch({ type: TVS.GETLASTAIR, payload: responseJson.last_air_date })
             })
             .catch((error => {
                 console.log(error);
@@ -101,7 +86,7 @@ export function getnet(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETNET, payload: responseJson.networks[0].name })
+                dispatch({ type: TVS.GETNET, payload: responseJson.networks[0].name })
             })
             .catch((error => {
                 console.log(error);
@@ -114,7 +99,7 @@ export function getshowType(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETSHOWTYPE, payload: responseJson.type })
+                dispatch({ type: TVS.GETSHOWTYPE, payload: responseJson.type })
             })
             .catch((error => {
                 console.log(error);
@@ -127,7 +112,7 @@ export function getshowStat(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETSHOWSTAT, payload: responseJson.status })
+                dispatch({ type: TVS.GETSHOWSTAT, payload: responseJson.status })
             })
             .catch((error => {
                 console.log(error);
@@ -140,7 +125,7 @@ export function getCreator(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: GETCREATOR, payload: responseJson.created_by[0].name })
+                dispatch({ type: TVS.GETCREATOR, payload: responseJson.created_by[0].name })
             })
             .catch((error => {
                 console.log(error);
@@ -155,7 +140,7 @@ export function getsimilarTv(id) {
         fetch(URL + 'tv/' + id + '/similar?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: SIMILARTV, payload: responseJson.results })
+                dispatch({ type: TVS.SIMILARTV, payload: responseJson.results })
             })
             .catch((error => {
                 console.log(error);
@@ -168,7 +153,7 @@ export function gettingcasttv(id) {
         fetch(URL + 'tv/' + id + '/credits?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: CASTTV, payload: responseJson.cast })
+                dispatch({ type: TVS.CASTTV, payload: responseJson.cast })
             })
             .catch((error => {
                 console.log(error);
@@ -181,7 +166,7 @@ export function runtimetv(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: RUNTV, payload: responseJson.episode_run_time })
+                dispatch({ type: TVS.RUNTV, payload: responseJson.episode_run_time })
             })
             .catch((error => {
                 console.log(error);
@@ -195,7 +180,7 @@ export function gettvSeason(id) {
         fetch(URL + 'tv/' + id + '/season/1?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: TVSEASON, payload: responseJson.episodes })
+                dispatch({ type: TVS.TVSEASON, payload: responseJson.episodes })
             })
             .catch((error => {
                 console.log(error);
@@ -208,7 +193,7 @@ export function getpopulartv() {
         fetch(URL + 'tv/popular?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: POPULARTV, payload: responseJson.results })
+                dispatch({ type: TVS.POPULARTV, payload: responseJson.results })
             })
             .catch((error => {
                 console.log(error);
@@ -221,7 +206,7 @@ export function gettopratedtv() {
         fetch(URL + 'tv/top_rated?api_key=' + APIKEY + '&language=en-US&page=1')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: TOPRATEDTV, payload: responseJson.results })
+                dispatch({ type: TVS.TOPRATEDTV, payload: responseJson.results })
             })
             .catch((error => {
                 console.log(error);
@@ -234,7 +219,7 @@ export function getOverview(id) {
         fetch(URL + 'tv/' + id + '?api_key=' + APIKEY + '&language=en-US')
             .then((response) => response.json())
             .then((responseJson) => {
-                dispatch({ type: OVER, payload: responseJson.overview })
+                dispatch({ type: TVS.OVER, payload: responseJson.overview })
             })
             .catch((error => {
                 console.log(error);

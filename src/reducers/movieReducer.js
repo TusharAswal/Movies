@@ -1,52 +1,39 @@
-import {
-    NOWPLAYING,
-    ERROR,
-    TOPBOXOFFICE,
-    UPCOMING,
-    POPULAR,
-    MOVIE_DETAILS,
-    OTHERDETAILS,
-    CAST,
-    REBURE,
-    SIMILARMOV,
-    DISCOVERNOW,
-    CREW,
-    GENRES,
+import { MOVIER } from '../utils/types';
 
-} from '../actions/movieAction';
-
-let defaultState = { loading: true, data: [] };
-export const movieReducer = (state = defaultState, action) => {
-
-    switch (action.type) {
-        case NOWPLAYING:
+const defaultState = {
+  loading: true,
+  data: [],
+};
+export default const movieReducer = (state = defaultState, action) => {
+  switch (action.type) {
+        case MOVIER.NOWPLAYING:
             return {
                 ...state,
                 loading: false,
-                moviedata: action.payload
+                moviedata: action.payload,
             }
 
-        case TOPBOXOFFICE:
+        case MOVIER.TOPBOXOFFICE:
             return {
                 ...state,
                 loading: false,
                 data1: action.payload
             }
-        case UPCOMING:
+        case MOVIER.UPCOMING:
             return {
                 ...state,
                 loading: false,
                 data2: action.payload
             }
-        case POPULAR:
+        case MOVIER.POPULAR:
             return {
                 ...state,
                 loading: false,
-                data3: action.payload,
+                data3: action.payload
             }
 
-        case MOVIE_DETAILS:
-console.log("MOVIE DETAILS",action.payload)
+        case MOVIER.MOVIE_DETAILS:
+            console.log("MOVIE DETAILS", action.payload)
             return {
 
                 ...state,
@@ -54,7 +41,7 @@ console.log("MOVIE DETAILS",action.payload)
                 data4: action.payload
             }
 
-        case OTHERDETAILS:
+        case MOVIER.OTHERDETAILS:
             return {
 
                 ...state,
@@ -62,41 +49,43 @@ console.log("MOVIE DETAILS",action.payload)
                 data5: action.payload
             }
 
-        case GENRES:
+        case MOVIER.GENRES:
             return {
                 ...state,
-                data6: action.payload,
+                data6: action.payload
             }
 
-        case SIMILARMOV:
+        case MOVIER.SIMILARMOV:
             return {
                 ...state,
-                data7: action.payload,
+                data7: action.payload
             }
 
-        case CAST:
+        case MOVIER.CAST:
             return {
                 ...state,
                 data8: action.payload
             }
-        case REBURE:
+        case MOVIER.REBURE:
             return {
                 ...state,
                 data9: action.payload
             }
 
-        case CREW:
+        case MOVIER.CREW:
             return {
                 ...state,
                 data10: action.payload
             }
 
-        case DISCOVERNOW:
+        case MOVIER.DISCOVERNOW:
             return {
                 ...state,
-                data12: action.payload,
+                data12: action.payload
             }
         default:
-            return { ...state }
+            return {
+                ...state
+            }
     }
 }

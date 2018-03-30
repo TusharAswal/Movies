@@ -207,7 +207,7 @@ class MOVIE_DETAILS extends Component {
                     visible={this.state.visible}
                     onCancel={this.onCancel.bind(this)}
                 >
-                    <Button iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
+                    <Button style={{width:width(70)}}iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             Share.shareSingle(
@@ -218,7 +218,7 @@ class MOVIE_DETAILS extends Component {
                         }, 300);
                     }}
                     >
-                        Twitter
+                        <Text>Twitter</Text>
 		            </Button>
                     <Button iconSrc={{ uri: FACEBOOK_ICON }} onPress={() => {
                         this.onCancel();

@@ -1,46 +1,40 @@
-import {
-    ALLGENRES,
-    ALLGENRES1,
-    CONTENTIS,
-    SEARCHMOVIE,
-    SEARCHTV,
-    SEARCH_PEOPLE,
-} from '../actions/filterAction';
+import { FILTER } from '../utils/types';
+
 let defaultState = { loading: true, data: [] };
 
 export const filterReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case ALLGENRES:
+        case FILTER.ALLGENRES:
             return {
                 ...state,
                 data13: action.payload,
             }
-        case ALLGENRES1:
+        case FILTER.ALLGENRES1:
             return {
                 ...state,
                 data14: action.payload,
             }
-        case CONTENTIS:
+        case FILTER.CONTENTIS:
             return {
                 ...state,
                 data15: action.payload,
             }
 
-        case SEARCH_PEOPLE:
+        case FILTER.SEARCH_PEOPLE:
             return {
                 ...state,
                 loading: false,
                 data16: action.payload,
             }
 
-        case SEARCHTV:
+        case FILTER.SEARCHTV:
             return {
                 ...state,
                 loading: false,
                 data17: action.payload,
             }
 
-        case SEARCHMOVIE:
+        case FILTER.SEARCHMOVIE:
             return {
                 ...state,
                 loading: false,
