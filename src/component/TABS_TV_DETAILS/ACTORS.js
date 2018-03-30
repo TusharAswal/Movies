@@ -41,7 +41,7 @@ class ACTORS extends Component {
                 renderItem={({item}) => 
                 <View style={{flex:1}}>
                 <TouchableOpacity onPress={()=>Actions.people_detail({'id':item.id})} style={{flex:0.99,flexDirection:'row', height:height(10),width:width(100),marginTop:height(3)}}>
-                    <View style={{flex:0.2,justifyContent:'center'}}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{alignSelf:'center', borderRadius:100,height:height(10),width:width(10) }} /></View>
+                    <View style={{flex:0.2,justifyContent:'center'}}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{alignSelf:'center', borderRadius:100,height:height(10),width:width(15) }} imageStyle={{borderRadius:100}}/></View>
                     <View style={{flex:0.4,justifyContent:'center'}}><Text style={{fontSize:12, color:'black'}}>Name: {item.name}</Text></View>
                     <View style={{flex:0.4,justifyContent:'center'}}><Text style={{fontStyle: 'italic',color:'#778899',fontSize:12, color:'black'}}>As: {item.character}</Text></View>
                 </TouchableOpacity>

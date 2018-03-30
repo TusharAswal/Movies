@@ -39,7 +39,7 @@ class CAST extends Component {
                     renderItem={({ item }) =>
                         <View style={{ flex: 1 }}>
                             <TouchableOpacity onPress={() => Actions.people_detail({ 'id': item.id })} style={{ flex: 0.99, flexDirection: 'row', height: height(15), width: width(100), marginTop: height(3) }}>
-                                <View style={{ flex: 0.2, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', borderRadius: totalSize(100), height: height(12), width: width(17) }} /></View>
+                                <View style={{ flex: 0.2, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.profile_path }} style={{ alignSelf: 'center', borderRadius: totalSize(100), height: height(12), width: width(17) }} imageStyle={{borderRadius:100}}/></View>
                                 <View style={{ flex: 0.4, justifyContent: 'center' }}><Text style={{ fontSize: totalSize(1.7), color: 'black', marginLeft: totalSize(1) }}>Name: {item.name}</Text></View>
                                 <View style={{ flex: 0.4, justifyContent: 'center' }}><Text style={{ fontStyle: 'italic', color: '#778899', fontSize: 12, color: 'black', marginLeft: totalSize(1) }}>As: {item.character}</Text></View>
                             </TouchableOpacity>
