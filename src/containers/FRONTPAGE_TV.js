@@ -12,9 +12,9 @@ import * as myActions from '../actions/movieAction/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
-import AIRING_TODAY from './TABS_TV/AIRING_TODAY';
-import POPULAR from './TABS_TV/POPULAR';
-import TOP_RATED from './TABS_TV/TOP_RATED';
+import AIRING_TODAY from '../component/TABS_TV/AIRING_TODAY';
+import POPULAR from '../component/TABS_TV/POPULAR';
+import TOP_RATED from '../component/TABS_TV/TOP_RATED';
 
 class Frontpage_Tv extends Component {
     constructor(props) {

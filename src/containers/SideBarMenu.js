@@ -25,7 +25,7 @@ export default class SideBarMenu extends Component {
                 </View>
 
                 <View style={{ flex: 0.07, justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flexDirection: 'row' }} >
+                    <TouchableOpacity onPress={() => Actions.popTo('frontpage')} style={{ flexDirection: 'row' }} >
                         <View style={{ flex: 0.2 }}>
                             <Icon name='film' size={15} style={{ alignSelf: 'center' }} />
                         </View>

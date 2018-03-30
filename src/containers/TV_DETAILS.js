@@ -9,10 +9,10 @@ import * as myActions from '../actions/tvshowsAction';
 import { bindActionCreators } from 'redux';
 import Share, { ShareSheet, Button } from "react-native-share"
 import Swiper from 'react-native-swiper';
-import INFO from './TABS_TV_DETAILS/INFO';
-import ACTORS from './TABS_TV_DETAILS/ACTORS';
+import INFO from '../component/TABS_TV_DETAILS/INFO';
+import ACTORS from '../component/TABS_TV_DETAILS/ACTORS';
 import Image from 'react-native-image-progress';
-import SEASONS from './TABS_TV_DETAILS/SEASONS';
+import SEASONS from '../component/TABS_TV_DETAILS/SEASONS';
 import { Menu, MenuOptions,MenuOption, MenuTrigger,} from 'react-native-popup-menu';
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
@@ -162,10 +162,10 @@ class TV_DETAILS extends Component {
                         </View>
                     </View>
                     <View style={{ height: height(18), width: width(18), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: height(18), width: width(18) }} source={{ uri: imgPath + this.props.tv.backdrop_path }} /></View>
-                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage_Tv')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                    <TouchableOpacity onPress={() => Actions.popTo('frontpage_tv')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage_Tv')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
+                    <TouchableOpacity onPress={() => Actions.popTo('frontpage_tv')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
                         <Icon name='home' size={height(4)} color="white" style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.onOpen.bind(this)} style={{ flex: 0.35, position: 'absolute', marginLeft: width(80) }}>

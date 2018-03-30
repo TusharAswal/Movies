@@ -45,7 +45,7 @@ class SEARCH_PEOPLE extends Component {
                 <ScrollView>
                     <View style={{ flex: 0.1, flexDirection: 'row', backgroundColor: '#323232', }}>
                         <View style={{ flex: 0.15, }}>
-                            <TouchableOpacity onPress={() => Actions.popTo('POPULAR_PEOPLE')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                            <TouchableOpacity onPress={() => Actions.popTo('popular_people')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                                 <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                             </TouchableOpacity>
                         </View>

@@ -11,31 +11,34 @@ import * as myActions from '../actions/filterAction/';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
+const imgpath = "https://image.tmdb.org/t/p/w500/";
 import Image from 'react-native-image-progress';
 
-const imgpath = "https://image.tmdb.org/t/p/w500/";
-
-class SEARCHTV extends Component {
+class SEARCHMOVIE extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
-            tvname: '',
-            gottv: []
+            moviename: '',
+            gotmovie: []
 
         }
 
     }
 
     componentWillUpdate = () => {
-        this.props.searchtv(this.state.tvname);
+
+        this.props.searchmovie(this.state.moviename);
     }
 
+    componentWillMount = () => {
 
+
+    }
 
     componentWillReceiveProps = (nextProps) => {
-        if (this.props.gottv != nextProps.gottv) {
-            this.setState({ gottv: nextProps.gottv })
+        if (this.props.gotmovie != nextProps.gotmovie) {
+            this.setState({ gotmovie: nextProps.gotmovie })
         }
     }
 
@@ -45,7 +48,7 @@ class SEARCHTV extends Component {
                 <ScrollView>
                     <View style={{ flex: 0.1, flexDirection: 'row', backgroundColor: '#323232' }}>
                         <View style={{ flex: 0.15, }}>
-                            <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                            <TouchableOpacity onPress={() => Actions.popTo('frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                                 <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                             </TouchableOpacity>
                         </View>
@@ -55,20 +58,24 @@ class SEARCHTV extends Component {
                         </View>
 
                         <View style={{ flex: 0.75 }}>
-                            <TextInput style={{ color: 'white' }} placeholderTextColor="white" placeholder="Search Tv Shows" onChangeText={(tvname) => this.setState({ tvname })} />
+                            <TextInput style={{ color: 'white' }} placeholderTextColor="white" placeholder="Search Movies" onChangeText={(moviename) => this.setState({ moviename })} />
                         </View>
                     </View>
                 </ScrollView>
                 <FlatList
                     keyExtractor={item => item.id.toString()}
                     key={`${item => item.id * 0.1.toString()}`}
-                    data={this.props.gottv}
+                    data={this.props.gotmovie}
                     numColumns={1}
                     renderItem={({ item }) =>
                         <View style={{ flex: 1, flexDirection: 'column' }}>
-                            <TouchableOpacity onPress={() => Actions.TV_DETAILS({ "tv": item })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
+                            <TouchableOpacity onPress={() => Actions.MOVIE_DETAILS({ 'movie': item })} style={{ flex: 0.99, flexDirection: 'row', height: height(20), width: width(100), margin: height(2) }}>
                                 <View style={{ flex: 0.35, justifyContent: 'center' }}><Image indicator={ActivityIndicator} source={{ uri: imgpath + item.poster_path }} style={{ alignSelf: 'center', height: height(25), width: width(30) }} /></View>
-                                <View style={{ flex: 0.65, justifyContent: 'center' }}><Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Name: {item.title}</Text></View>
+                                <View style={{ flex: 0.65, justifyContent: 'center' }}>
+                                    <Text style={{ fontSize: 15, color: 'black', fontWeight: 'bold' }}>Name: {item.title}</Text>
+                                    <Text style={{ fontSize: 10, color: 'black', fontWeight: 'bold' }}>Release Date: {item.release_date}</Text>
+                                    <Text style={{ fontSize: 10, color: 'black', fontWeight: 'bold' }}>Popularity: {item.popularity}</Text>
+                                </View>
                             </TouchableOpacity>
                             <View style={{ alignSelf: 'center', flex: 0.01, borderWidth: 1, borderColor: '#DCDCDC', margin: height(2), width: width(95) }}></View>
                         </View>
@@ -82,7 +89,7 @@ class SEARCHTV extends Component {
 
 mapStateToProps = (state, props) => {
     return {
-        gottv: state.filterReducer.data17,
+        gotmovie: state.filterReducer.data18,
 
     }
 }
@@ -90,4 +97,4 @@ mapStateToProps = (state, props) => {
 mapDispatchToProps = (dispatch) => {
     return bindActionCreators(myActions, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SEARCHTV);
+export default connect(mapStateToProps, mapDispatchToProps)(SEARCHMOVIE);

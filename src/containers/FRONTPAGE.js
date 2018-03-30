@@ -13,15 +13,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import SideBarMenu from './SideBarMenu';
-import NOWPLAYING from './TABS/NOWPLAYING';
-import TOPBOXOFFICE from './TABS/TOPBOXOFFICE';
-import ANTICIPATED from './TABS/ANTICIPATED';
-import IMDBTOP250 from './TABS/IMDBTOP250';
-import NEWDVDS from './TABS/NEWDVDS';
-import TRENDING from './TABS/TRENDING';
-import UPCOMING from './TABS/UPCOMING';
-import UPCOMINGDVDS from './TABS/UPCOMINGDVDS';
-import ONNETFLIX from './TABS/ONNETFLIX';
+import NOWPLAYING from '../component/TABS/NOWPLAYING';
+import TOPBOXOFFICE from '../component/TABS/TOPBOXOFFICE';
+import ANTICIPATED from '../component/TABS/ANTICIPATED';
+import IMDBTOP250 from '../component/TABS/IMDBTOP250';
+import NEWDVDS from '../component/TABS/NEWDVDS';
+import TRENDING from '../component/TABS/TRENDING';
+import UPCOMING from '../component/TABS/UPCOMING';
+import UPCOMINGDVDS from '../component/TABS/UPCOMINGDVDS';
+import ONNETFLIX from '../component/TABS/ONNETFLIX';
 
 class Frontpage extends Component {
     constructor(props) {

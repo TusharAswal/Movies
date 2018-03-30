@@ -12,17 +12,17 @@ import {
   Actions,
 
 } from 'react-native-router-flux';
-import Frontpage from './component/FRONTPAGE';
-import MOVIE_DETAILS from './component/MOVIE_DETAILS';
-import Frontpage_Tv from './component/FRONTPAGE_TV';
-import TV_DETAILS from './component/TV_DETAILS';
-import DISCOVER from './component/DISCOVER';
-import POPULAR_PEOPLE from './component/POPULAR_PEOPLE';
-import SEARCHMOVIE from './component/SEARCHMOVIE';
-import SEARCHTV from './component/SEARCHTV';
-import SEARCH_PEOPLE from './component/SEARCH_PEOPLE';
-import PEOPLE_DETAIL from './component/PEOPLE_DETAIL';
-import mov2 from './component/MOV2';
+import Frontpage from './containers/FRONTPAGE';
+import MOVIE_DETAILS from './containers/MOVIE_DETAILS';
+import Frontpage_Tv from './containers/FRONTPAGE_TV';
+import TV_DETAILS from './containers/TV_DETAILS';
+import DISCOVER from './containers/DISCOVER';
+import POPULAR_PEOPLE from './containers/POPULAR_PEOPLE';
+import SEARCHMOVIE from './containers/SEARCHMOVIE';
+import SEARCHTV from './containers/SEARCHTV';
+import SEARCH_PEOPLE from './containers/SEARCH_PEOPLE';
+import PEOPLE_DETAIL from './containers/PEOPLE_DETAIL';
+import mov2 from './containers/MOV2';
 
 const App = () => {
   return (
@@ -30,61 +30,61 @@ const App = () => {
       <Scene key='root'>
         <Scene
           initial
-          key='Frontpage'
+          key='frontpage'
           component={Frontpage}
           hideNavBar={true}
         />
 
         <Scene
-          key='MOVIE_DETAILS'
+          key='movie_details'
           component={MOVIE_DETAILS}
           hideNavBar={true}
         />
 
         <Scene
-          key='Frontpage_Tv'
+          key='frontpage_tv'
           component={Frontpage_Tv}
           hideNavBar={true}
         />
 
         <Scene
-          key='TV_DETAILS'
+          key='tv_details'
           component={TV_DETAILS}
           hideNavBar={true}
         />
 
         <Scene
-          key='DISCOVER'
+          key='discover'
           component={DISCOVER}
           hideNavBar={true}
         />
 
         <Scene
-          key='POPULAR_PEOPLE'
+          key='popular_people'
           component={POPULAR_PEOPLE}
           hideNavBar={true}
         />
 
         <Scene
-          key='SEARCHMOVIE'
+          key='searchmovie'
           component={SEARCHMOVIE}
           hideNavBar={true}
         />
 
         <Scene
-          key='SEARCHTV'
+          key='searchtv'
           component={SEARCHTV}
           hideNavBar={true}
         />
 
         <Scene
-          key='SEARCH_PEOPLE'
+          key='search_people'
           component={SEARCH_PEOPLE}
           hideNavBar={true}
         />
 
         <Scene
-          key='PEOPLE_DETAIL'
+          key='people_detail'
           component={PEOPLE_DETAIL}
           hideNavBar={true}
         />

@@ -11,9 +11,9 @@ import Modal from "react-native-modal";
 import Image from 'react-native-image-progress';
 import Share, { ShareSheet, Button } from "react-native-share"
 import Swiper from 'react-native-swiper';
-import INFO from './TABS_DETAILS/INFO';
-import CAST from './TABS_DETAILS/CAST';
-import REVIEW from './TABS_DETAILS/REVIEW';
+import INFO from '../component/TABS_DETAILS/INFO';
+import CAST from '../component/TABS_DETAILS/CAST';
+import REVIEW from '../component/TABS_DETAILS/REVIEW';
 import { Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 
 const imgPath = "https://image.tmdb.org/t/p/w500/";
@@ -163,11 +163,11 @@ class MOVIE_DETAILS extends Component {
                             </View>
                         </View>
                     </View>
-                    <View style={{ height: height(18), width: width(18), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: height(18), width: width(18) }} source={{ uri: imgPath + this.props.movie.poster_path }} /></View>
-                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
+                    <View style={{ height: height(18), width: width(18), position: 'absolute', marginTop: width(45), marginLeft: width(6) }}><Image style={{ height: height(18), width: width(18) }} imageStyle={{borderRadius:100}}source={{ uri: imgPath + this.props.movie.poster_path }} /></View>
+                    <TouchableOpacity onPress={() => Actions.popTo('frontpage')} style={{ flex: 0.25, position: 'absolute', alignSelf: 'flex-start' }}>
                         <Icon name='arrow-left' size={height(4)} color='white' style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => Actions.popTo('Frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
+                    <TouchableOpacity onPress={() => Actions.popTo('frontpage')} style={{ flex: 0.25, position: 'absolute', marginLeft: width(68) }}>
                         <Icon name='home' size={height(4)} color="white" style={{ marginLeft: width(2), marginTop: width(2) }} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={this.onOpen.bind(this)} style={{ flex: 0.35, position: 'absolute', marginLeft: width(80) }}>
