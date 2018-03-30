@@ -167,3 +167,18 @@ export function Discovernow(start = 1990, end = 2018, genis = 28, popdes = 'popu
     }
 }
 
+export function gettingtrailers(id) {
+    return (dispatch) => {
+        fetch(URL+ 'movie/'+ id +'/videos?api_key='+ APIKEY +'&language=en-US')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                dispatch({ type: MOVIER.TRAILERS, payload: responseJson.results })
+            })
+            .catch((error => {
+                console.log(error);
+            }))
+    }
+}
+
+
+

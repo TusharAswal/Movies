@@ -1,5 +1,6 @@
 export const URL = "https://api.themoviedb.org/3/";
 export const APIKEY = "9a2955322d7a5fbef5b01d4e52abc0ff";
+export const YOUTUBE = "https://www.youtube.com/watch?v=";
 
 export const FILTER = {
     ALLGENRES: 'ALLGENRES',
@@ -25,6 +26,7 @@ export const MOVIER = {
     GENRES: 'GENRES',
     OVER: 'OVER',
     DISCOVERNOW: 'DISCOVERNOW',
+    TRAILERS: 'TRAILERS',
 }
 
 export const PEEPS = {

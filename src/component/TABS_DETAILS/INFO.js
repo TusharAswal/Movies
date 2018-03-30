@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, FlatList, TouchableOpacity,ActivityIndicator, } from 'react-native';
+import {Linking, Text, View, ScrollView, FlatList, TouchableOpacity,ActivityIndicator, } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
@@ -8,6 +8,7 @@ const imgpath = "https://image.tmdb.org/t/p/w500/";
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 import Image from 'react-native-image-progress';
+import {YOUTUBE} from '../../utils/types'
 
 class INFO extends Component {
     constructor(props) {
@@ -17,15 +18,20 @@ class INFO extends Component {
             ReBuRe: [],
             director: [],
             similarmov: [],
-            generes: []
+            generes: [],
+            trailers:[]
         }
     }
-
+    playVideo(e) {
+        let uri = YOUTUBE + e.key;
+        Linking.openURL(uri);
+      }
     componentDidMount() {
-       
+        
         this.props.gettingREBURE(this.props.data.info.id);
         this.props.gettingcrew(this.props.data.info.id);
         this.props.gettingsimilarMovies(this.props.data.info.id);
+        this.props.gettingtrailers(this.props.data.info.id);
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -39,6 +45,10 @@ class INFO extends Component {
 
         if (this.props.similarmov != nextProps.similarmov) {
             this.setState({ similarmov: nextProps.similarmov })
+        }
+
+        if (this.props.trailers != nextProps.trailers) {
+            this.setState({ trailers: nextProps.trailers })
         }
 
     }
@@ -86,7 +96,21 @@ class INFO extends Component {
                     </View>
 
                     <View style={{ alignSelf: 'center', flex: 0.01, borderWidth: 0.5, borderColor: '#DCDCDC', marginTop: height(1), width: width(95) }}></View>
-                    <Text style={{ fontSize: totalSize(2), marginLeft: width(3), color: 'black' }} >Similar Movies</Text>
+                   
+                    <FlatList 
+                         horizontal={true}
+                         keyExtractor={item => item.id.toString()}
+                         numColumns={1}
+                         data={this.props.trailers}
+                         renderItem={({ item }) =>
+                             <View style={{ alignItems: 'center', flexWrap: 'wrap', marginLeft: width(3), marginRight: width(3), marginTop: height(2) }}>
+                                 <TouchableOpacity styl3={{width:width(20)}}onPress={() => {this.playVideo(item);}}>
+                                    <Image source = {{uri:'https://dcassetcdn.com/design_img/236622/113409/113409_2413236_236622_thumbnail.jpg'}} style={{height:totalSize(20),width:totalSize(15),borderColor:'grey',borderWidth:0.5}}/>
+                                 </TouchableOpacity>
+                             </View>
+                         }
+                    />
+                     <Text style={{ fontSize: totalSize(2), marginLeft: width(3), color: 'black' }} >Similar Movies</Text>
                     <FlatList
                         horizontal={true}
                         keyExtractor={item => item.id.toString()}
@@ -117,6 +141,7 @@ mapStateToProps = (state, props) => {
         ReBuRe: state.movieReducer.data9,
         director: state.movieReducer.data10,
         similarmov: state.movieReducer.data7,
+        trailers: state.movieReducer.trailerss
     }
 }
 mapDispatchToProps = (dispatch) => {

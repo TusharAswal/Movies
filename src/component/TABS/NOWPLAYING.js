@@ -11,7 +11,6 @@ import { bindActionCreators } from 'redux';
 import Modal from "react-native-modal";
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
-
 class NOWPLAYING extends React.Component {
 
   constructor(props) {

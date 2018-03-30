@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, ActivityIndicator, Text, View, TouchableHighlight, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import {FlatList, ActivityIndicator, Text, View, TouchableHighlight, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -33,6 +33,7 @@ class MOVIE_DETAILS extends Component {
         }
     }
 
+  
     onCancel() {
         this.setState({ visible: false });
     }
@@ -59,6 +60,7 @@ class MOVIE_DETAILS extends Component {
         this.props.moviedetails(this.props.movie.id);
         this.props.runtime(this.props.movie.id);
         this.props.genress(this.props.movie.id);
+
     }
 
     componentWillReceiveProps = (nextProps) => {
@@ -200,14 +202,13 @@ class MOVIE_DETAILS extends Component {
                         <INFO tabLabel="INFO" label="Page #1" data={{ info: this.props.movie }} />
                         <CAST tabLabel="CAST" label="Page #2" data={{ cast: this.props.movie }} />
                         <REVIEW tabLabel="REVIEW" label="Page #3" data={{ cast: this.props.movie }} />
-
                     </ScrollableTabView>
                 </View>
                 <ShareSheet
                     visible={this.state.visible}
                     onCancel={this.onCancel.bind(this)}
                 >
-                    <Button style={{width:width(70)}}iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
+                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             Share.shareSingle(
@@ -220,7 +221,7 @@ class MOVIE_DETAILS extends Component {
                     >
                         <Text>Twitter</Text>
 		            </Button>
-                    <Button iconSrc={{ uri: FACEBOOK_ICON }} onPress={() => {
+                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: FACEBOOK_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             Share.shareSingle(
@@ -233,7 +234,7 @@ class MOVIE_DETAILS extends Component {
                     >
                         Facebook
 		            </Button>
-                    <Button iconSrc={{ uri: WHATSAPP_ICON }} onPress={() => {
+                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: WHATSAPP_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             Share.shareSingle(
@@ -246,7 +247,7 @@ class MOVIE_DETAILS extends Component {
                     >
                         Whatsapp
 		            </Button>
-                    <Button iconSrc={{ uri: GOOGLE_PLUS_ICON }} onPress={() => {
+                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: GOOGLE_PLUS_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             Share.shareSingle(
@@ -259,7 +260,7 @@ class MOVIE_DETAILS extends Component {
                     >
                         Google +
 		            </Button>
-                    <Button iconSrc={{ uri: EMAIL_ICON }} onPress={() => {
+                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: EMAIL_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             Share.shareSingle(
@@ -272,7 +273,7 @@ class MOVIE_DETAILS extends Component {
                     >
                         Email
 		            </Button>
-                    <Button iconSrc={{ uri: CLIPBOARD_ICON }} onPress={() => {
+                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: CLIPBOARD_ICON }} onPress={() => {
                         this.onCancel();
                         setTimeout(() => {
                             if (typeof this.state.shareOptions["url"] !== undefined) {

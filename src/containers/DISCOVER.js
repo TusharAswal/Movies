@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import SideBarMenu from './SideBarMenu';
 import Modal from "react-native-modal";
 import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
-//import PickerExample from './filtermovies';
 import { Radio, List, ListItem, Right } from "native-base";
 const imgPath = "https://image.tmdb.org/t/p/w500/";
 
