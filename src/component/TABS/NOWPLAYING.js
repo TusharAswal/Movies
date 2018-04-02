@@ -49,18 +49,16 @@ class NOWPLAYING extends React.Component {
         <FlatList
           keyExtractor={item => item.id.toString()}
           key={`${this.props.singleRow ? item => item.id.toString() : item => item.id * 0.1.toString()}`}
-
           numColumns={this.props.singleRow ? 3 : 1}
           data={this.props.movies}
           renderItem={({ item }) =>
-            <View style={{ flex: 1, flexDirection: this.props.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'center', }}>
+            <View style={{ flex: 1 , flexDirection: this.props.singleRow ? 'row' : 'column', margin: 6, justifyContent: 'flex-start', }}>
 
-              <TouchableOpacity onPress={() => Actions.movie_details({ 'movie': item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30), }}>
+              <TouchableOpacity onPress={() => Actions.movie_details({ 'movie': item })} style={{ flex: 1, flexDirection: this.props.singleRow ? 'column' : 'row', width: this.props.singleRow ? width(30) : width(70), height: height(30) }}>
 
-                <View style={{ flex: this.singleRow ? 0.2 : 0.8, width: width(30) }}>
+                <View style={{ flex: this.singleRow ? 0.2 : 0.8, width: width(30)}}>
                   <Image indicator={ActivityIndicator}  source={{ uri: imgPath + item.poster_path }} style={{ flex: 1, width: this.props.singleRow ? width(30) : width(30) }} />
                 </View>
-
                 {this.props.singleRow ?
                   <View style={{ flexDirection: 'row', width: width(30), flex: 0.2, alignContent: 'center', alignItems: 'center', backgroundColor: '#C0C0C0', width: width(30) }}>
                     <View style={{ flex: 0.8, flexWrap: 'wrap' }}>
