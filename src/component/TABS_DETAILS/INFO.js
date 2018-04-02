@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Linking, Text, View, ScrollView, FlatList, TouchableOpacity,ActivityIndicator, } from 'react-native';
+import {Text, View, ScrollView, FlatList, TouchableOpacity,ActivityIndicator, } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 import Image from 'react-native-image-progress';
 import {YOUTUBE} from '../../utils/types'
+import VideoPlayer from 'react-native-native-video-player';
 
 class INFO extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class INFO extends Component {
     }
     playVideo(e) {
         let uri = YOUTUBE + e.key;
-        Linking.openURL(uri);
+        VideoPlayer.showVideoPlayer(uri);
       }
     componentDidMount() {
         

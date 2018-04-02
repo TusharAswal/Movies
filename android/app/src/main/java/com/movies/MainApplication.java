@@ -3,6 +3,7 @@ package com.movies;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wog.videoplayer.VideoPlayerPackage;
 //import cl.json.RNSharePackage;
 import com.beefe.picker.PickerViewPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -22,12 +23,11 @@ public class MainApplication extends Application implements ReactApplication {
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
     }
-
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-           // new RNSharePackage(),
+            new VideoPlayerPackage(),
             new PickerViewPackage(),
             new VectorIconsPackage(),
             new ReactNativeIcons()
