@@ -10,6 +10,8 @@ import { Actions } from 'react-native-router-flux';
 import Image from 'react-native-image-progress';
 import {YOUTUBE} from '../../utils/types'
 import VideoPlayer from 'react-native-native-video-player';
+import { YouTubeStandaloneAndroid } from 'react-native-youtube';
+import YouTube from 'react-native-youtube'
 
 class INFO extends Component {
     constructor(props) {
@@ -105,9 +107,21 @@ class INFO extends Component {
                          data={this.props.trailers}
                          renderItem={({ item }) =>
                              <View style={{ alignItems: 'center', flexWrap: 'wrap', marginLeft: width(3), marginRight: width(3), marginTop: height(2) }}>
-                                 <TouchableOpacity styl3={{width:width(20)}}onPress={() => {this.playVideo(item);}}>
-                                    <Image source = {{uri:'https://dcassetcdn.com/design_img/236622/113409/113409_2413236_236622_thumbnail.jpg'}} style={{height:totalSize(20),width:totalSize(15),borderColor:'grey',borderWidth:0.5}}/>
-                                 </TouchableOpacity>
+                              <YouTube
+  videoId={this.props.trailers.key} 
+  apiKey= '9a2955322d7a5fbef5b01d4e52abc0ff' // The YouTube video ID
+  play={false}      
+         // control playback of video with true/false
+  fullscreen={true}       // control whether the video should play in fullscreen or inline
+  loop={false}             // control whether the video should loop when ended
+
+  onReady={e => this.setState({ isReady: true })}
+  onChangeState={e => this.setState({ status: e.state })}
+  onChangeQuality={e => this.setState({ quality: e.quality })}
+  onError={e => this.setState({ error: e.error })}
+
+  style={{ width:200,height: 300 }}
+/>
                              </View>
                          }
                     />
@@ -130,8 +144,10 @@ class INFO extends Component {
                         }
                     />
                 </ScrollView>
+                
             </View>
             : null 
+
         ); 
     }
     }
