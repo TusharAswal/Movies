@@ -10,7 +10,7 @@
     "eslint": "^4.19.1",
     "native-base": "^2.4.1",
     "react": "16.3.0-alpha.2",
-    "react-native": "0.54.2",
+    "react-native": "0.45.1",
     "react-native-dimension": "^1.0.6",
     "react-native-drawer": "^2.5.0",
     "react-native-drawer-layout": "^2.0.0",

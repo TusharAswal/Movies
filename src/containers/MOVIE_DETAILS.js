@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {FlatList, ActivityIndicator, Text, View, TouchableHighlight, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import {Linking,FlatList, ActivityIndicator, Text, View, TouchableHighlight, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { height, width, totalSize } from 'react-native-dimension';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -30,6 +30,7 @@ class MOVIE_DETAILS extends Component {
             genres: [],
             shareOptions: {},
             visible: false,
+            sharingis:false
         }
     }
 
@@ -51,6 +52,10 @@ class MOVIE_DETAILS extends Component {
             }
         });
     }
+
+    // toggleSharing(){
+    //     this.setState({sharingis:!sharingis})
+    // }
 
     _toggleModal = () =>
         this.setState({ isModalVisible: !this.state.isModalVisible });
@@ -102,6 +107,8 @@ class MOVIE_DETAILS extends Component {
     render() {
         console.log("Detail props", this.props.movie);
         var slides = this.props.mdetails ? this.extractFilePath(this.props.mdetails) : [];
+
+      
         return (
             <View style={{ flex: 1, }}>
 
@@ -208,89 +215,40 @@ class MOVIE_DETAILS extends Component {
                     visible={this.state.visible}
                     onCancel={this.onCancel.bind(this)}
                 >
-                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
+                    <Button iconSrc={{ uri: TWITTER_ICON }} onPress={() => {
                         this.onCancel();
-                        setTimeout(() => {
-                            Share.shareSingle(
-                                Object.assign(this.state.shareOptions, {
-                                    social: "twitter"
-                                })
-                            );
-                        }, 300);
+                        Linking.openURL('https://www.twitter.com')
+                        
+                    }}
+                    ><Text>Twitter   </Text>
+                    </Button>
+                    <Button  iconSrc={{ uri: FACEBOOK_ICON }} onPress={() => {
+                        this.onCancel();
+                        Linking.openURL('https://www.facebook.com')
                     }}
                     >
-                        <Text>Twitter</Text>
+                        <Text>Facebook    </Text>
 		            </Button>
-                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: FACEBOOK_ICON }} onPress={() => {
+                    <Button  iconSrc={{ uri: WHATSAPP_ICON }} onPress={() => {
                         this.onCancel();
-                        setTimeout(() => {
-                            Share.shareSingle(
-                                Object.assign(this.state.shareOptions, {
-                                    social: "facebook"
-                                })
-                            );
-                        }, 300);
+                        Linking.openURL('https://web.whatsapp.com/%F0%9F%8C%90/en')
                     }}
                     >
-                        Facebook
+                         <Text>Whatsapp      </Text>
 		            </Button>
-                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: WHATSAPP_ICON }} onPress={() => {
+                    <Button  iconSrc={{ uri: GOOGLE_PLUS_ICON }} onPress={() => {
                         this.onCancel();
-                        setTimeout(() => {
-                            Share.shareSingle(
-                                Object.assign(this.state.shareOptions, {
-                                    social: "whatsapp"
-                                })
-                            );
-                        }, 300);
+                        Linking.openURL('https://plus.google.com/discover')
                     }}
                     >
-                        Whatsapp
+                        <Text>Google +      </Text>
 		            </Button>
-                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: GOOGLE_PLUS_ICON }} onPress={() => {
+                    <Button  iconSrc={{ uri: EMAIL_ICON }} onPress={() => {
                         this.onCancel();
-                        setTimeout(() => {
-                            Share.shareSingle(
-                                Object.assign(this.state.shareOptions, {
-                                    social: "googleplus"
-                                })
-                            );
-                        }, 300);
+                        Linking.openURL('https://www.gmail.com')
                     }}
                     >
-                        Google +
-		            </Button>
-                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: EMAIL_ICON }} onPress={() => {
-                        this.onCancel();
-                        setTimeout(() => {
-                            Share.shareSingle(
-                                Object.assign(this.state.shareOptions, {
-                                    social: "email"
-                                })
-                            );
-                        }, 300);
-                    }}
-                    >
-                        Email
-		            </Button>
-                    <Button containerViewStyle={{width:width(100)}} iconSrc={{ uri: CLIPBOARD_ICON }} onPress={() => {
-                        this.onCancel();
-                        setTimeout(() => {
-                            if (typeof this.state.shareOptions["url"] !== undefined) {
-                                Clipboard.setString(this.state.shareOptions["url"]);
-                                if (Platform.OS === "android") {
-                                    ToastAndroid.show(
-                                        "link Copied to Clipboard",
-                                        ToastAndroid.SHORT
-                                    );
-                                } else if (Platform.OS === "ios") {
-                                    AlertIOS.alert("Link Copied to Clipboard");
-                                }
-                            }
-                        }, 300);
-                    }}
-                    >
-                        Copy Link
+                         <Text>Email </Text>
 		            </Button>
                 </ShareSheet>
             </View>
